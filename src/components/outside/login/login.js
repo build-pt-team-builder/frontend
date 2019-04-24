@@ -1,11 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-// import Styled from 'styled-components'
 
-const Login = () =>
+const Login = props =>
     <div className='form'>
-        <input type='text' name='username' placeholder='Username' />
-        <input type='password' name='password' placeholder='Password'/>
+        <input onChange={props.input} type='text' name='username' placeholder='Username' />
+        <input onChange={props.input} type='password' name='password' placeholder='Password'/>
         <button>Log In</button>
         <div className='links'>
             <Link to='/lostandfound'>Forgot Password?</Link>

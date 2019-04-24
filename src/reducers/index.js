@@ -1,14 +1,7 @@
-import {} from '../actions'
+import {combineReducers} from 'redux'
 
-const initialState = {
-    user: {},
-    error: null,
-    fetching: false,
-}
+import {user} from './user'
 
-export default (state = initialState, action) => {
-    switch(action.type) {
-        default:
-            return state
-    }
-}
+export default combineReducers({
+    user,
+})

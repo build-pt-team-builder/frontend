@@ -68,10 +68,10 @@ const Content = Styled.div`
                     background-color: transparent;
                     border: 2px solid transparent;
                     color: #ccc;
-                    font-size: 1.6rem;
+                    font-size: 2rem;
                     margin: 0 1rem;
                     padding: 0.75rem;
-                    width: 10rem;
+                    width: 12rem;
                     &.blue {
                         border-color: #08addd;
                         &:hover {

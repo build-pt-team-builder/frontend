@@ -1,26 +1,66 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Styled from 'styled-components'
-
+//ACTIONS
+import {login, forgotPassword, addUser} from '../actions'
+//COMPONENTS
 import Header from '../components/outside/header'
 import Login from '../components/outside/login/login'
 import ForgotPassword from '../components/outside/login/forgotPassword'
 import CreateAccount from '../components/outside/login/createAccount'
 
-const LoginPage = props => 
-    <Wrapper>
-        <Header />
-        <Content>
-            <div className='logo'>
-                <h1>Thursday</h1>
-            </div>
-            {props.match.url === '/login' && <Login />}
-            {props.match.url === '/lostandfound' && <ForgotPassword />}
-            {props.match.url === '/createaccount' && <CreateAccount />}
-        </Content>
-    </Wrapper>
+class LoginPage extends Component {
+    constructor() {
+        super()
+        this.state = {
+            username: '',
+            email: '',
+            password: '',
+            error: '',
+            message: '',
+        }
+    }
+    //actions
+    h_login = () => {
+        const credentials = {username: this.state.username, password: this.state.password}
+        this.props.login(credentials)
+    }
+    h_forgotPassword = () => {
+        this.props.forgotPassword(this.state.email)
+    }
+    h_createUser = () => {
+        const user = {username: this.state.username, password: this.state.password, email: this.state.email}
+        this.props.createUser(user)
+    }
+    //update the state with field inputs
+    h_input = e => this.setState({[e.target.name]: e.target.value})
+    render = () => 
+        <Wrapper>
+            <Header />
+            <Content>
+                <div className='logo'>
+                    <h1>Thursday</h1>
+                </div>
+                {this.props.match.url === '/login' && <Login input={this.h_input}/>}
+                {this.props.match.url === '/lostandfound' && <ForgotPassword input={this.h_input}/>}
+                {this.props.match.url === '/createaccount' && <CreateAccount input={this.h_input}/>}
+            </Content>
+        </Wrapper>
+}
 
-export default LoginPage
+const mapStateToProps = state => {
+    return {
+        error: state.user.error,
+        message: state.user.message,
+    }
+}
 
+export default connect(
+    mapStateToProps,
+    {login, forgotPassword, addUser})(LoginPage)
+
+
+//should styled be in a seperate file?
 const Wrapper = Styled.div`
     display: flex;
     justify-content: center;
