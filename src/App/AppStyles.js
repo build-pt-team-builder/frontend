@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { flex } from './theme'
+import { flex } from '../components/DesignComponents/theme'
 
 const AppContainer = styled.div`
   width: 100%;

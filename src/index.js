@@ -1,45 +1,23 @@
-//REACT
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createGlobalStyle} from 'styled-components'
-//REDUX
-import {applyMiddleware, createStore} from "redux"
-import {Provider} from "react-redux"
-//MIDDLEWARE
-import logger from 'redux-logger'
-//LOCAL
-import './reset.css'
-import reducer from './reducers'
-import Routes from './components/routes'
-//DELETE?
-// import * as serviceWorker from './serviceWorker'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import GlobalStyle from './components/DesignComponents/GlobalStyle'
+import theme from './components/DesignComponents/theme'
 
-const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Lato');
-    ::-webkit-scrollbar {display: none}
-    body {    
-        background-color: #222;
-        color: #ccc;
-        font-family: 'Lato', sans-serif;
-        #root {
-            height: 100%;
-        }
-    }
-`
+import { store } from './config/store'
 
-const store = createStore(
-    reducer,
-    applyMiddleware(logger)
-)
+import App from './app'
 
-const root = document.getElementById('root')
 ReactDOM.render(
-  <Provider store={store}>
-    <GlobalStyle />
-    <Routes />
-  </Provider>,
-  root
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <Router>
+        <GlobalStyle />
+        <App />
+      </Router>
+    </Provider>
+  </ThemeProvider>,
+  document.getElementById('root')
 )
-
-//DELETE?
-// serviceWorker.unregister()
