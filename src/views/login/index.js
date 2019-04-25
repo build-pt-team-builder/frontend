@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 //ACTIONS
 import {login, forgotPassword, addUser} from '../../actions'
 //COMPONENTS
-import Header from '../../components/outside/header/header'
-import Login from '../../components/outside/login/login'
-import ForgotPassword from '../../components/outside/login/forgotPassword'
-import CreateAccount from '../../components/outside/login/createAccount'
+import Header from '../../components/public/header'
+import Login from '../../components/public/login/login'
+import ForgotPassword from '../../components/public/login/forgotPassword'
+import CreateAccount from '../../components/public/login/createAccount'
 //STYLE
 import Wrapper from './style'
 

@@ -1,29 +1,16 @@
-//REACT
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {createGlobalStyle} from 'styled-components'
-//REDUX
+import { ThemeProvider } from 'styled-components'
 import {applyMiddleware, createStore} from "redux"
 import {Provider} from "react-redux"
-//MIDDLEWARE
 import logger from 'redux-logger'
-//LOCAL
-import './reset.css'
-import reducer from './reducers'
-import Routes from './App/routes'
 
-const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css?family=Lato');
-    ::-webkit-scrollbar {display: none}
-    body {    
-        background-color: #222;
-        color: #ccc;
-        font-family: 'Lato', sans-serif;
-        #root {
-            height: 100%;
-        }
-    }
-`
+import reducer from './reducers'
+// import Routes from './config/routes/Routes'
+import App from './app'
+//THEME
+import GlobalStyle from './components/designComponents/GlobalStyle'
+import theme from './components/designComponents/theme'
 
 const store = createStore(
     reducer,
@@ -32,9 +19,11 @@ const store = createStore(
 
 const root = document.getElementById('root')
 ReactDOM.render(
-  <Provider store={store}>
-    <GlobalStyle />
-    <Routes />
-  </Provider>,
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <GlobalStyle />
+      <App />
+    </Provider>
+  </ThemeProvider>,
   root
 )

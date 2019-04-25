@@ -30,7 +30,7 @@ const theme = {
   fontStyles: {
     logoFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
     headingFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-    defaultFont: "'Fresca', cursive, Arial, sans-serif"
+    defaultFont: "'Lato', sans-serif",
   },
 
   fontSizing: { // Based on CSS default font-resizing of 62.5%
