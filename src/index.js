@@ -10,9 +10,7 @@ import logger from 'redux-logger'
 //LOCAL
 import './reset.css'
 import reducer from './reducers'
-import Routes from './components/routes'
-//DELETE?
-// import * as serviceWorker from './serviceWorker'
+import Routes from './App/routes'
 
 const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Lato');
@@ -40,6 +38,3 @@ ReactDOM.render(
   </Provider>,
   root
 )
-
-//DELETE?
-// serviceWorker.unregister()

@@ -1,14 +1,15 @@
 const theme = {
   color: {
-    primaryColor: '#005A9C',
-    primaryDark: '#005A9C',
-    primaryBgShading: '#F5F8FA',
-    secondaryColor: '#e4e5eb',
-    secondaryBgShading: '#C5CAE9',
-    accent: '#51A7F8',
-    emphasis: '#212121',
-    darkText: '#595959',
-    lightText: '#FFFFFF',
+    primaryColor: '#bb1333',
+    primaryDark: '#bb1333',
+    primaryBgShading: '#222',
+    secondaryColor: '#08addd',
+    secondaryBgShading: '#222',
+    accent: '#888',
+    emphasis: '#fff',
+    darkText: '#222',
+    lightText: '#ccc',
+    lightTextEmphasis: '#fff',
     danger: 'red'
   },
 
@@ -33,16 +34,18 @@ const theme = {
   },
 
   fontSizing: { // Based on CSS default font-resizing of 62.5%
+    xxxxs: '.8rem',
     xxxs: '1rem',
     xxs: '1.2rem',
     xs: '1.4rem', // base size for mobile view
     s: '1.6rem', // base size for text
     sm: '1.8rem', // base size for menu and button text
     m: '2rem', // base heading/sub-heading size
-    ml: '3rem', // base headline size
+    ml: '2.4rem', // base headline size
     l: '4rem', // for big emphasis
     xl: '5rem', // ultra large
-    xxl: '6rem' // site banner headline
+    xxl: '6rem', // site banner headline
+    xxxl: '8rem',
   },
 
   breakpoints: [

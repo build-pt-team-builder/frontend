@@ -1,8 +1,8 @@
 import React from 'react'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
 
-import LandingPage from './outside/landingPage'
-import Login from '../views/login'
+import LandingPage from '../components/outside/landingPage/landingPage'
+import Login from '../views/login/login'
 
 const Routes = () =>
     <Router>
