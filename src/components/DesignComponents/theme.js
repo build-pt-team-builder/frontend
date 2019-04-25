@@ -1,38 +1,65 @@
 const theme = {
   color: {
-    primaryColor: '#005A9C',
-    primaryDark: '#005A9C',
-    primaryBgShading: '#F5F8FA',
-    secondaryColor: '#e4e5eb',
-    secondaryBgShading: '#C5CAE9',
-    accent: '#51A7F8',
-    emphasis: '#212121',
-    darkText: '#595959',
-    lightText: '#FFFFFF',
-    danger: 'red'
+    primaryColor: '#bb1333',
+    primaryDark: '#bb1333',
+    primaryBgShading: '#222',
+    secondaryColor: '#08addd',
+    secondaryBgShading: '#222',
+    accent: '#888',
+    emphasis: '#fff',
+    darkText: '#222',
+    lightText: '#ccc',
+    lightTextEmphasis: '#fff',
+    danger: 'red',
   },
 
   colorScheme: {
-    logoColor: () => { return theme.color.emphasis },
-    headerBgColor: () => { return theme.color.lightText },
-    headerFontColor: () => { return theme.color.accent },
-    footerBgColor: () => { return theme.color.primaryColor },
-    footerFontColor: () => { return theme.color.lightText },
-    headingColor: () => { return theme.color.primaryColor },
-    defaultFontColor: () => { return theme.color.darkText },
-    defaultLinkColor: () => { return theme.color.secondaryColor },
-    containerBgColor: () => { return theme.primaryBgShading },
-    cardBgColor: () => { return theme.secondaryBgShading },
-    defaultBorderColor: () => { return theme.color.secondaryBgShading }
+    logoColor: () => {
+      return theme.color.emphasis
+    },
+    headerBgColor: () => {
+      return theme.color.lightText
+    },
+    headerFontColor: () => {
+      return theme.color.accent
+    },
+    footerBgColor: () => {
+      return theme.color.primaryColor
+    },
+    footerFontColor: () => {
+      return theme.color.lightText
+    },
+    headingColor: () => {
+      return theme.color.primaryColor
+    },
+    defaultFontColor: () => {
+      return theme.color.darkText
+    },
+    defaultLinkColor: () => {
+      return theme.color.secondaryColor
+    },
+    containerBgColor: () => {
+      return theme.primaryBgShading
+    },
+    cardBgColor: () => {
+      return theme.secondaryBgShading
+    },
+    defaultBorderColor: () => {
+      return theme.color.secondaryBgShading
+    },
   },
 
   fontStyles: {
-    logoFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-    headingFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-    defaultFont: "'Fresca', cursive, Arial, sans-serif"
+    logoFont:
+      "Lato, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    headingFont:
+      "Lato, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    defaultFont:
+      "Lato, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
   },
 
-  fontSizing: { // Based on CSS default font-resizing of 62.5%
+  fontSizing: {
+    // Based on CSS default font-resizing of 62.5%
     xxxs: '1rem',
     xxs: '1.2rem',
     xs: '1.4rem', // base size for mobile view
@@ -42,13 +69,13 @@ const theme = {
     ml: '3rem', // base headline size
     l: '4rem', // for big emphasis
     xl: '5rem', // ultra large
-    xxl: '6rem' // site banner headline
+    xxl: '6rem', // site banner headline
   },
 
   breakpoints: [
     '(max-width: 600px)',
     '(max-width: 768px)',
-    '(min-width: 769px)'
+    '(min-width: 769px)',
   ],
   // for media queries -- express them as @media ${theme.breakpoints[0]} {styles here}
   // in the arr, the first is for mobile, second is for portrait tablet, third is for desktop
@@ -57,8 +84,7 @@ const theme = {
     flex-direction: ${direction};
     justify-content: ${justify};
     align-items: ${align};
-  }`
-
+  }`,
 }
 
 export default theme
