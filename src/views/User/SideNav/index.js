@@ -14,9 +14,8 @@ const user = {
 const links = [
     {displayText: 'News', to: '/home', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Inbox', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Your Projects', to: '/home', imgSrc: '/', altText: '', selected: true},
-    {displayText: 'Open Projects', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'All Projects', to: '/home', imgSrc: '/', altText: '', selected: false},
+    {displayText: 'Groups', to: '/home', imgSrc: '/', altText: '', selected: false},
+    {displayText: 'Projects', to: '/home', imgSrc: '/', altText: '', selected: true},
     {displayText: 'Settings', to: '/home', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Log Out', to: '/', imgSrc: '/', altText: '', selected: false},
 ]

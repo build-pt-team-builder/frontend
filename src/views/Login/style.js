@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import {color, fontSizing, flex} from '../../components/DesignComponents/theme'
+import {color, size, flex} from '../../components/DesignComponents/theme'
 
 export default Styled.div`
     ${flex('row', 'center', 'center')}
@@ -13,14 +13,14 @@ export default Styled.div`
 
         .logo {
             ${flex('row','center','center')}
-            border-right: 2px solid ${color.accent};
-            font-size: ${fontSizing.xxxl};
+            border-right: 2px solid ${color.bg05};
+            font-size: ${size.s13};
             width: 100%;
             height: 100%;
             text-align: center;
             h1 {
                 &::first-letter {
-                    color: ${color.primaryColor};
+                    color: ${color.accent0};
                 }
             }
         }
@@ -28,40 +28,40 @@ export default Styled.div`
             ${flex('column','normal','normal')}
             width: 100%;
             min-width: 400px;
-            padding: 0 ${fontSizing.xl};
+            padding: 0 ${size.s04};
             & > * {
-                margin: ${fontSizing.xxxs} 0;
+                margin: ${size.s02} 0;
             }
             input, button {
-                border: 2px solid ${color.accent};
+                border: 2px solid ${color.bg05};
                 border-radius: 0.5rem;
-                font-size: ${fontSizing.s};
-                padding: ${fontSizing.s} ${fontSizing.xxxs};
+                font-size: ${size.s05};
+                padding: ${size.s05} ${size.s02};
             }
             input {
                 background-color: transparent;
-                color: ${color.accent};
+                color: ${color.bg05};
                 &:focus {
-                    border-color: ${color.secondaryColor};
-                    color: ${color.lightText};
+                    border-color: ${color.accent1};
+                    color: ${color.txt04};
                 }
             }
             button {
-                background-color: ${color.secondaryColor};
-                border-color: ${color.secondaryColor};
-                color: ${color.darkText};
+                background-color: ${color.accent1};
+                border-color: ${color.accent1};
+                color: ${color.txt01};
                 cursor: pointer;
                 font-weight: 700;
                 &:hover {
-                    color: ${color.lightText};
+                    color: ${color.txt05};
                 }
             }
             .links {
                 ${flex('row','normal','space-between')}
-                font-size: ${fontSizing.s};
+                font-size: ${size.s05};
                 a {
                     &:hover {
-                        color: ${color.lightTextEmphasis};
+                        color: ${color.txt05};
                     }
                 }
             }
