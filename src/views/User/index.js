@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SideNav from '../../../components/user/sideNav'
+import SideNav from './SideNav'
 import Content from './style'
 
 const Home = () => 

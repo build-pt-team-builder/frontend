@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import Content from './style'
+import Elliot from '../../../assets/imgs/elliot.jpg'
 
 const user = {
     username: 'mrrobot',
@@ -24,7 +25,7 @@ const SideNav = props =>
     <Content>
         <div className='user'>
             <div className='avatar'>
-                <img src={'/imgs/' + user.avatarSrc} alt={user.username}/>
+                <img src={Elliot} alt={user.username}/>
             </div>
             <pre className='name'>{user.firstName} {user.lastName}</pre>
             <pre className='role'>{user.role}</pre>

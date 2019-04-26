@@ -1,5 +1,5 @@
 import Styled from 'styled-components'
-import {flex} from '../../../components/designComponents/theme'
+import {flex} from '../../components/DesignComponents/theme'
 
 export default Styled.div`
     ${flex('row','normal','flex-start')};
