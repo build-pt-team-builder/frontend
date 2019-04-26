@@ -6,11 +6,12 @@ const theme = {
     secondaryColor: '#08addd',
     secondaryBgShading: '#222',
     accent: '#888',
+    accent2: '#666',
     emphasis: '#fff',
     darkText: '#222',
     lightText: '#ccc',
     lightTextEmphasis: '#fff',
-    danger: 'red',
+    danger: 'red'
   },
 
   colorScheme: {
@@ -50,26 +51,24 @@ const theme = {
   },
 
   fontStyles: {
-    logoFont:
-      "Lato, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-    headingFont:
-      "Lato, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-    defaultFont:
-      "Lato, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    logoFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    headingFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    defaultFont: "'Lato', sans-serif",
   },
 
-  fontSizing: {
-    // Based on CSS default font-resizing of 62.5%
+  fontSizing: { // Based on CSS default font-resizing of 62.5%
+    xxxxs: '.8rem',
     xxxs: '1rem',
     xxs: '1.2rem',
     xs: '1.4rem', // base size for mobile view
     s: '1.6rem', // base size for text
     sm: '1.8rem', // base size for menu and button text
     m: '2rem', // base heading/sub-heading size
-    ml: '3rem', // base headline size
+    ml: '2.4rem', // base headline size
     l: '4rem', // for big emphasis
     xl: '5rem', // ultra large
     xxl: '6rem', // site banner headline
+    xxxl: '8rem',
   },
 
   breakpoints: [
