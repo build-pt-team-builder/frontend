@@ -6,6 +6,7 @@ const theme = {
     secondaryColor: '#08addd',
     secondaryBgShading: '#222',
     accent: '#888',
+    accent2: '#666',
     emphasis: '#fff',
     darkText: '#222',
     lightText: '#ccc',

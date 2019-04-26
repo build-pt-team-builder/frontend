@@ -5,7 +5,7 @@ import Content from './style'
 
 const links = [
     {display: 'Thursday', to: '/', class: 'logo'},
-    {display: 'Home', to: '/', class: null},
+    {display: 'Home', to: '/home', class: null},
     {display: 'Product', to: '/', class: null},
     {display: 'Use Cases', to: '/', class: null},
     {display: 'Pricing', to: '/', class: null},
