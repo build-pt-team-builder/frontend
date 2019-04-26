@@ -19,6 +19,7 @@ class Routes extends Component {
       <div>
         {/* Assign routes */}
         <Route path="/" exact component={ProjectList} />
+        <Route path="/projects" exact component={ProjectList} />
         {this.props.projects.map(project => (
           <Route
             key={project.id}
