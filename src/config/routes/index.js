@@ -4,38 +4,27 @@ import {connect} from 'react-redux'
 // import PrivateRoute from './PrivateRoute'
 
 import { fetchProjectData } from '../../actions/projects'
-import ProjectList from '../../views/Projects/ProjectList'
-import ProjectDetails from '../../views/Projects/ProjectDetails'
+// import ProjectList from '../../views/Projects/ProjectList'
+// import ProjectDetails from '../../views/Projects/ProjectDetails'
+import LandingPage from '../../components/LandingPage'
+import Login from '../../views/Login'
+import Home from '../../views/User'
 
 
 class Routes extends Component {
-  // componentDidMount() {
-  //   this.props.fetchData()
-  // }
-
-  render() {
-    console.log(`Routes render this.props is: `)
-    return (
-      <div>
-        {/* Assign routes */}
-        <Route path="/" exact component={ProjectList} />
-        <Route path="/projects" exact component={ProjectList} />
-        {this.props.projects.map(project => (
-          <Route
-            key={project.id}
-            path={`/projects/${project.id}`}
-            render={props => (
-              <ProjectDetails {...props} project={project} />
-            )}
-          />
-        ))}
-      </div>
-    )
-  }
+  render = () =>
+    <>
+      {/* PUBLIC ROUTES */}
+      <Route exact path='/' component={LandingPage} />
+      <Route path='/login' component={Login} />
+      <Route path='/lostandfound' component={Login} />
+      <Route path='/createAccount' component={Login} />
+      {/* PRIVATE ROUTE */}
+      <Route path='/home' component={Home} />
+    </>
 }
 
 const mapStateToProps = state => {
-  console.log(state.projects)
   return {
     projects: state.projects.projects
   }

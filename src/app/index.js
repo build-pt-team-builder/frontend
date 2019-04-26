@@ -1,14 +1,14 @@
 import React from 'react'
-
+import {BrowserRouter as Router} from 'react-router-dom'
 import AppContainer from './AppStyles'
-import Header from '../components/SharedComponents/Header/'
 import Routes from '../config/routes'
 
 const App = () => {
   return (
-    <AppContainer>
-      <Header />
-      <Routes />
+    <AppContainer className='App'>
+      <Router>
+        <Routes />
+      </Router>
     </AppContainer>
   )
 }
