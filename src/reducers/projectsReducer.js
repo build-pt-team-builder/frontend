@@ -11,7 +11,7 @@ import {
   DELETE_DATA_START,
   DELETE_DATA_SUCCESS,
   DELETE_DATA_FAILURE,
-} from '../actions'
+} from '../actions/projects'
 
 const initialState = {
   projects: [
@@ -60,7 +60,7 @@ const initialState = {
   errorStatusCode: null,
 }
 
-const reducer = (state = initialState, action) => {
+export const projectsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DATA_START:
       return {
@@ -170,5 +170,3 @@ const reducer = (state = initialState, action) => {
       return state
   }
 }
-
-export default reducer
