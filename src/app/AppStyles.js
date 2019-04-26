@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {flex} from '../components/designComponents/theme'
+import { flex } from '../components/DesignComponents/theme'
 
 const AppContainer = styled.div`
   max-width: 1400px;
