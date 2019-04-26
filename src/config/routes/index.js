@@ -1,23 +1,27 @@
-import React from 'react'
-import {Route, BrowserRouter as Router } from 'react-router-dom'
-
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Route, withRouter } from 'react-router-dom'
 // import PrivateRoute from './PrivateRoute'
+class Routes extends Component {
+//   componentDidMount() {
+//     this.props.getData()
+//   }
 
-//public
-import LandingPage from '../../components/public/landingPage'
-import Login from '../../views/login'
-//private
-import Home from '../../views/user/home'
+  render() {
+    console.log(`Routes render this.props is: `)
+    return (
+      <div>
+        {/* Assign routes */}
+        <Route />
+      </div>
+    )
+  }
+}
 
-const Routes = () =>
-    <Router>
-        {/* PUBLIC */}
-        <Route exact path='/' component={LandingPage}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/lostandfound' component={Login}/>
-        <Route exact path='/createaccount' component={Login}/>
-        {/* PRIVATE */}
-        <Route exact path='/home' component={Home}/>
-    </Router>
+// const mapStateToProps = ({  }) => ({
+ 
+// })
 
-export default Routes
+export default withRouter(
+  connect(null, {})(Routes)
+)

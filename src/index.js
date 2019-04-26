@@ -1,29 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import {applyMiddleware, createStore} from "redux"
-import {Provider} from "react-redux"
-import logger from 'redux-logger'
+import GlobalStyle from './components/DesignComponents/GlobalStyle'
+import theme from './components/DesignComponents/theme'
 
-import reducer from './reducers'
-// import Routes from './config/routes/Routes'
+import { store } from './config/store'
+
 import App from './app'
-//THEME
-import GlobalStyle from './components/designComponents/GlobalStyle'
-import theme from './components/designComponents/theme'
 
-const store = createStore(
-    reducer,
-    applyMiddleware(logger)
-)
-
-const root = document.getElementById('root')
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <GlobalStyle />
-      <App />
+      <Router>
+        <GlobalStyle />
+        <App />
+      </Router>
     </Provider>
   </ThemeProvider>,
-  root
+  document.getElementById('root')
 )

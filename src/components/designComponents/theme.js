@@ -15,17 +15,39 @@ const theme = {
   },
 
   colorScheme: {
-    logoColor: () => { return theme.color.emphasis },
-    headerBgColor: () => { return theme.color.lightText },
-    headerFontColor: () => { return theme.color.accent },
-    footerBgColor: () => { return theme.color.primaryColor },
-    footerFontColor: () => { return theme.color.lightText },
-    headingColor: () => { return theme.color.primaryColor },
-    defaultFontColor: () => { return theme.color.darkText },
-    defaultLinkColor: () => { return theme.color.secondaryColor },
-    containerBgColor: () => { return theme.primaryBgShading },
-    cardBgColor: () => { return theme.secondaryBgShading },
-    defaultBorderColor: () => { return theme.color.secondaryBgShading }
+    logoColor: () => {
+      return theme.color.emphasis
+    },
+    headerBgColor: () => {
+      return theme.color.lightText
+    },
+    headerFontColor: () => {
+      return theme.color.accent
+    },
+    footerBgColor: () => {
+      return theme.color.primaryColor
+    },
+    footerFontColor: () => {
+      return theme.color.lightText
+    },
+    headingColor: () => {
+      return theme.color.primaryColor
+    },
+    defaultFontColor: () => {
+      return theme.color.darkText
+    },
+    defaultLinkColor: () => {
+      return theme.color.secondaryColor
+    },
+    containerBgColor: () => {
+      return theme.primaryBgShading
+    },
+    cardBgColor: () => {
+      return theme.secondaryBgShading
+    },
+    defaultBorderColor: () => {
+      return theme.color.secondaryBgShading
+    },
   },
 
   fontStyles: {
@@ -52,7 +74,7 @@ const theme = {
   breakpoints: [
     '(max-width: 600px)',
     '(max-width: 768px)',
-    '(min-width: 769px)'
+    '(min-width: 769px)',
   ],
   // for media queries -- express them as @media ${theme.breakpoints[0]} {styles here}
   // in the arr, the first is for mobile, second is for portrait tablet, third is for desktop
@@ -61,8 +83,7 @@ const theme = {
     flex-direction: ${direction};
     justify-content: ${justify};
     align-items: ${align};
-  }`
-
+  }`,
 }
 
 export default theme

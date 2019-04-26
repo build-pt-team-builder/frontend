@@ -39,8 +39,8 @@ class Header extends Component {
           <NavLink exact to='/' onClick={this.toggleDisplay}>
             Home
         </NavLink>
-        <NavLink to='/add' onClick={this.toggleDisplay}>
-          Add Smurf
+        <NavLink to='/projects' onClick={this.toggleDisplay}>
+            Projects
         </NavLink>
         </Nav>
       </HeaderContainer>
