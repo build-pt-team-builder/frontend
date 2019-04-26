@@ -15,7 +15,7 @@ class ProjectList extends Component {
             <Link key={project.id} to={`/projects/${project.id}`}>
               <Preview>
                 <div>{project.name}</div>
-                <div>id: {project.id}</div>
+                <div>Roles: {project.roles}</div>
               </Preview>
             </Link>
           ))
