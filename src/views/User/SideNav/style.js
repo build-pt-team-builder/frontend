@@ -7,6 +7,7 @@ export default Styled.div`
     border-width: 0 2px;
     height: 100%;
     font-size: ${size.s06};
+    grid-row: 1 / span 2;
     min-width: 200px;
     .logo {
         ${flex('row','center','center')};

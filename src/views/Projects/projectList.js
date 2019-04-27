@@ -31,18 +31,3 @@ const ProjectList = ({projects}) =>
     </div>
 
 export default ProjectList
-
-// {   id: 0,
-//     name: `Comet`,
-//     positions: [
-//         {role: 'Lead', member: 'Joe MacMillan'},
-//         {role: 'WebUI', member: 'Donna Emerson'},
-//         {role: 'WebUI', member: 'John Bosworth'},
-//         {role: 'Frontend', member: 'Cameron Howe'},
-//         {role: 'Backend', member: 'Gordon Clark'},
-//     ],
-//     description: 'Index the web!',
-//     created: '07/22/1992',
-//     author: 'Haley Clark',
-//     active: false,
-// },

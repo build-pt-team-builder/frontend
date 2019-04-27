@@ -4,16 +4,16 @@ import {color, flex, size} from '../../components/DesignComponents/theme'
 export default Styled.div`
     display: grid;
     grid-row-gap: 1rem;
-    width: 100%;
     height: fit-content;
+    max-width: 1200px;
     padding: ${size.s08};
+    width: 100%;
     header {
         display: grid;
-        grid-template-columns: repeat(4, auto);
         grid-column-gap: ${size.s08};
-        width: 100%;
-        max-width: 1000px;
+        grid-template-columns: repeat(4, auto);
         margin-bottom: 1rem;
+        width: 100%;
         .stat {
             background-color: ${color.accent1};
             border-radius: 5px;
@@ -36,25 +36,24 @@ export default Styled.div`
         grid-row-gap: 1rem;
     }
     .project-options {
-        display: flex;
-        justify-content: space-between;
         background-color: ${color.bg00};
-        height: 50px;
-        padding: 0.5rem 1rem;
         border-radius: 5px;
+        display: flex;
+        height: 50px;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
         width: 100%;
-        max-width: 1000px;
         .options {
-            display: grid;
             align-items: center;
+            display: grid;
             grid-auto-flow: column;
             grid-column-gap: 1px;
             height: 100%;
             button {
                 background-color: ${color.accent0};
                 border: none;
-                height: 100%;
                 border-radius: 5px;
+                height: 100%;
             }
             .title {
                 font-size: 1.4rem;
@@ -62,15 +61,15 @@ export default Styled.div`
             }
             label {
                 background-color: ${color.bg01};
-                height: 100%;
-                width: fit-content;
-                min-width: 50px;
-                line-height: 36px;
+                border: 2px solid transparent;
+                cursor: pointer;
                 font-size: 1.2rem;
+                height: 100%;
+                line-height: 36px;
+                min-width: 50px;
                 padding: 0 1rem;
                 text-align: center;
-                cursor: pointer;
-                border: 2px solid transparent;
+                width: fit-content;
                 &:first-of-type {
                     border-radius: 5px 0 0 5px;
                     &:hover:not(.active) {border-color: ${color.accent1} transparent ${color.accent1} ${color.accent1}}
@@ -90,24 +89,22 @@ export default Styled.div`
         }
     }
     .project {
-        ${flex('column','normal','normal')};
-        width: 100%;
-        max-width: 1000px;
         background-color: ${color.bg00};
         border: 2px solid transparent;
         border-radius: 5px;
-        height: fit-content;
-        border: 2px solid transparent;
         cursor: pointer;
+        ${flex('column','normal','normal')};
+        height: fit-content;
         overflow: hidden;
+        width: 100%;
         .description {
             display: grid;
-            grid-template-columns: repeat(2, auto);
-            grid-row-gap: 1rem;
+            font-size: 1.6rem;
             grid-column-gap: 1rem;
+            grid-row-gap: 1rem;
+            grid-template-columns: repeat(2, auto);
             height: 0px;
             overflow: none;
-            font-size: 1.6rem;
             &.active {
                 height: fit-content;
                 padding: 0.5rem 1rem;
@@ -124,8 +121,8 @@ export default Styled.div`
             .identity {
                 ${flex('row','flex-start','flex-start')};
                 .name {
-                    font-size: 2rem;
                     color: ${color.accent1};
+                    font-size: 2rem;
                 }
             }
             .positions {
@@ -134,16 +131,17 @@ export default Styled.div`
                 grid-column-gap: 1px;
                 height: 100%;
                 .position {
-                    ${flex('column','normal','space-around')};
                     background-color: ${color.bg01};
-                    padding: 0 1rem;
-                    text-align: center;
-                    min-width: 100px;
                     border: 2px solid transparent;
                     cursor: grab;
+                    ${flex('column','normal','space-around')};
+                    min-width: 100px;
+                    padding: 0 1rem;
+                    text-align: center;
                     &:first-of-type {border-radius: 5px 0 0 5px}
                     &:last-of-type {border-radius: 0 5px 5px 0}
                     &:hover {border-color: transparent ${color.accent1}}
+                    &:hover {border-color: ${color.accent1} transparent}
                     .role {
                         color: ${color.txt02};
                         font-size: 1.4rem;
@@ -156,8 +154,6 @@ export default Styled.div`
                 }
             }
         }
-        &:hover {
-            border-color: transparent ${color.accent1};
-        }
+        &:hover {border-color: transparent ${color.accent1}}
     }
 `
