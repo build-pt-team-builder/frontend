@@ -29,13 +29,16 @@ const ListOptions = props =>
         <div className='options'>
             <h3 className='title'>Positions: </h3>
             <label className={options.positions.none && 'active'} name='none'>None</label>
-            <label className={options.positions.webui && 'active'} name='webui'>Web UI</label>
+            <label className={options.positions.webui && 'active'} name='ui'>UI</label>
             <label className={options.positions.frontend && 'active'} name='frontend'>Frontend</label>
             <label className={options.positions.backend && 'active'} name='backend'>Backend</label>
             <label className={options.positions.uiux && 'active'} name='uiux'>UI/UX</label>
             <label className={options.positions.android && 'active'} name='android'>Android</label>
-            <label className={options.positions.datascience && 'active'} name='datascience'>Data Science</label>
+            <label className={options.positions.datascience && 'active'} name='datascience'>DS</label>
             <label className={options.positions.any && 'active'} name='any'>Any</label>
+        </div>
+        <div className='options'>
+            <button>Create</button>
         </div>
     </div>
 

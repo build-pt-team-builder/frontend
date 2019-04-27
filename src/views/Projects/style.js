@@ -50,6 +50,12 @@ export default Styled.div`
             grid-auto-flow: column;
             grid-column-gap: 1px;
             height: 100%;
+            button {
+                background-color: ${color.accent0};
+                border: none;
+                height: 100%;
+                border-radius: 5px;
+            }
             .title {
                 font-size: 1.4rem;
                 margin-right: 1rem;
@@ -88,28 +94,64 @@ export default Styled.div`
         width: 100%;
         max-width: 1000px;
         background-color: ${color.bg00};
+        border: 2px solid transparent;
         border-radius: 5px;
         height: fit-content;
         border: 2px solid transparent;
         cursor: pointer;
-        padding: 1rem;
+        overflow: hidden;
+        .description {
+            display: flex;
+            flex-direction: column;
+            height: 0px;
+            overflow: none;
+            &.active {
+                height: fit-content;
+                padding: 0.5rem 1rem;
+            }
+        }
         .summary {
-            ${flex('row', 'center', 'flex-start')};
-            height: 66px;
+            ${flex('row', 'center', 'space-between')};
             font-size: 1.6rem;
+            height: 50px;
+            padding: 0.5rem 1rem;
             .identity {
-                ${flex('column','flex-start','flex-start')};
+                ${flex('row','flex-start','flex-start')};
                 .id {
                     font-size: 1.4rem;
                     color: ${color.txt02};
                 }
             }
-            .position {
-                ${flex('row','normal','normal')};
+            .positions {
+                display: grid;
+                grid-auto-flow: column;
+                grid-column-gap: 1px;
+                height: 100%;
+                .position {
+                    ${flex('column','normal','space-around')};
+                    background-color: ${color.bg01};
+                    padding: 0 1rem;
+                    text-align: center;
+                    min-width: 100px;
+                    border: 2px solid transparent;
+                    cursor: grab;
+                    &:first-of-type {border-radius: 5px 0 0 5px}
+                    &:last-of-type {border-radius: 0 5px 5px 0}
+                    &:hover {border-color: transparent ${color.accent1}}
+                    .role {
+                        color: ${color.txt02};
+                        font-size: 1.4rem;
+                        height: 18px;
+                    }
+                    .member {
+                        font-size: 1.4rem;
+                        height: 18px;
+                    }
+                }
             }
         }
         &:hover {
-            border: 2px solid ${color.accent1};
+            border-color: transparent ${color.accent1};
         }
     }
 `
