@@ -2,18 +2,29 @@ import Styled from 'styled-components'
 import {color, size, flex} from '../../../components/DesignComponents/theme'
 
 export default Styled.div`
-    background-color: ${color.bg0};
-    border: 1px solid ${color.bg3};
+    background-color: ${color.bg00};
+    border: 1px solid ${color.bg03};
     border-width: 0 2px;
     height: 100%;
     font-size: ${size.s06};
-    width: 200px;
+    min-width: 200px;
+    .logo {
+        ${flex('row','center','center')};
+        height: 50px;
+        h3 {
+            font-size: ${size.s08};
+            &::first-letter {
+                color: ${color.accent0};
+            }
+        }
+    }
     .user {
-        border-bottom: 1px solid ${color.bg3};
-        color: ${color.txt3};
+        border-bottom: 1px solid ${color.bg03};
+        color: ${color.txt03};
         ${flex('column','center','center')};
         font-size: ${size.s04};
-        height: 200px;
+        height: fit-content;
+        padding: ${size.s02} 0;
         text-align: center;
         & > * {
             margin: 0.25rem;
@@ -30,13 +41,12 @@ export default Styled.div`
     }
     .links {
         ${flex('column','flex-start','center')};
-        transform: translateX(-2px);
+        width: 100%;
         a {
             ${flex('row','center','flex-start')};
             height: 4rem;
             padding: 0 1rem;
-            width: calc(100% + 4px);
-            border-left: 2px solid transparent;
+            width: 100%;
             img {
                 //haven't made any icons yet
             }
@@ -44,7 +54,10 @@ export default Styled.div`
                 text-align: left;
             }
             &.selected {
-                border-color: ${color.accent0};
+                border: 2px solid ${color.accent0};
+                border-width: 0 2px;
+                transform: translateX(-2px);
+                width: calc(100% + 4px);
             }
             &:hover {
                 background-color: ${color.accent0};

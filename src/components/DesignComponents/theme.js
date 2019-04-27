@@ -41,7 +41,7 @@ const theme = {
     s12: '6.0rem',
     s13: '8.0rem',
   },
-  
+
   // for media queries -- express them as @media ${theme.breakpoints[0]} {styles here}
   // in the arr, the first is for mobile, second is for portrait tablet, third is for desktop
   breakpoints: [

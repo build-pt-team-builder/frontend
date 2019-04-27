@@ -8,7 +8,9 @@ import { fetchProjectData } from '../../actions/projects'
 // import ProjectDetails from '../../views/Projects/ProjectDetails'
 import LandingPage from '../../components/LandingPage'
 import Login from '../../views/Login'
-import Home from '../../views/User'
+import Home from '../../views/Home'
+
+import Projects from '../../views/Projects'
 
 
 class Routes extends Component {
@@ -20,7 +22,7 @@ class Routes extends Component {
       <Route path='/lostandfound' component={Login} />
       <Route path='/createAccount' component={Login} />
       {/* PRIVATE ROUTE */}
-      <Route path='/home' component={Home} />
+      <Route path='/home' component={() => <Home Content={Projects}/>} />
     </>
 }
 

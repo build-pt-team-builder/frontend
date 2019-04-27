@@ -22,6 +22,9 @@ const links = [
 
 const SideNav = props =>
     <Content>
+        <div className='logo'>
+            <h3>Thursday</h3>
+        </div>
         <div className='user'>
             <div className='avatar'>
                 <img src={Elliot} alt={user.username}/>
