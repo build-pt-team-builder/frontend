@@ -101,13 +101,19 @@ export default Styled.div`
         cursor: pointer;
         overflow: hidden;
         .description {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-row-gap: 1rem;
+            grid-column-gap: 1rem;
             height: 0px;
             overflow: none;
+            font-size: 1.6rem;
             &.active {
                 height: fit-content;
                 padding: 0.5rem 1rem;
+            }
+            .title {
+                color: ${color.txt03};
             }
         }
         .summary {
@@ -117,9 +123,9 @@ export default Styled.div`
             padding: 0.5rem 1rem;
             .identity {
                 ${flex('row','flex-start','flex-start')};
-                .id {
-                    font-size: 1.4rem;
-                    color: ${color.txt02};
+                .name {
+                    font-size: 2rem;
+                    color: ${color.accent1};
                 }
             }
             .positions {

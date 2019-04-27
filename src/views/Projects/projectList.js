@@ -19,12 +19,12 @@ const ProjectList = ({projects}) =>
                     </div>
                 </div>
                 <div className={project.active ? 'description active' : 'description'}>
-                    <pre className='id'>id: {project.id}</pre>
-                    <p className='desc'>Description: {project.description}</p>
-                    <p className='mvp'>MVP: {project.mvp}</p>
-                    <p className='stretch'>Stretch: {project.stretch}</p>
-                    <pre className='author'>Author: {project.author}</pre>
-                    <pre className='status'>Status: Open</pre>
+                    {project.description.map((desc,idx) =>
+                        <React.Fragment key={idx}>
+                        <pre className='title' >{desc.title}: </pre>
+                        <p className='value'>{desc.value}</p>
+                        </React.Fragment>
+                    )}
                 </div>
             </div>
         )}
