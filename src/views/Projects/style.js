@@ -49,7 +49,7 @@ export default Styled.div`
             grid-auto-flow: column;
             grid-column-gap: 1px;
             height: 100%;
-            button {
+            .highlight {
                 background-color: ${color.accent0};
                 border: none;
                 border-radius: 5px;
@@ -59,14 +59,16 @@ export default Styled.div`
                 font-size: 1.4rem;
                 margin-right: 1rem;
             }
-            label {
+            .option {
                 background-color: ${color.bg01};
                 border: 2px solid transparent;
+                color: ${color.txt05};
                 cursor: pointer;
                 font-size: 1.2rem;
                 height: 100%;
                 line-height: 36px;
                 min-width: 50px;
+                outline: none;
                 padding: 0 1rem;
                 text-align: center;
                 width: fit-content;
@@ -96,6 +98,7 @@ export default Styled.div`
         ${flex('column','normal','normal')};
         height: fit-content;
         overflow: hidden;
+        padding: 0 1rem;
         width: 100%;
         .description {
             display: grid;
@@ -103,11 +106,12 @@ export default Styled.div`
             grid-column-gap: 1rem;
             grid-row-gap: 1rem;
             grid-template-columns: repeat(2, auto);
-            height: 0px;
+            height: fit-content;
+            max-height: 0px;
+            transition: max-height 1s ease-in-out;
             overflow: none;
             &.active {
-                height: fit-content;
-                padding: 0.5rem 1rem;
+                max-height: 300px;
             }
             .title {
                 color: ${color.txt03};
@@ -117,7 +121,7 @@ export default Styled.div`
             ${flex('row', 'center', 'space-between')};
             font-size: 1.6rem;
             height: 50px;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0;
             .identity {
                 ${flex('row','flex-start','flex-start')};
                 .name {

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProjectList = ({projects}) =>
+const ProjectList = ({projects, toggle_active}) =>
     <div className='project-list'>
         {projects.map(project => 
-            <div className='project' key={project.id}>
+            <div className='project' onClick={toggle_active} id={project.id} key={project.id}>
                 <div className='summary'>
                     <div className='identity'>
                         {/* <pre className='id'>id:{project.id}</pre> */}
