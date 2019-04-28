@@ -38,7 +38,7 @@ export const addProject = project => dispatch => {
   dispatch({ type: ADD_DATA_START })
 
   // Add data test
-  const newPayload = [...projects, project]
+  let newPayload = [...projects, project]
   dispatch({ type: ADD_DATA_SUCCESS, payload: newPayload })
 
   // axios
@@ -59,16 +59,24 @@ export const UPDATE_DATA_FAILURE = 'UPDATE_DATA_FAILURE'
 
 export const updateProject = project => dispatch => {
   dispatch({ type: UPDATE_DATA_START })
-  axios
-    .put(`${API_ENDPOINT}/${project.id}`, project)
-    .then(res => {
-      console.log(res.data)
-      dispatch({ type: UPDATE_DATA_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      console.log(err.response)
-      dispatch({ type: UPDATE_DATA_FAILURE, payload: err.response })
-    })
+
+  let updatedPayload = projects.map(item => (
+    item.id === project.id ? project : item
+  ))
+
+  console.log(`updateProject payload: `, updatedPayload)
+  dispatch({ type: UPDATE_DATA_SUCCESS, payload: updatedPayload })
+
+  // axios
+  //   .put(`${API_ENDPOINT}/${project.id}`, project)
+  //   .then(res => {
+  //     console.log(res.data)
+  //     dispatch({ type: UPDATE_DATA_SUCCESS, payload: res.data })
+  //   })
+  //   .catch(err => {
+  //     console.log(err.response)
+  //     dispatch({ type: UPDATE_DATA_FAILURE, payload: err.response })
+  //   })
 }
 
 export const DELETE_DATA_START = 'DELETE_DATA_START'
