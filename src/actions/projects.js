@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+// Test Data
+import { projects } from '../dummyData.js'
+
 // const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
 //   '/'}.netlify/functions/server/api/projects`
 const API_ENDPOINT = 'http://localhost:3333/projects'
@@ -11,16 +14,20 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE'
 export const fetchProjectData = () => dispatch => {
   console.log(`API_ENDPOINT: `, API_ENDPOINT)
   dispatch({ type: FETCH_DATA_START })
-  axios
-    .get(API_ENDPOINT)
-    .then(res => {
-      console.log(res.data)
-      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      console.log(err.response)
-      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response })
-    })
+
+  // Fetch dummy data
+  dispatch({ type: FETCH_DATA_SUCCESS, payload: projects })
+
+  // axios
+  //   .get(API_ENDPOINT)
+  //   .then(res => {
+  //     console.log(res.data)
+  //     dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
+  //   })
+  //   .catch(err => {
+  //     console.log(err.response)
+  //     dispatch({ type: FETCH_DATA_FAILURE, payload: err.response })
+  //   })
 }
 
 export const ADD_DATA_START = 'ADD_DATA_START'
@@ -29,16 +36,21 @@ export const ADD_DATA_FAILURE = 'ADD_DATA_FAILURE'
 
 export const addProject = project => dispatch => {
   dispatch({ type: ADD_DATA_START })
-  axios
-    .post(API_ENDPOINT, project)
-    .then(res => {
-      console.log(res.data)
-      dispatch({ type: ADD_DATA_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      console.log(err.response)
-      dispatch({ type: ADD_DATA_FAILURE, payload: err.response })
-    })
+
+  // Add data test
+  const newPayload = [...projects, project]
+  dispatch({ type: ADD_DATA_SUCCESS, payload: newPayload })
+
+  // axios
+  //   .post(API_ENDPOINT, project)
+  //   .then(res => {
+  //     console.log(res.data)
+  //     dispatch({ type: ADD_DATA_SUCCESS, payload: res.data })
+  //   })
+  //   .catch(err => {
+  //     console.log(err.response)
+  //     dispatch({ type: ADD_DATA_FAILURE, payload: err.response })
+  //   })
 }
 
 export const UPDATE_DATA_START = 'UPDATE_DATA_START'

@@ -9,9 +9,9 @@ import ProjectDetails from '../../views/Projects/ProjectDetails'
 
 
 class Routes extends Component {
-  // componentDidMount() {
-  //   this.props.fetchData()
-  // }
+  componentDidMount() {
+    this.props.fetchData()
+  }
 
   render() {
     console.log(`Routes render this.props is: `)
