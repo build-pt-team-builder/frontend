@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
 
+import { roles as roleList } from '../../dummyData'
+
 import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
 import Button from '../../components/DesignComponents/Button'
 
@@ -123,12 +125,20 @@ class ProjectDetails extends Component {
             {!this.state.edit ? (
               <div className="stat-data">{roles}</div>
             ) : (
+              <>
                 <input
+                  list="role"
                   onChange={this.handleInput}
                   placeholder="Roles"
                   value={this.state.roles}
                   name="roles"
                 />
+                <datalist id="role">
+                    {roleList.map(role => (
+                      <option key={role.id} value={role.name} />
+                    ))}
+                </datalist>
+               </> 
               )}
             <div className="stat-category">Category:</div>
             {!this.state.edit ? (
