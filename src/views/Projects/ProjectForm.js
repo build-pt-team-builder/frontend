@@ -28,7 +28,8 @@ class Form extends Component {
 
     // gather form data
     let newRecord = {
-      ...this.state
+      ...this.state,
+      id: this.props.projects.length + 1 // FOR TESTING PURPOSES ONLY
     }
 
     // send new record to api
@@ -163,10 +164,15 @@ class Form extends Component {
       </FormContainer>
     )
   }
-
 }
 
-export default connect(null, { 
+const mapStateToProps = state => {
+  return {
+    projects: state.projects.projects
+  }
+}
+
+export default connect(mapStateToProps, { 
   addData: addProject, 
   updateData: updateProject,
   deleteData: deleteProject
