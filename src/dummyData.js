@@ -9,7 +9,8 @@ export const projects = [
     mvp: '',
     stretch: 'Allow me to submit a CSV with the proper fields.',
     roles: [],
-    category: ''
+    category: '',
+    projectComplete: false
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ export const projects = [
         (Web App) - Allow for a social media sharing aspect that allows you to advertise the app to professors on linkedin.
         To enable screen reader support, -To learn about keyboard shortcuts,`,
     roles: [],
-    category: ''
+    category: '',
+    projectComplete: false
   },
   {
     id: 3,
@@ -32,7 +34,8 @@ export const projects = [
       'User can create an account, join an existing school account, and search for existing bubls to join. They can explore interests through hashtag searches. They can connect with others and share experiences.',
     stretch: '',
     roles: [],
-    category: ''
+    category: '',
+    projectComplete: false
   }
 ]
 
