@@ -6,7 +6,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { fetchProjectData } from '../../actions/projects'
 import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
-
+import ProjectForm from '../../views/Projects/ProjectForm'
 
 class Routes extends Component {
   componentDidMount() {
@@ -20,6 +20,10 @@ class Routes extends Component {
         {/* Assign routes */}
         <Route path="/" exact component={ProjectList} />
         <Route path="/projects" exact component={ProjectList} />
+        <Route 
+          path="/projects/add" exact 
+          render={props => <ProjectForm {...props} add/>}
+        />
         {this.props.projects.map(project => (
           <Route
             key={project.id}
