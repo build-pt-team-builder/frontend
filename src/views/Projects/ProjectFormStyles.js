@@ -42,6 +42,10 @@ export const FormContainer = styled.div`
       margin: 5px 0;
     }
 
+    label {
+      font-weight: bold;
+    }
+
     input {
       width: 100%;
       padding: 2px 10px;
@@ -68,5 +72,14 @@ export const FormGroup = styled.div`
     height: 100px;
   }
 `
+
+export const CheckBoxGroup = styled.div`
+  align-self: flex-start;
+  width: 20%;
+  ${flex('row', 'baseline', 'space-between')}
+
+`
+
+
 
 export default FormContainer

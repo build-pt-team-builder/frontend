@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { updateProject } from '../../actions/projects'
 
 import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
+import { CheckBoxGroup } from './ProjectFormStyles'
 import RoleForm from '../../components/RoleComponents/RoleForm'
 import Button from '../../components/DesignComponents/Button'
 
@@ -161,14 +162,14 @@ class ProjectDetails extends Component {
             {/* Add Project Roles */}
             <RoleForm {...this.props} />
             {/* Mark project complete */}
-            <form className="project-complete-form">
-              <input 
+           <CheckBoxGroup>
+              <label htmlFor="">Complete:</label>
+              <input
                 type="checkbox"
                 defaultChecked={this.state.projectComplete}
                 onChange={this.toggleProjectComplete}
               />
-              <label htmlFor="">Project Complete</label>
-            </form>
+           </CheckBoxGroup>
           </div>
           {/* Update project details */}
           <ButtonMenu {...this.state} onClick={this.handleUpdate}>
