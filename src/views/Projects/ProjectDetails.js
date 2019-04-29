@@ -9,30 +9,33 @@ import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
 import Button from '../../components/DesignComponents/Button'
 
 class ProjectDetails extends Component {
-  state = {
-    edit: false,
-    id: this.props.project.id,
-    name: '',
-    pitch: '',
-    mvp: '',
-    stretch: '',
-    roles: [],
-    category: '',
-    projectCompleted: this.props.project.projectCompleted,
-    roleInput: '',
-    assignmentInput: ''
-  }
+    state = {
+      edit: false,
+      id: this.props.project.id,
+      name: '',
+      pitch: '',
+      mvp: '',
+      stretch: '',
+      roles: [],
+      category: '',
+      projectComplete: this.props.project.projectComplete,
+      roleInput: '',
+      assignmentInput: ''
+    }
 
   prePopulateForm = () => {
-    const { name, pitch, mvp, stretch, roles, category } = this.props.project
+    const { name, pitch, mvp, stretch, roles, category, projectComplete } = this.props.project
     this.setState({
       name,
       pitch,
       mvp,
       stretch, 
       roles,
-      category
-    })
+      category,
+      projectComplete
+    },
+      () => console.log(`prePopulateForm state: `, this.state)
+    )
   }
 
   toggleEdit() {
@@ -86,7 +89,24 @@ class ProjectDetails extends Component {
     )
   }
 
+  toggleProjectComplete = () => {
+
+    console.log(`toggleProjectComplete before change: `, this.state.projectComplete)
+    this.setState({ projectComplete: !this.state.projectComplete },
+      () => {
+        console.log(`toggleProjectComplete: `, this.state.projectComplete)
+        // Update project record
+        let updatedProject = {
+          ...this.props.project,
+          projectComplete: this.state.projectComplete
+        }
+        this.props.updateData(updatedProject)
+      }
+    )
+  }
+
   render() {
+    console.log(`render() this.state is: `, this.state)
     const { name, pitch, mvp, stretch, roles, category } = this.props.project
     return (
       <ProjectInfoContainer>
@@ -193,10 +213,24 @@ class ProjectDetails extends Component {
           <ButtonMenu {...this.state} onClick={this.handleUpdate}>
             <Button update>Update</Button>
           </ButtonMenu>
+          <form className="project-complete-form">
+            <input 
+              type="checkbox"
+              defaultChecked={this.state.projectComplete}
+              onChange={this.toggleProjectComplete}
+            />
+            <label htmlFor="">Project Complete</label>
+          </form>
         </div>
       </ProjectInfoContainer>
     )
   }
 }
 
-export default connect(null, { updateData: updateProject })(ProjectDetails)
+const mapStateToProps = state => {
+  return {
+    projects: state.projects.projects
+  }
+}
+
+export default connect(mapStateToProps, { updateData: updateProject })(ProjectDetails)
