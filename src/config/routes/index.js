@@ -25,13 +25,18 @@ class Routes extends Component {
           render={props => <ProjectForm {...props} add/>}
         />
         {this.props.projects.map(project => (
+          <div key={project.id}>
           <Route
-            key={project.id}
             path={`/projects/${project.id}`}
             render={props => (
               <ProjectDetails {...props} project={project} />
             )}
           />
+          <Route
+            path={`/projects/update/${project.id}`}
+            render={props => <ProjectForm {...props} project={project} update />}
+          />
+          </div>
         ))}
       </div>
     )
