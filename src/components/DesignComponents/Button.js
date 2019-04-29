@@ -22,21 +22,21 @@ const Button = styled.button`
   ${props =>
     props.add &&
     css`
-      color: ${color.lightText};
-      background: ${color.accent}; 
+      color: white;
+      background: ${color.secondaryColor}; 
   `}
 
   ${props =>
     props.update &&
     css`
-      color: ${color.lightText};
+      color: white;
       background: coral; 
   `}
 
   ${props =>
     props.delete &&
     css`
-      color: ${color.lightText};
+      color: white;
       background: ${color.danger}; 
   `}
 
