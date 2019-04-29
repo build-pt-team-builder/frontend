@@ -17,7 +17,10 @@ class ProjectDetails extends Component {
     mvp: '',
     stretch: '',
     roles: [],
-    category: ''
+    category: '',
+    projectCompleted: this.props.project.projectCompleted,
+    roleInput: '',
+    assignmentInput: ''
   }
 
   prePopulateForm = () => {
@@ -52,7 +55,6 @@ class ProjectDetails extends Component {
     // reset form fields
     this.setState({
       edit: false,
-      id: this.props.project.id,
       name: '',
       pitch: '',
       mvp: '',
@@ -60,7 +62,28 @@ class ProjectDetails extends Component {
       roles: '',
       category: ''
     })
+  }
 
+  addRole = e => {
+    e.preventDefault()
+    this.setState(prevState => {
+      let newRole = {
+        role: this.state.roleInput,
+        assignedTo: this.state.assignmentInput
+      }
+      return {
+        roles: [...prevState.roles, newRole]
+      }
+    },
+      () => {
+        this.setState({
+          roleInput: '',
+          assignmentInput: ''
+        })
+        // Update project record
+        this.handleUpdate(e)
+      }
+    )
   }
 
   render() {
@@ -123,22 +146,37 @@ class ProjectDetails extends Component {
               )}
             <div className="stat-category">Roles:</div>
             {!this.state.edit ? (
-              <div className="stat-data">{roles}</div>
+              <div className="stat-data">      
+                {roles.length > 0 && (roles.map(role => (
+                  <div key={role.id} className="projectRole">
+                    {role.role}
+                    {role.assignedTo}                
+                  </div>))
+                )}
+              </div>
             ) : (
-              <>
+              <form onSubmit={this.addRole}>
                 <input
-                  list="role"
+                  list="roleInput"
                   onChange={this.handleInput}
-                  placeholder="Roles"
-                  value={this.state.roles}
-                  name="roles"
-                />
-                <datalist id="role">
-                    {roleList.map(role => (
-                      <option key={role.id} value={role.name} />
-                    ))}
+                  placeholder=" Select Role"
+                  value={this.state.roleInput}
+                  name="roleInput"
+                 />
+                <datalist id="roleInput">
+                  {roleList.map(role => (
+                    <option key={role.id} value={role.name} />
+                  ))}
                 </datalist>
-               </> 
+                <input 
+                  type="text"
+                  onChange={this.handleInput}
+                  placeholder=" Assign Role"
+                  value={this.state.assignmentInput}
+                  name="assignmentInput"
+                />
+                <button type="submit">+</button>
+               </form> 
               )}
             <div className="stat-category">Category:</div>
             {!this.state.edit ? (
