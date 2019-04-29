@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { FormContainer, FormGroup } from './ProjectFormStyles'
+import { FormContainer, FormGroup, CheckBoxGroup } from './ProjectFormStyles'
 import RoleForm from '../../components/RoleComponents/RoleForm'
+import { RoleFormContainer } from '../../components/RoleComponents/RoleStyleComponents'
 import Button from '../../components/DesignComponents/Button'
 
 import { addProject, updateProject, deleteProject } from '../../actions/projects'
@@ -16,6 +17,22 @@ class Form extends Component {
     roles: [],
     category: '',
     projectComplete: ''
+  }
+
+  prePopulateForm = () => {
+    const { id, name, pitch, mvp, stretch, roles, category, projectComplete } = this.props.project
+    this.setState({
+      id,
+      name,
+      pitch,
+      mvp,
+      stretch,
+      roles,
+      category,
+      projectComplete
+    },
+      () => console.log(`prePopulateForm state: `, this.state)
+    )
   }
 
   handleInput = e => {
@@ -82,6 +99,22 @@ class Form extends Component {
     this.setState({ id: '' })
   }
 
+  toggleProjectComplete = () => {
+
+    console.log(`toggleProjectComplete before change: `, this.state.projectComplete)
+    this.setState({ projectComplete: !this.state.projectComplete },
+      () => {
+        console.log(`toggleProjectComplete: `, this.state.projectComplete)
+        // Update project record
+        let updatedProject = {
+          ...this.props.project,
+          projectComplete: this.state.projectComplete
+        }
+        this.props.updateData(updatedProject)
+      }
+    )
+  }
+
   submitHandler = e => {
     e.preventDefault()
     if (this.props.update) {
@@ -104,7 +137,15 @@ class Form extends Component {
       <FormContainer {...this.props}>
         <div className="windowFrame"></div>
         <form onSubmit={this.submitHandler}>
-          <h2>Project Form</h2>
+          <h2>
+            {`
+              Project 
+              ${this.props.add ? 'Entry' : ''} 
+              ${this.props.update ? 'Update' : ''}  
+              ${this.props.delete ? 'Delete' : ''}   
+              Form
+            `}
+          </h2>
           {(this.props.update || this.props.delete) &&
             <FormGroup>
               <label htmlFor="id">ID</label>
@@ -151,6 +192,23 @@ class Form extends Component {
                   value={this.state.category}
                 />
               </FormGroup>
+
+            </>
+          )}
+          {this.props.update && (
+            <>
+            <CheckBoxGroup>
+              <label htmlFor="">Complete:</label>
+              <input
+                type="checkbox"
+                defaultChecked={this.state.projectComplete}
+                onChange={this.toggleProjectComplete}
+              />
+            </CheckBoxGroup>
+            <RoleFormContainer>
+              <label htmlFor="">Roles:</label>
+              <RoleForm add />
+            </RoleFormContainer>
             </>
           )}
           <Button type="submit" {...this.props}>
@@ -161,6 +219,8 @@ class Form extends Component {
             `}
           </Button>
         </form>
+
+
       </FormContainer>
     )
   }
