@@ -3,9 +3,8 @@ import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
 
-import { roles as roleList } from '../../dummyData'
-
 import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
+import RoleForm from '../../components/RoleComponents/RoleForm'
 import Button from '../../components/DesignComponents/Button'
 
 class ProjectDetails extends Component {
@@ -65,28 +64,6 @@ class ProjectDetails extends Component {
       roles: '',
       category: ''
     })
-  }
-
-  addRole = e => {
-    e.preventDefault()
-    this.setState(prevState => {
-      let newRole = {
-        role: this.state.roleInput,
-        assignedTo: this.state.assignmentInput
-      }
-      return {
-        roles: [...prevState.roles, newRole]
-      }
-    },
-      () => {
-        this.setState({
-          roleInput: '',
-          assignmentInput: ''
-        })
-        // Update project record
-        this.handleUpdate(e)
-      }
-    )
   }
 
   toggleProjectComplete = () => {
@@ -164,40 +141,6 @@ class ProjectDetails extends Component {
                   value={this.state.stretch}
                 />
               )}
-            <div className="stat-category">Roles:</div>
-            {!this.state.edit ? (
-              <div className="stat-data">      
-                {roles.length > 0 && (roles.map(role => (
-                  <div key={role.id} className="projectRole">
-                    {role.role}
-                    {role.assignedTo}                
-                  </div>))
-                )}
-              </div>
-            ) : (
-              <form onSubmit={this.addRole}>
-                <input
-                  list="roleInput"
-                  onChange={this.handleInput}
-                  placeholder=" Select Role"
-                  value={this.state.roleInput}
-                  name="roleInput"
-                 />
-                <datalist id="roleInput">
-                  {roleList.map(role => (
-                    <option key={role.id} value={role.name} />
-                  ))}
-                </datalist>
-                <input 
-                  type="text"
-                  onChange={this.handleInput}
-                  placeholder=" Assign Role"
-                  value={this.state.assignmentInput}
-                  name="assignmentInput"
-                />
-                <button type="submit">+</button>
-               </form> 
-              )}
             <div className="stat-category">Category:</div>
             {!this.state.edit ? (
               <div className="stat-data">{category}</div>
@@ -209,28 +152,36 @@ class ProjectDetails extends Component {
                   name="category"
                 />
               )}
+            <div className="stat-category">Roles:</div>
+            <div className="stat-data">
+              {roles.length > 0 && (roles.map(role => (
+                <div key={role.id} className="projectRole">
+                  {role.role}
+                  {role.assignedTo}
+                </div>))
+              )}
+            </div>
+            {/* Add Project Roles */}
+            <RoleForm {...this.props} />
+            {/* Mark project complete */}
+            <form className="project-complete-form">
+              <input 
+                type="checkbox"
+                defaultChecked={this.state.projectComplete}
+                onChange={this.toggleProjectComplete}
+              />
+              <label htmlFor="">Project Complete</label>
+            </form>
           </div>
+          {/* Update project details */}
           <ButtonMenu {...this.state} onClick={this.handleUpdate}>
             <Button update>Update</Button>
           </ButtonMenu>
-          <form className="project-complete-form">
-            <input 
-              type="checkbox"
-              defaultChecked={this.state.projectComplete}
-              onChange={this.toggleProjectComplete}
-            />
-            <label htmlFor="">Project Complete</label>
-          </form>
+
         </div>
       </ProjectInfoContainer>
     )
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    projects: state.projects.projects
-  }
-}
-
-export default connect(mapStateToProps, { updateData: updateProject })(ProjectDetails)
+export default connect(null, { updateData: updateProject })(ProjectDetails)
