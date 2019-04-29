@@ -18,8 +18,6 @@ class ProjectDetails extends Component {
       roles: [],
       category: '',
       projectComplete: this.props.project.projectComplete,
-      roleInput: '',
-      assignmentInput: ''
     }
 
   prePopulateForm = () => {
@@ -61,7 +59,6 @@ class ProjectDetails extends Component {
       pitch: '',
       mvp: '',
       stretch: '',
-      roles: '',
       category: ''
     })
   }
