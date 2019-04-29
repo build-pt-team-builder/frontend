@@ -3,9 +3,12 @@ import { connect } from 'react-redux'
 import { updateProject } from '../../actions/projects'
 import { roles as roleList } from '../../dummyData'
 
+import { FormContainer, FormGroup } from './RoleStyleComponents'
+
 class RoleForm extends Component {
   state = {
-    roles: this.props.project.roles,
+    roles: this.props.project ? 
+      this.props.project.roles: [],
     roleInput: '',
     assignmentInput: ''
   }
@@ -42,28 +45,31 @@ class RoleForm extends Component {
 
   render () {
     return (
-      <form onSubmit={this.addRole}>
-        <input
-          list="roleInput"
-          onChange={this.handleInput}
-          placeholder=" Select Role"
-          value={this.state.roleInput}
-          name="roleInput"
+      <FormContainer onSubmit={this.addRole}>
+        <FormGroup>
+          <input
+            list="roleInput"
+            onChange={this.handleInput}
+            placeholder=" Select Role"
+            value={this.state.roleInput}
+            name="roleInput"
           />
-        <datalist id="roleInput">
-          {roleList.map(role => (
-            <option key={role.id} value={role.name} />
-          ))}
-        </datalist>
-        <input 
-          type="text"
-          onChange={this.handleInput}
-          placeholder=" Assign Role"
-          value={this.state.assignmentInput}
-          name="assignmentInput"
-        />
-        <button type="submit">+</button>
-      </form> 
+          <datalist id="roleInput">
+            {roleList.map(role => (
+              <option key={role.id} value={role.name} />
+            ))}
+          </datalist>
+          <input
+            type="text"
+            onChange={this.handleInput}
+            placeholder="Assign Role"
+            value={this.state.assignmentInput}
+            name="assignmentInput"
+          />
+          <button type="submit">+</button>
+        </FormGroup>
+        
+      </FormContainer> 
     )
   }
 }
