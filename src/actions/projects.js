@@ -83,7 +83,7 @@ export const DELETE_DATA_START = 'DELETE_DATA_START'
 export const DELETE_DATA_SUCCESS = 'DELETE_DATA_SUCCESS'
 export const DELETE_DATA_FAILURE = 'DELETE_DATA_FAILURE'
 
-export const deleteproject = id => dispatch => {
+export const deleteProject = id => dispatch => {
   dispatch({ type: DELETE_DATA_START })
   axios
     .delete(`${API_ENDPOINT}/${id}`)
