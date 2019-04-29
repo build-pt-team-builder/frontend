@@ -6,12 +6,12 @@ import { Route, withRouter } from 'react-router-dom'
 import { fetchProjectData } from '../../actions/projects'
 import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
-
+import ProjectForm from '../../views/Projects/ProjectForm'
 
 class Routes extends Component {
-  // componentDidMount() {
-  //   this.props.fetchData()
-  // }
+  componentDidMount() {
+    this.props.fetchData()
+  }
 
   render() {
     console.log(`Routes render this.props is: `)
@@ -20,14 +20,23 @@ class Routes extends Component {
         {/* Assign routes */}
         <Route path="/" exact component={ProjectList} />
         <Route path="/projects" exact component={ProjectList} />
+        <Route 
+          path="/projects/add" exact 
+          render={props => <ProjectForm {...props} add/>}
+        />
         {this.props.projects.map(project => (
+          <div key={project.id}>
           <Route
-            key={project.id}
             path={`/projects/${project.id}`}
             render={props => (
               <ProjectDetails {...props} project={project} />
             )}
           />
+          <Route
+            path={`/projects/update/${project.id}`}
+            render={props => <ProjectForm {...props} project={project} update />}
+          />
+          </div>
         ))}
       </div>
     )
