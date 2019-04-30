@@ -11,16 +11,40 @@ class ProjectTable extends Component {
       {
         Header: "Project Name",
         accessor: "name",
-        width: 200
+        width: 150
       },
       {
         Header: "Pitch",
         accessor: "pitch",
-        width: 300
+        width: 350
       },
       {
-        Header: "Category",
-        accessor: "category"
+        Header: "Slots",
+        id: "roles",
+        width: 300,
+        accessor: d => {
+          return (
+            <ReactTable
+              NoDataComponent={() => null}
+              TheadComponent={() => null}
+              defaultPageSize={d.roles.length}
+              showPagination={false}
+              data={d.roles}
+              columns={[
+                {
+                  Header: "Role",
+                  id: "role",
+                  accessor: d => d.role
+                },
+                {
+                  Header: "Assigned",
+                  id: "assignedTo",
+                  accessor: d => d.assignedTo
+                }
+              ]}
+            />
+          )
+        }
       }
     ]
     return (
@@ -28,7 +52,7 @@ class ProjectTable extends Component {
         <ReactTable 
           columns={columns}
           data={projects}
-          defaultPageSize={10}
+          defaultPageSize={5}
           className="-striped -highlight"
           getTrProps={(state, rowInfo, column, instance) => {
             return {
@@ -47,12 +71,11 @@ class ProjectTable extends Component {
               }
             }
           }}
+
         />
       </TableContainer>
     )
-
   }
-
 }
 
 const mapStateToProps = state => {
