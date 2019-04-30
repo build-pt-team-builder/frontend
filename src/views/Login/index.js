@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 //ACTIONS
 import {login, forgotPassword, addUser} from '../../actions'
 //COMPONENTS
-import Header from '../../components/SharedComponents/Header'
+import Header from '../../components/SharedComponents/Header/Public'
 import Login from './login'
 import ForgotPassword from './forgotPassword'
 import CreateAccount from './createAccount'

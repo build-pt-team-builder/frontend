@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Style from './style'
 
-import Header from './header'
+import Header from '../../components/SharedComponents/Header/Private/index'
 import ProjectList from './projectList'
 import ListOptions from './listOptions'
 
@@ -16,7 +16,7 @@ const projects = [
     {   id: 0,
         name: `Comet`,
         active: false,
-        status: 'open',
+        status: 'Open',
         positions: [
             {role: 'Lead', member: 'Joe MacMillan'},
             {role: 'WebUI', member: 'Donna Emerson'},
@@ -35,7 +35,7 @@ const projects = [
     {   id: 1,
         name: `The Giant`,
         active: true,
-        status: 'open',
+        status: 'Open',
         positions: [
             {role: 'Lead', member: null},
             {role: 'WebUI', member: 'Arki'},
@@ -54,7 +54,7 @@ const projects = [
     {   id: 2,
         name: `Rover`,
         active: false,
-        status: 'open',
+        status: 'Open',
         positions: [
             {role: 'Lead', member: 'Diane Gould'},
             {role: 'WebUI', member: 'Katie Herman'},

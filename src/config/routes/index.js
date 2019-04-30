@@ -12,6 +12,7 @@ import Home from '../../views/Home'
 import Settings from '../../views/User/Settings'
 
 import Projects from '../../views/Projects'
+import UserList from '../../views/User/UserList'
 
 
 class Routes extends Component {
@@ -25,6 +26,7 @@ class Routes extends Component {
       {/* PRIVATE ROUTE */}
       <Route path='/projects' component={() => <Home Content={Projects}/>} />
       <Route path='/settings' component={() => <Home Content={Settings}/>} />
+      <Route path='/users' component={() => <Home Content={UserList}/>} />
     </>
 }
 

@@ -13,6 +13,7 @@ class Settings extends Component {
             consistant_log: true,
             projects_per_page: 24,
             users_per_page: 48,
+            display_project_stats: true,
             default_status_sort: 'open',//all,archived
             default_position_sort: 'any',//...
         }
@@ -45,6 +46,12 @@ class Settings extends Component {
             <pre className='setting-name'>Projects Per Page</pre>
             <div className='setting-options'>
                 <input type='number' name='projects_per_page' placeholder={this.state.projects_per_page}/>
+            </div>
+
+            <pre className='setting-name'>Show Project Stats</pre>
+            <div className='setting-options'>
+                <button name='yes' className='active'>Yes</button>
+                <button name='no'>No</button>
             </div>
 
             <pre className='setting-name'>Default Status Sort</pre>

@@ -28,7 +28,7 @@ const ListOptions = ({options, toggle_status, toggle_position}) =>
                 </button>
             )}
         </div>
-        <div className='options'>
+        <div className='options action'>
             <button className='highlight'>Create</button>
         </div>
     </div>

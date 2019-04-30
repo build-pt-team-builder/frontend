@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Header from '../SharedComponents/Header'
+import Header from '../SharedComponents/Header/Public'
 import Content from './style'
 
 const LandingPage = () =>

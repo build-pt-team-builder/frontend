@@ -15,7 +15,7 @@ const links = [
     {displayText: 'News', to: '/home', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Inbox', to: '/home', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Groups', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Projects', to: '/home', imgSrc: '/', altText: '', selected: true},
+    {displayText: 'Projects', to: '/projects', imgSrc: '/', altText: '', selected: true},
     {displayText: 'Settings', to: '/settings', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Log Out', to: '/', imgSrc: '/', altText: '', selected: false},
 ]

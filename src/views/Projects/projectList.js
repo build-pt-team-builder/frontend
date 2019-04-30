@@ -16,6 +16,9 @@ const ProjectList = ({projects, toggle_active}) =>
                                 <pre className='member'>{position.member}</pre>
                             </div>
                         )}
+                        <div className='position action'>
+                            <pre className='add'>Add Role</pre>
+                        </div>
                     </div>
                 </div>
                 <div className={project.active ? 'description active' : 'description'}>
@@ -25,6 +28,13 @@ const ProjectList = ({projects, toggle_active}) =>
                         <p className='value'>{desc.value}</p>
                         </React.Fragment>
                     )}
+                    <pre className='title'>Status:</pre>
+                    <p className='value'>{project.status}</p>
+                    <div className='options'>
+                        <button>Complete</button>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
                 </div>
             </div>
         )}
