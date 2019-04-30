@@ -8,6 +8,8 @@ import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
 
+import ProjectTable from '../../views/Projects/ProjectTable'
+
 class Routes extends Component {
   componentDidMount() {
     this.props.fetchData()
@@ -20,6 +22,7 @@ class Routes extends Component {
         {/* Assign routes */}
         <Route path="/" exact component={ProjectList} />
         <Route path="/projects" exact component={ProjectList} />
+        <Route path="/projects/table" exact component={ProjectTable} />
         <Route 
           path="/projects/add" exact 
           render={props => <ProjectForm {...props} add/>}
