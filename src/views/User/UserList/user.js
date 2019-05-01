@@ -1,20 +1,34 @@
 import React from 'react'
 
 const User = ({user}) =>
-    <tr className='user'>
-        <td><img src={user.avatar}/></td>
-        <td>
+    <div className='user'>
+        <div className='info'>
+            <img src={`./img/${user.avatar}`} alt='nope'/>
+        </div>
+        <div className='info'>
             <pre className='name'>{user.firstName} {user.lastName}</pre>
-            <pre className='role'>{user.role}</pre>
-        </td>
-        <td><pre className='value'>{user.cohort}</pre></td>
-        <td><pre className='value'>{user.role}</pre></td>
-        <td><pre className='value'>{user.projectManager}</pre></td>
-        <td><pre className='value'>{user.project}</pre></td>
-        <td>
+            <pre className='role'>{user.cohort}</pre>
+        </div>
+        <div className='info'>
+            <pre className='title'>Cohort</pre>
+            <pre className='value'>{user.cohort}</pre>
+        </div>
+        <div className='info'>
+            <pre className='title'>Preferred Role</pre>
+            <pre className='value'>{user.role}</pre>
+        </div>
+        <div className='info'>
+            <pre className='title'>Project Manager</pre>
+            <pre className='value'>{user.projectManager}</pre>
+        </div>
+        <div className='info'>
+            <pre className='title'>Project</pre>
+            <pre className='value'>{user.project || 'None'}</pre>
+        </div>
+        <div className='actions'>
             <button>Edit</button>
             <button>Remove</button>
-        </td>
-    </tr>
+        </div>
+    </div>
 
 export default User

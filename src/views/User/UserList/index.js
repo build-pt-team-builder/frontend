@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 import Header from '../../../components/SharedComponents/Header/Private'
+import ListOptions from '../../../components/SharedComponents/ListOptions'
 import User from './user'
-import Options from './options'
+// import Options from './options'
 
 const headerStats = [
     {displayText: 'Total Users', value: 42},
@@ -16,7 +17,7 @@ const users = [
         firstName: 'Gordon',
         lastName: 'Clark',
         email: 'Glark@gmail.com',
-        avatar: '',
+        avatar: 'avatar.png',
         cohort: 'webpt4',
         projectManager: 'Carlos',
         role: 'Backend',
@@ -26,12 +27,22 @@ const users = [
         firstName: 'Donna',
         lastName: 'Emmerson',
         email: 'oopsididitagain@yahoo.com',
-        avatar: '',
+        avatar: 'avatar.png',
         cohort: 'webpt4',
         projectManager: 'Carlos',
         role: 'Backend',
         project: null,
     },
+    {
+        firstName: 'Elliot',
+        lastName: 'Alderson',
+        email: 'mrrobot@geocities.com',
+        avatar: 'elliot.jpg',
+        cohort: 'webpt3',
+        projectManager: 'Lola',
+        role: 'Data Science',
+        project: null,
+    }
 ]
 
 class UserList extends Component {
@@ -45,12 +56,12 @@ class UserList extends Component {
     render = () => 
         <Wrapper className='users'>
             <Header stats={this.state.headerStats} />
-            <table className='userList'>
-                <Options />
+            <div className='user-list'>
+                <ListOptions />
                 {this.state.users.map((user,idx) =>
                     <User user={user} key={idx} />
                 )}
-            </table>
+            </div>
         </Wrapper>
 }
 
