@@ -20,12 +20,30 @@ class RoleForm extends Component {
   addRole = e => {
     e.preventDefault()
     this.setState(prevState => {
-      let newRole = {
-        role: this.state.roleInput,
-        assignedTo: this.state.assignmentInput
-      }
-      return {
-        roles: [...prevState.roles, newRole]
+      if (this.state.roles.findIndex(role => role.role.name === this.state.roleInput) >= 0) {
+        console.log(`It matches!!`)
+        let index = prevState.roles.findIndex(role => role.role.name === this.state.roleInput)
+        console.log(`findIndex: `, index)
+        let updatedRoles = [...this.state.roles]
+        updatedRoles[index].role.assignedTo.push(this.state.assignmentInput)
+        console.log(`updatedRoles: `, updatedRoles[index])
+        return {
+          roles: [...updatedRoles]
+        }
+      } else {
+        console.log(`No matches found`)
+        let newRole = {
+          role: {
+            name: this.state.roleInput,
+            assignedTo: [this.state.assignmentInput]
+          }
+        }
+        
+        console.log(`newRole: `, newRole)
+
+        return {
+          roles: [...prevState.roles, newRole]
+        }
       }
     },
       () => {
