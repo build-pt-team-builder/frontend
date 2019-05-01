@@ -15,7 +15,7 @@ class Profile extends Component {
         super()
         this.state = {
             user: user,
-            edit: true,
+            edit: false,
         }
     }
     componentDidMount = () => {

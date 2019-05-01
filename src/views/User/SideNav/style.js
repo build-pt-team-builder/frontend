@@ -25,23 +25,21 @@ export default Styled.div`
         a {
             ${flex('row','center','flex-start')};
             height: 4rem;
+            border: 2px solid transparent;
+            border-width: 0 2px;
             padding: 0 1rem;
             width: 100%;
+            transform: translateX(-2px);
+            width: calc(100% + 4px);
             img {
                 //haven't made any icons yet
             }
-            pre {
-                text-align: left;
-            }
+            pre {text-align: left}
             &.selected {
-                border: 2px solid ${color.accent0};
-                border-width: 0 2px;
-                transform: translateX(-2px);
-                width: calc(100% + 4px);
-            }
-            &:hover {
                 background-color: ${color.accent0};
+                border-color: ${color.accent0};
             }
+            &:hover {border-color: ${color.accent0}}
         }
     }
 `

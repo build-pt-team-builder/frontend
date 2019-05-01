@@ -6,19 +6,19 @@ const ProjectList = ({projects, toggle_active}) =>
             <div className='project' onClick={toggle_active} id={project.id} key={project.id}>
                 <div className='summary'>
                     <div className='identity'>
-                        {/* <pre className='id'>id:{project.id}</pre> */}
                         <pre className='name'>{project.name}</pre>
                     </div>
                     <div className='positions'>
+                        <div className='position action'>
+                            <pre className='add'>Add Role</pre>
+                        </div>
                         {project.positions.map((position,idx) =>
                             <div className='position' key={idx}>
                                 <pre className='role'>{position.role}</pre>
                                 <pre className='member'>{position.member}</pre>
                             </div>
                         )}
-                        <div className='position action'>
-                            <pre className='add'>Add Role</pre>
-                        </div>
+                        
                     </div>
                 </div>
                 <div className={project.active ? 'description active' : 'description'}>

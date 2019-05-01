@@ -108,15 +108,11 @@ export default Styled.div`
                     min-width: 50px;
                     &:first-of-type {
                         border-radius: 5px 0 0 5px;
-                        &:hover {
-                            border-left-color: ${color.accent0};
-                        }
+                        &:hover {border-left-color: ${color.accent0}}
                     }
                     &:last-of-type {
                         border-radius: 0 5px 5px 0;
-                        &:hover {
-                            border-right-color: ${color.accent0};
-                        }
+                        &:hover {border-right-color: ${color.accent0}}
                     }
                     &:hover {border-color: ${color.accent0} transparent}
                 }
@@ -158,6 +154,7 @@ export default Styled.div`
                     &:hover {border-color: ${color.accent1} transparent}
                     &.action {
                         cursor: pointer;
+                        &:first-of-type:hover {border-left-color: ${color.accent0}}
                         &:last-of-type:hover {border-right-color: ${color.accent0}}
                         &:hover {border-color: ${color.accent0} transparent}
                     }

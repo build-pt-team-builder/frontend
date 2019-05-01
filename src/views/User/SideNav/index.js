@@ -5,12 +5,12 @@ import Content from './style'
 import Profile from '../Profile'
 
 const links = [
-    {displayText: 'Announcements', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Users', to: '/users', imgSrc: '/', altText: '', selected: false},
-    // {displayText: 'Groups', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Projects', to: '/projects', imgSrc: '/', altText: '', selected: true},
-    {displayText: 'Settings', to: '/settings', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Log Out', to: '/', imgSrc: '/', altText: '', selected: false},
+    {displayText: 'Announcements', to: '/home', imgSrc: '/', altText: ''},
+    {displayText: 'Users', to: '/users', imgSrc: '/', altText: ''},
+    // {displayText: 'Groups', to: '/home', imgSrc: '/', altText: ''},
+    {displayText: 'Projects', to: '/projects', imgSrc: '/', altText: ''},
+    {displayText: 'Settings', to: '/settings', imgSrc: '/', altText: ''},
+    {displayText: 'Log Out', to: '/', imgSrc: '/', altText: ''},
 ]
 
 const SideNav = props =>
@@ -21,12 +21,16 @@ const SideNav = props =>
         <Profile />
         <nav className='links'>
             {links.map(link =>
-                <Link to={link.to} key={link.displayText} className={link.selected ? 'selected' : null} >
+                <Link
+                    to={link.to}
+                    key={link.displayText}
+                    className={window.location.pathname === link.to ? 'selected' : null} >
                     <img src={link.imgSrc} alt={link.altText}/>
                     <pre>{link.displayText}</pre>
                 </Link>
             )}
         </nav>
     </Content>
+    
 
 export default SideNav
