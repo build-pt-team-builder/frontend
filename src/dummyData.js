@@ -6,9 +6,28 @@ export const projects = [
     name: 'Team Builder App',
     pitch:
       'Managing hundreds of student projects week in and week out for Build weeks gets a bit daunting! I need an app that helps me with product ideation and project curation.',
-    mvp: '',
+    mvp: 'The product solves the problem',
     stretch: 'Allow me to submit a CSV with the proper fields.',
-    roles: [],
+    roles: [
+      {
+        role: {
+          name: 'Web UI Developer',
+          assignedTo: ['Harry']
+        }
+      },
+      {
+        role: {
+          name: 'Front-end Architect',
+          assignedTo: ['Ron']
+        }
+      },
+      {
+        role: {
+          name: 'Back-end Architect',
+          assignedTo: ['Hermione']
+        }
+      }
+    ],
     category: '',
     projectComplete: false
   },
@@ -21,7 +40,20 @@ export const projects = [
     stretch: `(Mobile App) - Allow reminders to be pushed through the app. 
         (Web App) - Allow for a social media sharing aspect that allows you to advertise the app to professors on linkedin.
         To enable screen reader support, -To learn about keyboard shortcuts,`,
-    roles: [],
+    roles: [
+      {
+        role: {
+          name: 'UX Designer',
+          assignedTo: ['George']
+        }
+      },
+      {
+        role: {
+          name: 'iOS Developer',
+          assignedTo: ['Steve', 'Tony']
+        }
+      }
+    ],
     category: '',
     projectComplete: false
   },
