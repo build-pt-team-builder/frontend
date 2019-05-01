@@ -19,7 +19,7 @@ class ProjectTable extends Component {
         width: 350
       },
       {
-        Header: "Slots",
+        Header: "Roles",
         id: "roles",
         width: 300,
         accessor: d => {
@@ -34,12 +34,12 @@ class ProjectTable extends Component {
                 {
                   Header: "Role",
                   id: "role",
-                  accessor: d => d.role
+                  accessor: d => d.role.name
                 },
                 {
                   Header: "Assigned",
                   id: "assignedTo",
-                  accessor: d => d.assignedTo
+                  accessor: d => d.role.assignedTo
                 }
               ]}
             />
