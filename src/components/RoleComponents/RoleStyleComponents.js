@@ -4,7 +4,7 @@ import { colorScheme, fontSizing, flex } from '../DesignComponents/theme'
 
 export const RoleFormContainer = styled.div`
   width: 100%;
-  ${flex('row', 'center', 'space-between')}
+   ${flex('column')}
   
   form {
     width: 80%;

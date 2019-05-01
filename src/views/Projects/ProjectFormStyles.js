@@ -75,9 +75,10 @@ export const FormGroup = styled.div`
 
 export const CheckBoxGroup = styled.div`
   align-self: flex-start;
-  width: 20%;
-  ${flex('row', 'baseline', 'space-between')}
-
+  width: 105px;
+  ${flex('row', 'center', 'space-between')}
+  margin: 10px 0;
+  font-size: ${fontSizing.s};
 `
 
 
