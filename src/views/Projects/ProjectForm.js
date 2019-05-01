@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { FormContainer, FormGroup, CheckBoxGroup } from './ProjectFormStyles'
 import RoleForm from '../../components/RoleComponents/RoleForm'
+import RoleList from '../../components/RoleComponents/RoleList'
 import { RoleFormContainer } from '../../components/RoleComponents/RoleStyleComponents'
 import Button from '../../components/DesignComponents/Button'
 
@@ -118,7 +119,7 @@ class Form extends Component {
   submitHandler = e => {
     e.preventDefault()
     if (this.props.update) {
-      this.updateRecord(e)
+      this.updateData(e)
     } else if (this.props.delete) {
       this.deleteData(e)
     } else {
@@ -207,7 +208,10 @@ class Form extends Component {
             </CheckBoxGroup>
             <RoleFormContainer>
               <label htmlFor="">Roles:</label>
-              <RoleForm add />
+              {this.props.update &&
+                (<RoleList {...this.props}/>)
+              }
+              <RoleForm add {...this.props}/>
             </RoleFormContainer>
             </>
           )}
