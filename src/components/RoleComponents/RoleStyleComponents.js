@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
+import { flex } from '../DesignComponents/theme'
 
 
 export const RoleFormContainer = styled.div`
