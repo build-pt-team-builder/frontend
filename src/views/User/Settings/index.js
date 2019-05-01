@@ -24,9 +24,10 @@ class Settings extends Component {
 
             <pre className='setting-name'>Starting Page</pre>
             <div className='setting-options'>
-                <button name='projects' className='active'>Projects</button>
-                <button name='groups'>Groups</button>
                 <button name='announcements'>Announcements</button>
+                <button name='users'>Users</button>
+                <button name='groups'>Groups</button>
+                <button name='projects' className='active'>Projects</button>
             </div>
 
             <pre className='setting-name'>Theme</pre>

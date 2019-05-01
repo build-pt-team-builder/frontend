@@ -2,19 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import Content from './style'
-import Elliot from '../../../assets/imgs/elliot.jpg'
+import Profile from '../Profile'
 
-const user = {
-    username: 'mrrobot',
-    firstName: 'Elliot',
-    lastName: 'Alderson',
-    avatarSrc: 'elliot.jpg',
-    role: 'Front-End Developer',
-}
 const links = [
-    {displayText: 'News', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Inbox', to: '/home', imgSrc: '/', altText: '', selected: false},
-    {displayText: 'Groups', to: '/home', imgSrc: '/', altText: '', selected: false},
+    {displayText: 'Announcements', to: '/home', imgSrc: '/', altText: '', selected: false},
+    {displayText: 'Users', to: '/users', imgSrc: '/', altText: '', selected: false},
+    // {displayText: 'Groups', to: '/home', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Projects', to: '/projects', imgSrc: '/', altText: '', selected: true},
     {displayText: 'Settings', to: '/settings', imgSrc: '/', altText: '', selected: false},
     {displayText: 'Log Out', to: '/', imgSrc: '/', altText: '', selected: false},
@@ -25,14 +18,7 @@ const SideNav = props =>
         <div className='logo'>
             <h3>Thursday</h3>
         </div>
-        <div className='user'>
-            <div className='avatar'>
-                <img src={Elliot} alt={user.username}/>
-            </div>
-            <pre className='name'>{user.firstName} {user.lastName}</pre>
-            <pre className='role'>{user.role}</pre>
-            {/* <pre className='username'>{'@' + user.username}</pre> */}
-        </div>
+        <Profile />
         <nav className='links'>
             {links.map(link =>
                 <Link to={link.to} key={link.displayText} className={link.selected ? 'selected' : null} >

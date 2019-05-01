@@ -19,27 +19,6 @@ export default Styled.div`
             }
         }
     }
-    .user {
-        border-bottom: 1px solid ${color.bg03};
-        color: ${color.txt03};
-        ${flex('column','center','center')};
-        font-size: ${size.s04};
-        height: fit-content;
-        padding: ${size.s02} 0;
-        text-align: center;
-        & > * {
-            margin: 0.25rem;
-        }
-        .avatar {
-            ${flex('row','center','center')};
-            img {
-                border: 4px solid ${color.accent0};
-                border-radius: 50%;
-                height: 100px;
-                width: 100px;
-            }
-        }
-    }
     .links {
         ${flex('column','flex-start','center')};
         width: 100%;
