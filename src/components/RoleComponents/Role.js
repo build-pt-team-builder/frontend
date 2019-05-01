@@ -2,21 +2,28 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
+import { roles as roleList } from '../../dummyData'
 import { RoleContainer } from './RoleStyleComponents'
+import RoleForm from './RoleForm'
 import DeleteContainer from '../../components/DesignComponents/DeleteContainer'
 
 class Role extends Component {
   state = {
     roles: this.props.project ? 
       this.props.project.roles: [],
-    roleInput: '',
-    assignmentInput: '',
     hidden: true,
     edit: false
   }
 
-  handleInput = e => {
-    this.setState({ [e.target.name]: e.target.value })
+  prePopulateForm = () => {
+    const { role } = this.props.role
+    console.log(`prePopulateForm this.props: `, this.props)
+    this.setState({
+      roleInput: role.role.name,
+      assignmentInput: role.role.assignedTo
+    },
+      () => console.log(`prePopulateForm state: `, this.state)
+    )
   }
 
   toggleEdit() {
@@ -32,6 +39,10 @@ class Role extends Component {
     this.setState(prevState => ({
       hidden: !prevState.hidden
     }))
+  }
+
+  handleInput = e => {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   handleUpdate = e => {
@@ -95,8 +106,14 @@ class Role extends Component {
     console.log(`Role render props: `, this.props)
     return (
       <RoleContainer>
-        <div>{role.role.name}:</div>
-        <div>{role.role.assignedTo}</div>
+        {!this.state.edit ?
+          <>
+            <div onClick={() => this.toggleEdit()}>{role.role.name}:</div>
+            <div onClick={() => this.toggleEdit()}>{role.role.assignedTo}</div>
+          </> :
+          <RoleForm {...this.props} update/>
+        }
+        
         <DeleteContainer>
           {!this.state.edit ?
             <i onClick={this.toggleDeleteBtn} className="fas fa-ellipsis-v"></i> :
