@@ -2,6 +2,10 @@ import styled from 'styled-components'
 import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
 
 export const SignUpBoardContainer = styled.div`
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid ${colorScheme.defaultBorderColor};
+  border-radius: 5px;
 
   h2 {
       margin-top: 20px;
@@ -29,7 +33,7 @@ export const SignUpFormContainer = styled.div`
 export const FormContainer = styled.form`
   width: 90%;
   max-width: 600px;
-  font-size: ${fontSizing.s};
+  font-size: ${fontSizing.xs};
 `
 
 export const FormGroup = styled.div`
@@ -39,7 +43,7 @@ export const FormGroup = styled.div`
   input {
     width: 42%;
     padding: 5px;
-    font-size: ${fontSizing.s};
+    font-size: ${fontSizing.xs};
   }
 
   button {
@@ -70,7 +74,7 @@ export const SignUpContainer = styled.div`
     div {
       flex: 0 0 43%;
       padding: 5px 0;
-      font-size: ${fontSizing.s};
+      font-size: ${fontSizing.xs};
     }
 
     div:last-child {
@@ -80,7 +84,7 @@ export const SignUpContainer = styled.div`
 
     i {
       justify-self: 'flex-end';
-      font-size: ${fontSizing.s};
+      font-size: ${fontSizing.xs};
     }
 `
 

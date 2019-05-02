@@ -162,14 +162,10 @@ class ProjectDetails extends Component {
               )}
             <div className="stat-category">Roles:</div>
             {/* List project roles */}
+            <RoleForm {...this.props} />
+            {/* Mark project complete */}
             <RoleList {...this.props}/> 
             {/* Add project Roles */}
-            <RoleForm {...this.props} />
-
-            {/* User sign up */}
-            <SignUpBoard {...this.props} />
-
-            {/* Mark project complete */}
            <CheckBoxGroup>
               <label htmlFor="">Complete:</label>
               <input
@@ -178,6 +174,8 @@ class ProjectDetails extends Component {
                 onChange={this.toggleProjectComplete}
               />
            </CheckBoxGroup>
+            {/* User sign up */}
+            <SignUpBoard {...this.props} />
           </div>
           {/* Update project details */}
           <ButtonMenu {...this.state} onClick={this.handleUpdate}>

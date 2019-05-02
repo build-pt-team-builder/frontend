@@ -8,8 +8,8 @@ const SignUpBoard = (props) => {
   return (
     <SignUpBoardContainer>
       <h2>User Sign Up Board:</h2>
-      <SignUpList {...props} />
       <ProjectSignUpForm {...props} />
+      <SignUpList {...props} />
     </SignUpBoardContainer>
   )
 }
