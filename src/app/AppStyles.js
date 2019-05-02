@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import { flex } from '../components/DesignComponents/theme'
 
 const AppContainer = styled.div`
-  height: 100%;
+  width: 100%;
+  max-width: 1400px;
   ${flex('column','center')};
   margin: 0 auto;
-  width: 100%;
+  border: 1px solid purple;
 `
 
 export default AppContainer
