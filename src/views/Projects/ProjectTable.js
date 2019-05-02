@@ -39,7 +39,10 @@ class ProjectTable extends Component {
                 {
                   Header: "Assigned",
                   id: "assignedTo",
-                  accessor: d => d.role.assignedTo
+                  accessor: d => d.role.assignedTo.length > 1 ?
+                    d.role.assignedTo.map((user, index) => (
+                      index !== d.role.assignedTo.length - 1 ? `${user}, ` : user
+                    )) : d.role.assignedTo
                 }
               ]}
             />

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { colorScheme, fontSizing, flex } from '../DesignComponents/theme'
-
+import { colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
 
 export const RoleFormContainer = styled.div`
   width: 100%;
@@ -71,6 +70,20 @@ export const RoleContainer = styled.div`
       justify-self: 'flex-end';
       font-size: ${fontSizing.s};
     }
+`
+
+export const RoleAssignmentList = styled.div`
+    ${flex('row')};
+    width: 100%;
+    
+    @media ${breakpoints[0]} {
+      ${flex('column','center')};
+    }
+
+`
+
+export const RoleAssignment = styled.div`
+    width: 100%;
 `
 
 export const DeleteContainer = styled.div`

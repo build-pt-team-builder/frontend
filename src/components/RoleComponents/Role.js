@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
-import { RoleContainer } from './RoleStyleComponents'
+import { RoleContainer, RoleAssignmentList, RoleAssignment } from './RoleStyleComponents'
 import RoleForm from './RoleForm'
 import DeleteContainer from '../../components/DesignComponents/DeleteContainer'
 
@@ -108,7 +108,15 @@ class Role extends Component {
         {!this.state.edit ?
           <>
             <div onClick={() => this.toggleEdit()}>{role.role.name}:</div>
-            <div onClick={() => this.toggleEdit()}>{role.role.assignedTo}</div>
+            {role.role.assignedTo.length > 1 ?
+              <RoleAssignmentList>
+                {role.role.assignedTo.map((user, index) => (
+                  index !== role.role.assignedTo.length - 1 ? `${user}, ` : user
+                ))} 
+              </RoleAssignmentList> :
+              <RoleAssignment onClick={() => this.toggleEdit()}>{role.role.assignedTo}</RoleAssignment>
+            }
+            
           </> :
           <RoleForm {...this.props} update/>
         }
