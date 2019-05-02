@@ -21,7 +21,7 @@ const users = [
         cohort: 'webpt4',
         projectManager: 'Carlos',
         role: 'Backend',
-        project: null,
+        project: 'None',
     },
     {
         firstName: 'Donna',
@@ -31,7 +31,7 @@ const users = [
         cohort: 'webpt4',
         projectManager: 'Carlos',
         role: 'Backend',
-        project: null,
+        project: 'None',
     },
     {
         firstName: 'Elliot',
@@ -41,7 +41,7 @@ const users = [
         cohort: 'webpt3',
         projectManager: 'Lola',
         role: 'Data Science',
-        project: null,
+        project: 'None',
     }
 ]
 
@@ -51,7 +51,16 @@ class UserList extends Component {
         this.state = {
             headerStats: headerStats,
             users: users,
+            edit: false,
         }
+    }
+    h_edit_user = user => {
+        console.log('editing...')
+        console.log(user)
+    }
+    h_remove_user = user => {
+        console.log('removing...')
+        console.log(user)
     }
     render = () => 
         <Wrapper className='users'>
@@ -59,7 +68,12 @@ class UserList extends Component {
             <div className='user-list'>
                 <ListOptions />
                 {this.state.users.map((user,idx) =>
-                    <User user={user} key={idx} />
+                    <User
+                        edit={this.h_edit_user}
+                        remove={this.h_remove_user}
+                        user={user}
+                        key={idx}
+                    />
                 )}
             </div>
         </Wrapper>
