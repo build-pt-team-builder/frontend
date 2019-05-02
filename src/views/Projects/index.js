@@ -4,6 +4,7 @@ import Style from './style'
 import Header from '../../components/SharedComponents/Header/Private/index'
 import ProjectList from './projectList'
 import ListOptions from './listOptions'
+import CreateProject from './createProject'
 
 const headerStats = [
     {displayText: 'Total Projects', value: 42},
@@ -34,7 +35,7 @@ const projects = [
     },
     {   id: 1,
         name: `The Giant`,
-        active: true,
+        active: false,
         status: 'Open',
         positions: [
             {role: 'Lead', member: null},
@@ -75,13 +76,13 @@ const projects = [
 
 const settings = {
     showStats: true,
+    createProject: false,
     status: [
         {name: 'All', value: false},
         {name: 'Open', value: true},
         {name: 'Archived', value: false},
     ],
     positions: [
-        {name: 'Any', value: true},
         {name: 'WebUI', value: false},
         {name: 'Frontend', value: false},
         {name: 'Backend', value: false},
@@ -97,6 +98,7 @@ class Projects extends Component {
     constructor() {
         super()
         this.state = {
+            createProject: false,
             headerStats: headerStats,
             projects: projects,
             settings: settings,
@@ -144,10 +146,23 @@ class Projects extends Component {
             return {settings: prevState.settings}
         })
     }
+    h_toggle_create = () => {
+        this.setState(prevState => {
+            return {
+                createProject: !prevState.createProject,
+            }
+        })
+    }
     render = () => 
         <Style className='projects'>
             {this.state.settings.showStats && <Header stats={this.state.headerStats}/>}
-            <ListOptions options={this.state.settings} toggle_status={this.h_toggle_status} toggle_position={this.h_toggle_position}/>
+            <ListOptions
+                options={this.state.settings}
+                toggle_status={this.h_toggle_status}
+                toggle_position={this.h_toggle_position}
+                toggle_create={this.h_toggle_create}
+            />
+            {this.state.createProject && <CreateProject />}
             <ProjectList
                 projects={this.state.projects}
                 active_roles={this.state.settings.positions.filter(role => role.value)}

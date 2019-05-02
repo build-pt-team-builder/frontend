@@ -9,10 +9,10 @@ const User = ({user}) =>
             <pre className='name'>{user.firstName} {user.lastName}</pre>
             <pre className='role'>{user.cohort}</pre>
         </div>
-        <div className='info'>
+        {/* <div className='info'>
             <pre className='title'>Cohort</pre>
             <pre className='value'>{user.cohort}</pre>
-        </div>
+        </div> */}
         <div className='info'>
             <pre className='title'>Preferred Role</pre>
             <pre className='value'>{user.role}</pre>

@@ -23,7 +23,6 @@ const ProjectList = ({projects, active_roles, toggle_active}) =>
                                 <pre className='member'>{position.member}</pre>
                             </div>
                         )}
-                        
                     </div>
                 </div>
                 <div className={project.active ? 'description active' : 'description'}>

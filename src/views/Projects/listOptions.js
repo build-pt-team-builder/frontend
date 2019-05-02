@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListOptions = ({options, toggle_status, toggle_position}) => 
+const ListOptions = ({options, toggle_status, toggle_position, toggle_create}) => 
     <div className='project-options'>
         <div className='options'>
             <h3 className='title'>Status: </h3>
@@ -29,7 +29,7 @@ const ListOptions = ({options, toggle_status, toggle_position}) =>
             )}
         </div>
         <div className='options action'>
-            <button className='highlight'>Create</button>
+            <button className='highlight' onClick={toggle_create}>Create</button>
         </div>
     </div>
 
