@@ -6,7 +6,6 @@ const AppContainer = styled.div`
   max-width: 1400px;
   ${flex('column','center')};
   margin: 0 auto;
-  border: 1px solid purple;
 `
 
 export default AppContainer

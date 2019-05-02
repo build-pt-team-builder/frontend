@@ -5,6 +5,6 @@ export default Styled.div`
     background-color: ${color.bg01};
     display: grid;
     grid-template-columns: 200px auto;
+    height: 100%;
     width: 100%;
-    border: 1px solid red;
 `
