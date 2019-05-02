@@ -40,12 +40,11 @@ class User extends Component {
                 {this.state.editing
                 ?   <>
                         <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.state.user.firstName}/>
-                        <input type='text' name='lastName' placeholder='Last Name'/>
-                        <pre>Cohort</pre>
-                        <select onChange={this.h_select_change} name='cohort' value={this.state.user.cohort}>
-                            <option value='Webpt03'>Webpt03</option>
-                            <option value='Webpt04'>Webpt04</option>
-                            <option value='Webpt05'>Webpt05</option>
+                        <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.state.user.lastName}/>
+                        <select className='value' onChange={this.h_select_change} name='cohort' value={this.state.user.cohort}>
+                            <option value='webpt03'>webpt03</option>
+                            <option value='webpt04'>webpt04</option>
+                            <option value='webpt05'>webpt05</option>
                         </select>
                     </>
                 :   <>   
@@ -57,7 +56,7 @@ class User extends Component {
             <div className='info'>
                 <pre className='title'>Preferred Role</pre>
                 {this.state.editing
-                    ?   <select onChange={this.h_select_change} name='role' value={this.state.user.role}>
+                    ?   <select className='value' onChange={this.h_select_change} name='role' value={this.state.user.role}>
                                 <option value='webui'>Webui</option>
                                 <option value='frontend'>Frontend</option>
                                 <option value='backend'>Backend</option>
@@ -68,7 +67,7 @@ class User extends Component {
             <div className='info'>
                 <pre className='title'>Project Manager</pre>
                 {this.state.editing
-                    ?   <select onChange={this.h_select_change} name='projectManager' value={this.state.user.projectManager}>
+                    ?   <select className='value' onChange={this.h_select_change} name='projectManager' value={this.state.user.projectManager}>
                             <option value='Carlos'>Carlos</option>
                             <option value='Lola'>Lola</option>
                             <option value='Jack Daniels'>Jack Daniels</option>
@@ -79,7 +78,7 @@ class User extends Component {
             <div className='info'>
                 <pre className='title'>Project</pre>
                 {this.state.editing
-                    ?   <select onChange={this.h_select_change} name='project' value={this.state.user.project}>
+                    ?   <select className='value' onChange={this.h_select_change} name='project' value={this.state.user.project}>
                             <option value='Rover'>Rover</option>
                             <option value='The Giant'>The Giant</option>
                             <option value='Mutiny'>Mutiny</option>
@@ -88,7 +87,7 @@ class User extends Component {
                 }
             </div>
             <div className='actions'>
-                <button onClick={this.h_toggle_edit}>Edit</button>
+                <button onClick={this.h_toggle_edit} className={this.state.editing ? 'active' : null}>{this.state.editing ? 'Editing' : 'Edit'}</button>
                 <button onClick={this.h_remove}>Remove</button>
             </div>
         </div>
