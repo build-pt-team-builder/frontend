@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
-import { roles as roleList } from '../../dummyData'
 import { RoleContainer } from './RoleStyleComponents'
 import RoleForm from './RoleForm'
 import DeleteContainer from '../../components/DesignComponents/DeleteContainer'

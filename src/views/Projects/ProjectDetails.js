@@ -91,7 +91,7 @@ class ProjectDetails extends Component {
 
   render() {
     console.log(`render() this.state is: `, this.state)
-    const { name, pitch, mvp, stretch, roles, category } = this.props.project
+    const { name, pitch, mvp, stretch, category } = this.props.project
     return (
       <ProjectInfoContainer>
         <header>
