@@ -18,6 +18,20 @@ const theme = {
     txt03: '#888',
     txt04: '#ccc',
     txt05: '#fff',
+
+    //legacy
+    primaryColor: '#bb1333',
+    primaryDark: '#bb1333',
+    primaryBgShading: '#222',
+    secondaryColor: '#08addd',
+    secondaryBgShading: '#222',
+    accent: '#888',
+    accent2: '#666',
+    emphasis: '#fff',
+    darkText: '#222',
+    lightText: '#ccc',
+    lightTextEmphasis: '#fff',
+    danger: 'red'
   },
   
   font: {
@@ -56,6 +70,62 @@ const theme = {
     justify-content: ${justify};
     align-items: ${align};
   }`,
+
+  //legacy
+  fontStyles: {
+    logoFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    headingFont: "'Bangers', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+    defaultFont: "'Lato', sans-serif",
+  },
+  colorScheme: {
+    logoColor: () => {
+      return theme.color.emphasis
+    },
+    headerBgColor: () => {
+      return theme.color.lightText
+    },
+    headerFontColor: () => {
+      return theme.color.accent
+    },
+    footerBgColor: () => {
+      return theme.color.primaryColor
+    },
+    footerFontColor: () => {
+      return theme.color.lightText
+    },
+    headingColor: () => {
+      return theme.color.primaryColor
+    },
+    defaultFontColor: () => {
+      return theme.color.darkText
+    },
+    defaultLinkColor: () => {
+      return theme.color.secondaryColor
+    },
+    containerBgColor: () => {
+      return theme.primaryBgShading
+    },
+    cardBgColor: () => {
+      return theme.secondaryBgShading
+    },
+    defaultBorderColor: () => {
+      return theme.color.secondaryBgShading
+    },
+  },
+  fontSizing: { // Based on CSS default font-resizing of 62.5%
+    xxxxs: '.8rem',
+    xxxs: '1rem',
+    xxs: '1.2rem',
+    xs: '1.4rem', // base size for mobile view
+    s: '1.6rem', // base size for text
+    sm: '1.8rem', // base size for menu and button text
+    m: '2rem', // base heading/sub-heading size
+    ml: '2.4rem', // base headline size
+    l: '4rem', // for big emphasis
+    xl: '5rem', // ultra large
+    xxl: '6rem', // site banner headline
+    xxxl: '8rem',
+  },
 }
 
 export default theme
