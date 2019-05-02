@@ -2,24 +2,26 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
-import { RoleContainer, RoleAssignmentList, RoleAssignment } from './RoleStyleComponents'
-import RoleForm from './RoleForm'
+import { RoleContainer, RoleAssignmentList, RoleAssignment, 
+  FormContainer, FormGroup } from './RoleStyleComponents'
+import { roles as roleList } from '../../dummyData'  
 import DeleteContainer from '../../components/DesignComponents/DeleteContainer'
 
 class Role extends Component {
   state = {
     roles: this.props.project ? 
       this.props.project.roles: [],
+    roleInput: '',
+    assignmentInput: '',  
     hidden: true,
     edit: false
   }
 
   prePopulateForm = () => {
-    const { role } = this.props.role
     console.log(`prePopulateForm this.props: `, this.props)
     this.setState({
-      roleInput: role.role.name,
-      assignmentInput: role.role.assignedTo
+      roleInput: this.props.role.role.name,
+      assignmentInput: this.props.role.role.assignedTo
     },
       () => console.log(`prePopulateForm state: `, this.state)
     )
@@ -29,7 +31,10 @@ class Role extends Component {
     this.setState(prevState => (
       { edit: !prevState.edit }
     ),
-      () => console.log(`invoke toggleEdit`)
+      () => {
+        this.prePopulateForm()
+        console.log(`invoke toggleEdit`)
+      }
     )
   }
 
@@ -52,7 +57,7 @@ class Role extends Component {
         let index = prevState.roles.findIndex(role => role.role.name === this.state.roleInput)
         console.log(`findIndex: `, index)
         let updatedRoles = [...this.state.roles]
-        updatedRoles[index].role.assignedTo.push(this.state.assignmentInput)
+        updatedRoles[index].role.assignedTo = [this.state.assignmentInput]
         console.log(`updatedRoles: `, updatedRoles[index])
         return {
           roles: [...updatedRoles]
@@ -73,6 +78,7 @@ class Role extends Component {
           roles: this.state.roles
         }
         this.props.updateData(updatedProject)
+        this.toggleEdit()
       }
     )
   }
@@ -118,7 +124,29 @@ class Role extends Component {
             }
             
           </> :
-          <RoleForm {...this.props} update/>
+          <FormContainer onSubmit={this.handleUpdate}>
+            <FormGroup>
+              <input
+                list="roleInput"
+                onChange={this.handleInput}
+                placeholder=" Select Role"
+                value={this.state.roleInput}
+                name="roleInput"
+              />
+              <datalist id="roleInput">
+                {roleList.map(role => (
+                  <option key={role.id} value={role.name} />
+                ))}
+              </datalist>
+              <input
+                type="text"
+                onChange={this.handleInput}
+                placeholder="Assign Role"
+                value={this.state.assignmentInput}
+                name="assignmentInput"
+              />
+            </FormGroup>
+          </FormContainer> 
         }
         
         <DeleteContainer>
