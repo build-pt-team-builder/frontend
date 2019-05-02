@@ -16,21 +16,23 @@ class RoleForm extends Component {
   }
 
   prePopulateForm = () => {
-    const { role } = this.props.role
-    console.log(`ROLEFORM prePopulateForm this.props: `, this.props)
+    console.log(`prePopulateForm this.props: `, this.props)
     this.setState({
-      roleInput: role.role.name,
-      assignmentInput: role.role.assignedTo
+      roleInput: this.props.role.role.name,
+      assignmentInput: this.props.role.role.assignedTo
     },
       () => console.log(`prePopulateForm state: `, this.state)
     )
   }
 
-  toggleEdit = () => {
+  toggleEdit() {
     this.setState(prevState => (
       { edit: !prevState.edit }
     ),
-      () => this.prePopulateForm()
+      () => {
+        this.prePopulateForm()
+        console.log(`invoke toggleEdit`)
+      }
     )
   }
 
@@ -90,7 +92,7 @@ class RoleForm extends Component {
         let index = prevState.roles.findIndex(role => role.role.name === this.state.roleInput)
         console.log(`findIndex: `, index)
         let updatedRoles = [...this.state.roles]
-        updatedRoles[index].role.assignedTo.push(this.state.assignmentInput)
+        updatedRoles[index].role.assignedTo = [this.state.assignmentInput]
         console.log(`updatedRoles: `, updatedRoles[index])
         return {
           roles: [...updatedRoles]
@@ -148,7 +150,6 @@ class RoleForm extends Component {
             placeholder="Assign Role"
             value={this.state.assignmentInput}
             name="assignmentInput"
-            onClick={() => this.toggleEdit()}
           />
           <button type="submit">+</button>
         </FormGroup>
