@@ -1,6 +1,8 @@
 import React from 'react'
 
-const ProjectList = ({projects, toggle_active}) =>
+// const test = 'Frontend'
+
+const ProjectList = ({projects, active_roles, toggle_active}) =>
     <div className='project-list'>
         {projects.map(project => 
             <div className='project' onClick={toggle_active} id={project.id} key={project.id}>
@@ -13,7 +15,10 @@ const ProjectList = ({projects, toggle_active}) =>
                             <pre className='add'>Add Role</pre>
                         </div>
                         {project.positions.map((position,idx) =>
-                            <div className='position' key={idx}>
+                            <div
+                                className={active_roles.filter(role => role.name === position.role).length !== 0 ? 'position active' : 'position'}
+                                key={idx}
+                            >
                                 <pre className='role'>{position.role}</pre>
                                 <pre className='member'>{position.member}</pre>
                             </div>

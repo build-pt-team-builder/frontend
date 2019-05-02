@@ -143,6 +143,10 @@ export default Styled.div`
                     min-width: 100px;
                     padding: 0 1rem;
                     text-align: center;
+                    &.active {
+                        background-color: ${color.accent1};
+                        .role, .member {color: ${color.txt00}}
+                    }
                     &:first-of-type {
                         border-radius: 5px 0 0 5px;
                         &:hover {border-left-color: ${color.accent1}}
@@ -154,6 +158,7 @@ export default Styled.div`
                     &:hover {border-color: ${color.accent1} transparent}
                     &.action {
                         cursor: pointer;
+                        // background-color: ${color.accent0}
                         &:first-of-type:hover {border-left-color: ${color.accent0}}
                         &:last-of-type:hover {border-right-color: ${color.accent0}}
                         &:hover {border-color: ${color.accent0} transparent}

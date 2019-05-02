@@ -82,12 +82,13 @@ const settings = {
     ],
     positions: [
         {name: 'Any', value: true},
-        {name: 'UI', value: false},
+        {name: 'WebUI', value: false},
         {name: 'Frontend', value: false},
         {name: 'Backend', value: false},
         {name: 'UI/UX', value: false},
         {name: 'Android', value: false},
         {name: 'DS', value: false},
+        {name: 'Lead', value: false},
         {name: 'None', value: false},
     ]
 }
@@ -147,7 +148,11 @@ class Projects extends Component {
         <Style className='projects'>
             {this.state.settings.showStats && <Header stats={this.state.headerStats}/>}
             <ListOptions options={this.state.settings} toggle_status={this.h_toggle_status} toggle_position={this.h_toggle_position}/>
-            <ProjectList projects={this.state.projects} toggle_active={this.h_toggle_project}/>
+            <ProjectList
+                projects={this.state.projects}
+                active_roles={this.state.settings.positions.filter(role => role.value)}
+                toggle_active={this.h_toggle_project}
+            />
         </Style>
 }
 
