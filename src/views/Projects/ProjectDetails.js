@@ -6,6 +6,7 @@ import { updateProject } from '../../actions/projects'
 import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
 import { CheckBoxGroup } from './ProjectFormStyles'
 import RoleForm from '../../components/RoleComponents/RoleForm'
+import RoleList from '../../components/RoleComponents/RoleList'
 import Button from '../../components/DesignComponents/Button'
 
 class ProjectDetails extends Component {
@@ -19,6 +20,7 @@ class ProjectDetails extends Component {
       roles: [],
       category: '',
       projectComplete: this.props.project.projectComplete,
+      hidden: true
     }
 
   prePopulateForm = () => {
@@ -41,6 +43,13 @@ class ProjectDetails extends Component {
       prevState => ({ edit: !prevState.edit }),
       () => this.prePopulateForm()
     )
+  }
+
+  toggleDeleteBtn = e => {
+    e.preventDefault()
+    this.setState(prevState => ({
+      hidden: !prevState.hidden
+    }))
   }
 
   handleInput = e => {
@@ -82,7 +91,7 @@ class ProjectDetails extends Component {
 
   render() {
     console.log(`render() this.state is: `, this.state)
-    const { name, pitch, mvp, stretch, roles, category } = this.props.project
+    const { name, pitch, mvp, stretch, category } = this.props.project
     return (
       <ProjectInfoContainer>
         <header>
@@ -151,17 +160,9 @@ class ProjectDetails extends Component {
                 />
               )}
             <div className="stat-category">Roles:</div>
-            <div className="stat-data">
-              {roles.length > 0 && (roles.map((role, index) => (
-                <div key={index} className="projectRole">
-                  <div>{role.role.name}:</div>
-                  <div>{role.role.assignedTo}</div>
-                </div>))
-              )}
-            </div>
-             
-
-            {/* Add Project Roles */}
+            {/* List project roles */}
+            <RoleList {...this.props}/> 
+            {/* Add project Roles */}
             <RoleForm {...this.props} />
             {/* Mark project complete */}
            <CheckBoxGroup>

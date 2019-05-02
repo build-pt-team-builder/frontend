@@ -100,20 +100,13 @@ export const ProjectInfoContainer = styled.div`
     h4 {
       font-size: ${fontSizing.m};
     }
-
-    input:first-child {
-      margin: 10px 0;
-      font-size: ${fontSizing.m};
-    }
     
     .project-stats {
       ${flex('column')}
       
       & * {
-        font-size: ${fontSizing.sm};
-
         @media ${breakpoints[0]} {
-          font-size: ${fontSizing.s};
+          font-size: ${fontSizing.xs};
         }
       }
 
@@ -122,6 +115,7 @@ export const ProjectInfoContainer = styled.div`
         margin-bottom: 5px;
         font-weight: bold;
         color: ${color.darkText};
+        font-size: ${fontSizing.s};
       }
 
       .stat-data {
@@ -143,12 +137,22 @@ export const ProjectInfoContainer = styled.div`
   .projectRole {
     width: 100%;
     ${flex('row','center','flex-start')}
+    margin: 5px 0;
+    padding-left: 10px;
+    border: 1px solid ${colorScheme.defaultBorderColor};
+    border-radius: 5px;
 
     div {
-      flex: 0 0 48%;
+      flex: 0 0 33%;
       padding: 5px 0;
-      border-bottom: 1px solid black;
       font-size: ${fontSizing.s};
+    }
+
+    i {
+      flex: 0 0 12%;
+      justify-self: 'flex-end';
+      font-size: ${fontSizing.xxs};
+      border: 1 solid coral;
     }
 
   }
