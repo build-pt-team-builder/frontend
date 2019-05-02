@@ -152,13 +152,15 @@ class ProjectDetails extends Component {
               )}
             <div className="stat-category">Roles:</div>
             <div className="stat-data">
-              {roles.length > 0 && (roles.map(role => (
-                <div key={role.id} className="projectRole">
-                  {role.role}
-                  {role.assignedTo}
+              {roles.length > 0 && (roles.map((role, index) => (
+                <div key={index} className="projectRole">
+                  <div>{role.role.name}:</div>
+                  <div>{role.role.assignedTo}</div>
                 </div>))
               )}
             </div>
+             
+
             {/* Add Project Roles */}
             <RoleForm {...this.props} />
             {/* Mark project complete */}

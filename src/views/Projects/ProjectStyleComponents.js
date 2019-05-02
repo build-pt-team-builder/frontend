@@ -14,6 +14,7 @@ export const ProjectListContainer = styled.div`
   padding: 20px 10px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   background: ${color.lightText};
+  color: ${color.darkText};
   font-size: ${fontSizing.m};
 
   h1 {
@@ -96,9 +97,9 @@ export const ProjectInfoContainer = styled.div`
       color: ${colorScheme.headingColor};
     }
 
-   h4 {
-     font-size: ${fontSizing.m};
-   }
+    h4 {
+      font-size: ${fontSizing.m};
+    }
 
     input:first-child {
       margin: 10px 0;
@@ -118,6 +119,7 @@ export const ProjectInfoContainer = styled.div`
 
       .stat-category {
         margin-top: 20px;
+        margin-bottom: 5px;
         font-weight: bold;
         color: ${color.darkText};
       }
@@ -126,6 +128,8 @@ export const ProjectInfoContainer = styled.div`
         width: 90%;
         font-size: ${fontSizing.s};
         font-weight: initial;
+
+
       }
 
     }
@@ -136,6 +140,18 @@ export const ProjectInfoContainer = styled.div`
       }
     }
 
+  .projectRole {
+    width: 100%;
+    ${flex('row','center','flex-start')}
+
+    div {
+      flex: 0 0 48%;
+      padding: 5px 0;
+      border-bottom: 1px solid black;
+      font-size: ${fontSizing.s};
+    }
+
+  }
 `
 
 export const ButtonMenu = styled.nav`
@@ -164,4 +180,36 @@ export const SpinnerContainer = styled.div`
   ${flex('column', 'center', 'center')};
   background: ${color.primaryBgShading};
   color: ${color.primaryColor};
+`
+export const TableContainer = styled.div`
+  width: 100%;
+  ${flex('column', 'center', 'center')}
+  margin: 50px 0;
+  padding: 20px 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  background: ${color.lightText};
+  color: ${color.darkText};
+  font-size: ${fontSizing.xs};
+
+  h1 {
+    font-size: ${fontSizing.m};
+    letter-spacing: 0.5rem;
+    color: ${color.darkText};
+  }
+
+  a {
+    text-decoration: none;
+    color: ${color.lightText};
+  }
+
+  @media ${breakpoints[0]} {
+    width: 100%;
+    font-size: ${fontSizing.xs};
+
+    h1 {
+      font-size: ${fontSizing.sm};
+    }
+  }
+
+
 `

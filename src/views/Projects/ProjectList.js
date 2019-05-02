@@ -15,7 +15,13 @@ class ProjectList extends Component {
             <Link key={project.id} to={`/projects/${project.id}`}>
               <Preview>
                 <div>{project.name}</div>
-                <div>Roles: {project.roles}</div>
+                <div>Roles:</div>
+                {project.roles.map((role, index) => (
+                  <div key={index}>
+                    <div>{role.role.name}</div>
+                    <div>{role.role.assignedTo}</div>
+                  </div>
+                ))}
               </Preview>
             </Link>
           ))

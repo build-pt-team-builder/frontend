@@ -4,9 +4,11 @@ import { Route, withRouter } from 'react-router-dom'
 // import PrivateRoute from './PrivateRoute'
 
 import { fetchProjectData } from '../../actions/projects'
-import ProjectList from '../../views/Projects/ProjectList'
+// import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
+
+import ProjectTable from '../../views/Projects/ProjectTable'
 
 class Routes extends Component {
   componentDidMount() {
@@ -18,25 +20,27 @@ class Routes extends Component {
     return (
       <div>
         {/* Assign routes */}
-        <Route path="/" exact component={ProjectList} />
-        <Route path="/projects" exact component={ProjectList} />
+        <Route path="/" exact component={ProjectTable} />
+        <Route path="/projects" exact component={ProjectTable} />
         <Route 
           path="/projects/add" exact 
           render={props => <ProjectForm {...props} add/>}
         />
-        {this.props.projects.map(project => (
-          <div key={project.id}>
+        {this.props.projects.map((project) => (
           <Route
+            key={project.id}
             path={`/projects/${project.id}`}
             render={props => (
               <ProjectDetails {...props} project={project} />
             )}
           />
+        ))}
+        {this.props.projects.map((project) => (
           <Route
+            key={project.id}
             path={`/projects/update/${project.id}`}
             render={props => <ProjectForm {...props} project={project} update />}
           />
-          </div>
         ))}
       </div>
     )
