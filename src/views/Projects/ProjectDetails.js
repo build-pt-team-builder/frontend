@@ -7,6 +7,7 @@ import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
 import { CheckBoxGroup } from './ProjectFormStyles'
 import RoleForm from '../../components/RoleComponents/RoleForm'
 import RoleList from '../../components/RoleComponents/RoleList'
+import SignUpBoard from '../../components/SignUpComponents/SignUpBoard'
 import Button from '../../components/DesignComponents/Button'
 
 class ProjectDetails extends Component {
@@ -164,6 +165,10 @@ class ProjectDetails extends Component {
             <RoleList {...this.props}/> 
             {/* Add project Roles */}
             <RoleForm {...this.props} />
+
+            {/* User sign up */}
+            <SignUpBoard {...this.props} />
+
             {/* Mark project complete */}
            <CheckBoxGroup>
               <label htmlFor="">Complete:</label>
