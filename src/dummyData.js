@@ -28,6 +28,7 @@ export const projects = [
         }
       }
     ],
+    signUpList: [],
     category: '',
     projectComplete: false
   },
@@ -54,6 +55,7 @@ export const projects = [
         }
       }
     ],
+    signUpList: [],
     category: '',
     projectComplete: false
   },
@@ -66,6 +68,7 @@ export const projects = [
       'User can create an account, join an existing school account, and search for existing bubls to join. They can explore interests through hashtag searches. They can connect with others and share experiences.',
     stretch: '',
     roles: [],
+    signUpList: [],    
     category: '',
     projectComplete: false
   }
