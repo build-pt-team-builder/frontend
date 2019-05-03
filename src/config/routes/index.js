@@ -24,9 +24,8 @@ class Routes extends Component {
     return (
       <div>
         {/* Assign routes */}
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={ProjectTable} />
         <Route path="/login" exact component={Login} />
-        <Route path='/projects' component={() => <Home Content={ProjectTable} />} />
         <Route path='/settings' component={() => <Home Content={Settings} />} />
         <Route path='/users' component={() => <Home Content={UserList} />} />
         
