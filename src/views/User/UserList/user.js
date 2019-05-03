@@ -32,15 +32,17 @@ class User extends Component {
         })
     }
     render = () =>
-        <div className='user'>
-            <div className='info'>
+        <>
+            <div className='info avatar'>
                 <img src={`./img/${this.state.user.avatar}`} alt='nope' />
             </div>
             <div className='info'>
                 {this.state.editing
                     ? <>
-                        <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.state.user.firstName} />
-                        <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.state.user.lastName} />
+                        <div>
+                            <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.state.user.firstName} />
+                            <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.state.user.lastName} />
+                        </div>
                         <select className='value' onChange={this.h_select_change} name='cohort' value={this.state.user.cohort}>
                             <option value='webpt03'>webpt03</option>
                             <option value='webpt04'>webpt04</option>
@@ -90,7 +92,7 @@ class User extends Component {
                 <button onClick={this.h_toggle_edit} className={this.state.editing ? 'active' : null}>{this.state.editing ? 'Editing' : 'Edit'}</button>
                 <button onClick={this.h_remove}>Remove</button>
             </div>
-        </div>
+        </>
 }
 
 export default User
