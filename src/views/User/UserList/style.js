@@ -6,6 +6,42 @@ export default Styled.div`
     max-width: 1200px;
     width: 100%;
     padding: ${size.s08};
+    display: grid;
+    grid-auto-flow: row;
+
+    .options {
+        display: flex;
+        width: fit-content;
+        background-color: ${color.bg00};
+        height: 50px;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        width: 100%;
+
+        .option {
+            margin-right: 1rem;
+            display: grid;
+            grid-auto-flow: column;
+            grid-column-gap: 1rem;
+            align-items: center;
+            
+            select {
+                background-color: ${color.bg01};
+                border: 2px solid transparent;
+                color: #ccc;
+                outline: none;
+                width: fit-content;
+                height: 100%;
+                border-radius: 5px;
+                font-size: 1.6rem;
+                & > * {background-color: ${color.bg00}}
+                &:hover {border-color: ${color.accent1}}
+            }
+            .title {
+                font-size: 1.6rem;
+            }
+        }
+    }
 
     .user-list {
         display: grid;

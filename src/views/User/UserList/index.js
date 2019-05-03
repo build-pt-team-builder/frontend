@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 import Header from '../../../components/SharedComponents/Header/Private'
-import ListOptions from '../../../components/SharedComponents/ListOptions'
+import ListOptions from './options'
 import User from './user'
 // import Options from './options'
 
@@ -21,7 +21,7 @@ const users = [
         cohort: 'webpt04',
         project_manager: 'Carlos',
         role: 'backend',
-        project: 'None',
+        project: 'none',
     },
     {
         firstName: 'Donna',
@@ -31,7 +31,7 @@ const users = [
         cohort: 'webpt04',
         role: 'frontend',
         project_manager: 'Carlos',
-        project: 'None',
+        project: 'none',
     },
     {
         firstName: 'Elliot',
@@ -41,7 +41,7 @@ const users = [
         cohort: 'webpt03',
         project_manager: 'Lola',
         role: 'data science',
-        project: 'None',
+        project: 'none',
     }
 ]
 
@@ -57,11 +57,14 @@ class UserList extends Component {
     }
     h_filter_users = filters => {
         let users = this.state.all_users
-        filters.forEach(filter => {
-            if(filter.value !== 'all') { users = users.filter(user => {
-                return user[filter.name] === filter.value
-            })}
-        })
+        //filter out all the 'all' values from filters array
+        //filter all users who don't have the corresponding name value relationion
+        //update state with new list
+        filters.forEach(filter =>
+            filter.value !== 'all'
+            ?   users = users.filter(user => user[filter.name] === filter.value)
+            :   null
+        )
         this.setState({users: users})
     }
     h_edit_user = user => {
@@ -81,15 +84,12 @@ class UserList extends Component {
                     filter={this.h_filter_users}
                 />
                 {this.state.users.map((user,idx) =>
-                    <>
-                        {console.log(user)}
-                        <User
-                            edit={this.h_edit_user}
-                            remove={this.h_remove_user}
-                            user={user}
-                            key={idx}
-                        />
-                    </>
+                    <User
+                        edit={this.h_edit_user}
+                        remove={this.h_remove_user}
+                        user={user}
+                        key={idx}
+                    />
                 )}
             </div>
         </Wrapper>
