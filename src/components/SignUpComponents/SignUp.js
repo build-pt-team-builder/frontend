@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
-import { SignUpContainer, SignUpNameList, SignUpName, 
+import { SignUpContainer, SignUpName, 
   FormContainer, FormGroup } from './SignUpStyleComponents'
 import { roles as roleList } from '../../dummyData'  
 import DeleteContainer from '../../components/DesignComponents/DeleteContainer'
@@ -115,7 +115,7 @@ class SignUp extends Component {
   }   
 
   render() {
-    const { slot, index } = this.props
+    const { slot } = this.props
     console.log(`SignUp render state: `, this.state)
     console.log(`SignUp render props: `, this.props)
     return (
