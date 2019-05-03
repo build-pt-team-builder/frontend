@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import uuid from 'uuid'
 import { updateProject } from '../../actions/projects'
 import { roles as roleList } from '../../dummyData'
 
@@ -7,8 +8,8 @@ import { FormContainer, FormGroup } from './RoleStyleComponents'
 
 class RoleForm extends Component {
   state = {
-    roles: this.props.project ? 
-      this.props.project.roles: [],
+    roleAssignments: this.props.project ? 
+      this.props.project.roleAssignments: [],
     roleInput: '',
     assignmentInput: '',
     hidden: true,
@@ -18,8 +19,8 @@ class RoleForm extends Component {
   prePopulateForm = () => {
     console.log(`prePopulateForm this.props: `, this.props)
     this.setState({
-      roleInput: this.props.role.role.name,
-      assignmentInput: this.props.role.role.assignedTo
+      roleInput: this.props.role.role,
+      assignmentInput: this.props.role.assignedTo
     },
       () => console.log(`prePopulateForm state: `, this.state)
     )
@@ -43,30 +44,16 @@ class RoleForm extends Component {
   addData = e => {
     e.preventDefault()
     this.setState(prevState => {
-      if (this.state.roles.findIndex(role => role.role.name === this.state.roleInput) >= 0) {
-        console.log(`It matches!!`)
-        let index = prevState.roles.findIndex(role => role.role.name === this.state.roleInput)
-        console.log(`findIndex: `, index)
-        let updatedRoles = [...this.state.roles]
-        updatedRoles[index].role.assignedTo.push(this.state.assignmentInput)
-        console.log(`updatedRoles: `, updatedRoles[index])
-        return {
-          roles: [...updatedRoles]
-        }
-      } else {
-        console.log(`No matches found`)
-        let newRole = {
-          role: {
-            name: this.state.roleInput,
-            assignedTo: [this.state.assignmentInput]
-          }
-        }
+      let newRole = {
+        id: uuid.v4(),
+        role: this.state.roleInput,
+        assignedTo: this.state.assignmentInput
+      }
         
-        console.log(`newRole: `, newRole)
+      console.log(`newRole: `, newRole)
 
-        return {
-          roles: [...prevState.roles, newRole]
-        }
+      return {
+        roleAssignments: [...prevState.roleAssignments, newRole]
       }
     },
       () => {
@@ -77,30 +64,30 @@ class RoleForm extends Component {
         // Update project record
         let updatedProject = {
           ...this.props.project,
-          roles: this.state.roles
+          roleAssignments: this.state.roleAssignments
         }
         this.props.updateData(updatedProject)
       }
     )
   }
 
-  handleDataUpdate = e => {
+  handleUpdate = (e, roleId) => {
+    console.log(`Run handleUpdate`)
     e.preventDefault()
     this.setState(prevState => {
-      if (this.state.roles.findIndex(role => role.role.name === this.state.roleInput) >= 0) {
-        console.log(`It matches!!`)
-        let index = prevState.roles.findIndex(role => role.role.name === this.state.roleInput)
-        console.log(`findIndex: `, index)
-        let updatedRoles = [...this.state.roles]
-        updatedRoles[index].role.assignedTo = [this.state.assignmentInput]
-        console.log(`updatedRoles: `, updatedRoles[index])
-        return {
-          roles: [...updatedRoles]
-        }
-      } else {
-        console.log(`No matches found`)
-        return null
+      let updatedRole = {
+        id: roleId,
+        role: this.state.roleInput,
+        assignedTo: this.state.assignmentInput
       }
+      let updatedRoleAssignments = this.state.roleAssignments.map(role => {
+        if (role.id === roleId) {
+          return updatedRole
+        } else {
+          return role
+        }
+      })
+      return { roleAssignments: updatedRoleAssignments }
     },
       () => {
         this.setState({
@@ -110,11 +97,18 @@ class RoleForm extends Component {
         // Update project record
         let updatedProject = {
           ...this.props.project,
-          roles: this.state.roles
+          roleAssignments: this.state.roleAssignments
         }
         this.props.updateData(updatedProject)
+        this.setState({ edit: false })
       }
     )
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevProps.project.roleAssignments !== this.props.project.roleAssignments) {
+      this.setState({ roleAssignments: this.props.project.roleAssignments })
+    }
   }
 
   submitHandler = e => {
