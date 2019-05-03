@@ -31,6 +31,15 @@ class User extends Component {
             return {user: prevState.user}
         })
     }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps.user !== this.props.user) {
+            console.log(`prevProps doesn't match! invoke this.setState`)
+            this.setState({user: this.props.user}, 
+                () => console.log(`CDU update this.state.user: `, this.state.user)
+            )
+        }
+    }
     render = () =>
         <div className='user'>
         {console.log(this.state.user)}
