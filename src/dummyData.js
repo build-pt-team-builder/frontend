@@ -8,27 +8,42 @@ export const projects = [
       'Managing hundreds of student projects week in and week out for Build weeks gets a bit daunting! I need an app that helps me with product ideation and project curation.',
     mvp: 'The product solves the problem',
     stretch: 'Allow me to submit a CSV with the proper fields.',
-    roles: [
+    roleAssignments: [
       {
-        role: {
-          name: 'Web UI Developer',
-          assignedTo: ['Harry']
-        }
+        id: 1,
+        role: 'Web UI Developer',
+        assignedTo: 'Harry'
+
       },
       {
-        role: {
-          name: 'Front-end Architect',
-          assignedTo: ['Ron']
-        }
+        id: 2,
+        role: 'Front-end Architect',
+        assignedTo: 'Ron'
+
       },
       {
-        role: {
-          name: 'Back-end Architect',
-          assignedTo: ['Hermione']
-        }
+        id: 3,
+        role: 'Back-end Architect',
+        assignedTo: 'Hermione'
       }
     ],
-    signUpList: [],
+    signUpList: [
+      {
+        id: 1,
+        role: 'UX Designer',
+        user: 'Greg'
+      },
+      {
+        id: 2,
+        role: 'Project Coordinator',
+        user: 'Alice'
+      },
+      {
+        id: 3,
+        role: 'Back-end Architect',
+        user: 'Sandra'
+      },
+    ],
     category: '',
     projectComplete: false
   },
@@ -41,21 +56,35 @@ export const projects = [
     stretch: `(Mobile App) - Allow reminders to be pushed through the app. 
         (Web App) - Allow for a social media sharing aspect that allows you to advertise the app to professors on linkedin.
         To enable screen reader support, -To learn about keyboard shortcuts,`,
-    roles: [
+    roleAssignments: [
       {
-        role: {
-          name: 'UX Designer',
-          assignedTo: ['George']
-        }
+        id: 1,
+        role: 'UX Designer',
+        assignedTo: 'George'
       },
       {
-        role: {
-          name: 'iOS Developer',
-          assignedTo: ['Steve', 'Tony']
-        }
+        id: 2,
+        role: 'iOS Developer',
+        assignedTo: 'Steve'
       }
     ],
-    signUpList: [],
+    signUpList: [
+      {
+        id: 1,
+        role: 'Project Coordinator',
+        user: 'Peter'
+      },
+      {
+        id: 2,
+        role: 'Back-end Architect',
+        user: 'Jen'
+      },
+      {
+        id: 3,
+        role: 'Web UI Developer',
+        user: 'Sandra'
+      },      
+    ],
     category: '',
     projectComplete: false
   },
@@ -67,7 +96,7 @@ export const projects = [
     mvp:
       'User can create an account, join an existing school account, and search for existing bubls to join. They can explore interests through hashtag searches. They can connect with others and share experiences.',
     stretch: '',
-    roles: [],
+    roleAssignments: [],
     signUpList: [],    
     category: '',
     projectComplete: false
