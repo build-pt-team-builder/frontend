@@ -44,7 +44,7 @@ export const projects = [
         user: 'Sandra'
       },
     ],
-    category: '',
+    category: 'Productivity',
     projectComplete: false
   },
   {
@@ -85,7 +85,7 @@ export const projects = [
         user: 'Sandra'
       },      
     ],
-    category: '',
+    category: 'Education',
     projectComplete: false
   },
   {
@@ -98,7 +98,7 @@ export const projects = [
     stretch: '',
     roleAssignments: [],
     signUpList: [],    
-    category: '',
+    category: 'Social Media',
     projectComplete: false
   }
 ]
