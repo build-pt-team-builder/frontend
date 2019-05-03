@@ -3,12 +3,12 @@ import {Route, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 // import PrivateRoute from './PrivateRoute'
 
+// Action creators
 import { fetchProjectData } from '../../actions/projects'
-// import ProjectList from '../../views/Projects/ProjectList'
+// Components
+import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
-import ProjectTable from '../../views/Projects/ProjectTable'
-
 import Login from '../../views/Login'
 import Home from '../../views/Home'
 import Settings from '../../views/User/Settings'
@@ -24,12 +24,12 @@ class Routes extends Component {
     return (
       <div>
         {/* Assign routes */}
-        <Route path="/" exact component={ProjectTable} />
+        <Route path="/" exact component={ProjectList} />
         <Route path="/login" exact component={Login} />
         <Route path='/settings' component={() => <Home Content={Settings} />} />
         <Route path='/users' component={() => <Home Content={UserList} />} />
         
-        <Route path="/projects" exact component={ProjectTable} />
+        <Route path="/projects" exact component={ProjectList} />
         <Route 
           path="/projects/add" exact 
           render={props => <ProjectForm {...props} add/>}
