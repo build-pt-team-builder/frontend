@@ -9,8 +9,8 @@ import DeleteContainer from '../../components/DesignComponents/DeleteContainer'
 
 class Role extends Component {
   state = {
-    roles: this.props.project ? 
-      this.props.project.roles: [],
+    roleAssignments: this.props.project ? 
+      this.props.project.roleAssignments: [],
     roleInput: '',
     assignmentInput: '',  
     hidden: true,
@@ -20,8 +20,8 @@ class Role extends Component {
   prePopulateForm = () => {
     console.log(`prePopulateForm this.props: `, this.props)
     this.setState({
-      roleInput: this.props.role.role.name,
-      assignmentInput: this.props.role.role.assignedTo
+      roleInput: this.props.role.role,
+      assignmentInput: this.props.role.assignedTo
     },
       () => console.log(`prePopulateForm state: `, this.state)
     )
@@ -49,23 +49,23 @@ class Role extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleUpdate = e => {
+  handleUpdate = (e, roleId) => {
+    console.log(`Run handleUpdate`)
     e.preventDefault()
     this.setState(prevState => {
-      if (this.state.roles.findIndex(role => role.role.name === this.state.roleInput) >= 0) {
-        console.log(`It matches!!`)
-        let index = prevState.roles.findIndex(role => role.role.name === this.state.roleInput)
-        console.log(`findIndex: `, index)
-        let updatedRoles = [...this.state.roles]
-        updatedRoles[index].role.assignedTo = [this.state.assignmentInput]
-        console.log(`updatedRoles: `, updatedRoles[index])
-        return {
-          roles: [...updatedRoles]
-        }
-      } else {
-        console.log(`No matches found`)
-        return null
+      let updatedRole = {
+        id: roleId,
+        role: this.state.roleInput,
+        assignedTo: this.state.assignmentInput
       }
+      let updatedRoleAssignments = prevState.roleAssignments.map(role => {
+        if (role.id === roleId) {
+          return updatedRole
+        } else {
+          return role
+        }
+      })
+      return { roleAssignments: updatedRoleAssignments }
     },
       () => {
         this.setState({
@@ -75,56 +75,58 @@ class Role extends Component {
         // Update project record
         let updatedProject = {
           ...this.props.project,
-          roles: this.state.roles
+          roleAssignments: this.state.roleAssignments
         }
         this.props.updateData(updatedProject)
-        this.toggleEdit()
+        this.setState({edit: false})
       }
     )
   }
   
-  handleDelete = (e, index) => {
+  handleDelete = (e, roleId) => {
+    console.log(`initiate handleDelete of roleId: `, roleId)
     e.preventDefault()
     this.setState(prevState => {
-      let splicedRoleList = prevState.roles.splice(index, 1)
-      console.log(`updatedRoleList: `, splicedRoleList)
-      console.log(`post-splice-prevState: `, prevState.roles)
+      console.log(`pre-filter-prevState: `, prevState.roleAssignments)
+      let filteredList = prevState.roleAssignments.filter(role => role.id !== roleId)
+      console.log(`filteredList: `, filteredList)
+      console.log(`post-filter-prevState: `, prevState.roleAssignments)
       return {
-        roles: [...prevState.roles]
+        roleAssignments: [...filteredList]
       }
     },
       () => {
-        console.log(`Role handleDelete invoked state.roles: `, this.state.roles)
+        console.log(`Role handleDelete invoked state.roleAssignments: `, this.state.roleAssignments)
         // Update project record
         let updatedProject = {
           ...this.props.project,
-          roles: this.state.roles
+          roleAssignments: this.state.roleAssignments
         }
         this.props.updateData(updatedProject)
       }
     )
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.project.roleAssignments !== this.props.project.roleAssignments) {
+      console.log(`prevProps doesn't match this.props invoke CDU methods`)
+      this.setState({ roleAssignments: this.props.project.roleAssignments })
+    }
+  }  
+
   render() {
-    const { role, index } = this.props
+    const { role } = this.props
     console.log(`Role render state: `, this.state)
     console.log(`Role render props: `, this.props)
     return (
       <RoleContainer>
         {!this.state.edit ?
           <>
-            <div onClick={() => this.toggleEdit()}>{role.role.name}:</div>
-            {role.role.assignedTo.length > 1 ?
-              <RoleAssignmentList>
-                {role.role.assignedTo.map((user, index) => (
-                  index !== role.role.assignedTo.length - 1 ? `${user}, ` : user
-                ))} 
-              </RoleAssignmentList> :
-              <RoleAssignment onClick={() => this.toggleEdit()}>{role.role.assignedTo}</RoleAssignment>
-            }
+            <div onClick={() => this.toggleEdit()}>{role.role}:</div>
+            <RoleAssignment onClick={() => this.toggleEdit()}>{role.assignedTo}</RoleAssignment>
             
           </> :
-          <FormContainer onSubmit={this.handleUpdate}>
+          <FormContainer onSubmit={(e) => this.handleUpdate(e, this.props.role.id)}>
             <FormGroup>
               <input
                 list="roleInput"
@@ -152,13 +154,13 @@ class Role extends Component {
         <DeleteContainer>
           {!this.state.edit ?
             <i onClick={this.toggleDeleteBtn} className="fas fa-ellipsis-v"></i> :
-            <i className="far fa-edit" onClick={this.handleUpdate}></i>
+            <i className="far fa-edit" onClick={(e) => this.handleUpdate(e, this.props.role.id)}></i>
           }
           {
             this.state.hidden ? '' :
               <i className="fa fa-trash"
                 aria-hidden="true"
-                onClick={(e) => this.handleDelete(e, index)}
+                onClick={(e) => this.handleDelete(e, this.props.role.id)}
               >
               </i>
           }

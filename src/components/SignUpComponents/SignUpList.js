@@ -12,10 +12,9 @@ class SignUpList extends Component {
       <SignUpListContainer>
         {signUpList.length > 0 && (signUpList.map((slot, index) => (
           <SignUp 
-            key={index}
+            key={slot.id}
             {...this.props} 
             slot={slot} 
-            index={index}
           />
         )))}
       </SignUpListContainer>

@@ -7,15 +7,14 @@ import { RoleListContainer } from './RoleStyleComponents'
 class RoleList extends Component {
 
   render() {
-    const { roles } = this.props.project
+    const { roleAssignments } = this.props.project
     return (
       <RoleListContainer>
-        {roles.length > 0 && (roles.map((role, index) => (
+        {roleAssignments.length > 0 && (roleAssignments.map((role) => (
           <Role 
-            key={index}
+            key={role.id}
             {...this.props} 
             role={role} 
-            index={index}
           />
         )))}
       </RoleListContainer>

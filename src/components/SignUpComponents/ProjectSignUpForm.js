@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import uuid from 'uuid'
 import { updateProject } from '../../actions/projects'
 import { roles as roleList } from '../../dummyData'
 
@@ -10,7 +11,7 @@ class ProjectSignUpForm extends Component {
     signUpList: this.props.project ? 
       this.props.project.signUpList : [],
     roleInput: '',
-    nameInput: '',
+    userInput: '',
     hidden: true,
     edit: false
   }
@@ -19,7 +20,7 @@ class ProjectSignUpForm extends Component {
   //   console.log(`prePopulateForm this.props: `, this.props)
   //   this.setState({
   //     roleInput: '',
-  //     nameInput: ''
+  //     userInput: ''
   //   },
   //     () => console.log(`prePopulateForm state: `, this.state)
   //   )
@@ -41,36 +42,24 @@ class ProjectSignUpForm extends Component {
   }
 
   addData = e => {
-    console.log(`pre-addData() this.state: `, this.state)
     e.preventDefault()
     this.setState(prevState => {
-      if (this.state.signUpList.findIndex(slot => slot.role === this.state.roleInput) >= 0) {
-        console.log(`Invoked addData()...It matches!!`)
-        let index = prevState.signUpList.findIndex(slot => slot.role === this.state.roleInput)
-        console.log(`findIndex: `, index)
-        let updatedSignUps = [...this.state.signUpList]
-        updatedSignUps[index].name.push(this.state.nameInput)
-        console.log(`updatedSignUps: `, updatedSignUps[index])
-        return {
-          signUpList: [...updatedSignUps]
-        }
-      } else {
-        console.log(`No matches found`)
-        let newSignUp = {
-          role: this.state.roleInput,
-          name: [this.state.nameInput]
-        }
-        console.log(`newSignUp: `, newSignUp)
+      let newRole = {
+        id: uuid.v4(),
+        role: this.state.roleInput,
+        user: this.state.userInput
+      }
 
-        return {
-          signUpList: [...prevState.signUpList, newSignUp]
-        }
+      console.log(`newRole: `, newRole)
+
+      return {
+        signUpList: [...prevState.signUpList, newRole]
       }
     },
       () => {
         this.setState({
           roleInput: '',
-          nameInput: ''
+          userInput: ''
         })
         // Update project record
         let updatedProject = {
@@ -82,28 +71,28 @@ class ProjectSignUpForm extends Component {
     )
   }
 
-  handleDataUpdate = e => {
+  handleUpdate = (e, slotId) => {
+    console.log(`Run handleUpdate`)
     e.preventDefault()
     this.setState(prevState => {
-      if (prevState.signUpList.findIndex(slot => slot.role === this.state.roleInput) >= 0) {
-        console.log(`It matches!!`)
-        let index = prevState.signUpList.findIndex(slot => slot.role === this.state.roleInput)
-        console.log(`findIndex: `, index)
-        let updatedSignUps = [...this.state.signUpList]
-        updatedSignUps[index].name = [this.state.nameInput]
-        console.log(`updatedSignUps: `, updatedSignUps[index])
-        return {
-          signUpList: [...updatedSignUps]
-        }
-      } else {
-        console.log(`No matches found`)
-        return null
+      let updatedSlot = {
+        id: slotId,
+        role: this.state.roleInput,
+        user: this.state.userInput
       }
+      let updatedSignUpList = prevState.signUpList.map(slot => {
+        if (slot.id === slotId) {
+          return updatedSlot
+        } else {
+          return slot
+        }
+      })
+      return { signUpList: updatedSignUpList }
     },
       () => {
         this.setState({
           roleInput: '',
-          nameInput: ''
+          userInput: ''
         })
         // Update project record
         let updatedProject = {
@@ -111,6 +100,7 @@ class ProjectSignUpForm extends Component {
           signUpList: this.state.signUpList
         }
         this.props.updateData(updatedProject)
+        this.setState({ edit: false })
       }
     )
   }
@@ -146,8 +136,8 @@ class ProjectSignUpForm extends Component {
             type="text"
             onChange={this.handleInput}
             placeholder="Sign Up"
-            value={this.state.nameInput}
-            name="nameInput"
+            value={this.state.userInput}
+            name="userInput"
           />
           <button type="submit">+</button>
         </FormGroup>
