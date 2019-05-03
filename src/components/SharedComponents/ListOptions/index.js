@@ -3,20 +3,40 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 class ListOptions extends Component {
-    constructor() {
+    constructor(props) {
         super()
         this.state = {
-
+            filters: [
+                {name: 'cohort', value: 'all'},
+                {name: 'role', value: 'all'},
+                {name: 'project_manager', value: 'all'},
+                {name: 'project', value: 'all'}
+            ],
         }
     }
     componentDidMount = () => {
-
+        /* <select className='value' onChange={this.h_select_change} name='role' value={this.state.user.role}></select> */
+    }
+    h_filter = filters => {
+        this.props.filter(filters)
+    }
+    h_select_filter = e => {
+        const name = e.target.name
+        const value = e.target.value
+        this.setState(prevState => { //update state of this component
+            prevState.filters.map(filter => {
+                if(filter.name === name) filter.value = value
+                return filter
+            })
+            this.h_filter(prevState.filters)
+            return {filters: prevState.filters}
+        })
     }
     render = () =>
         <Wrapper className='options'>
             <div className='option'>
                 <pre className='title'>Cohort</pre>
-                <select>
+                <select onChange={this.h_select_filter} name='cohort' value={this.state.cohort}>
                     <optgroup label='Cohort'>
                         <option value='all'>All</option>
                         <option value='none'>None</option>
@@ -33,6 +53,7 @@ class ListOptions extends Component {
                         <option value='webpt01'>Webpt01</option>
                         <option value='webpt02'>Webpt02</option>
                         <option value='webpt03'>Webpt03</option>
+                        <option value='webpt04'>Webpt04</option>
                     </optgroup>
                     <optgroup label='UI/UX'>
                         <option value='ux01'>UX01</option>
@@ -43,10 +64,10 @@ class ListOptions extends Component {
             </div>
             <div className='option'>
                 <pre className='title'>Role</pre>
-                <select>
+                <select onChange={this.h_select_filter} name='role' value={this.state.role}>
                     <option value='all'>All</option>
                     <option value='none'>None</option>
-                    <option value='ds'>Data Science</option>
+                    <option value='data science'>Data Science</option>
                     <option value='frontend'>FrontEnd</option>
                     <option value='backend'>Backend</option>
                     <option value='uiux'>UI/UX</option>
@@ -54,7 +75,7 @@ class ListOptions extends Component {
             </div>
             <div className='option'>
                 <pre className='title'>Project Manager</pre>
-                <select>
+                <select onChange={this.h_select_filter} name='project_manager' value={this.state.projectManager}>
                     <option value='all'>All</option>
                     <option value='none'>None</option>
                     <option value='pm01'>Carlos</option>
@@ -65,7 +86,7 @@ class ListOptions extends Component {
             </div>
             <div className='option'>
                 <pre className='title'>Project</pre>
-                <select>
+                <select onChange={this.h_select_filter} name='project' value={this.state.project}>
                     <option value='all'>All</option>
                     <option value='none'>None</option>
                     <option value='pj001'>Rover</option>

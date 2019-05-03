@@ -34,5 +34,14 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  button, input, select {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: ${color.txt05};
+    outline: none;
+    &:first-of-type {border-radius: 5px 0 0 5px}
+    &:last-of-type {border-radius: 0 5px 5px 0}
+  }
+  select > * {background-color: ${color.bg00}}
 `
 export default GlobalStyle

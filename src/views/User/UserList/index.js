@@ -18,30 +18,30 @@ const users = [
         lastName: 'Clark',
         email: 'Glark@gmail.com',
         avatar: 'avatar.png',
-        cohort: 'webpt4',
-        projectManager: 'Carlos',
-        role: 'Backend',
-        project: null,
+        cohort: 'webpt04',
+        project_manager: 'Carlos',
+        role: 'backend',
+        project: 'None',
     },
     {
         firstName: 'Donna',
         lastName: 'Emmerson',
         email: 'oopsididitagain@yahoo.com',
         avatar: 'avatar.png',
-        cohort: 'webpt4',
-        projectManager: 'Carlos',
-        role: 'Backend',
-        project: null,
+        cohort: 'webpt04',
+        role: 'frontend',
+        project_manager: 'Carlos',
+        project: 'None',
     },
     {
         firstName: 'Elliot',
         lastName: 'Alderson',
         email: 'mrrobot@geocities.com',
         avatar: 'elliot.jpg',
-        cohort: 'webpt3',
-        projectManager: 'Lola',
-        role: 'Data Science',
-        project: null,
+        cohort: 'webpt03',
+        project_manager: 'Lola',
+        role: 'data science',
+        project: 'None',
     }
 ]
 
@@ -50,16 +50,46 @@ class UserList extends Component {
         super()
         this.state = {
             headerStats: headerStats,
+            all_users: users,
             users: users,
+            edit: false,
         }
+    }
+    h_filter_users = filters => {
+        let users = this.state.all_users
+        filters.forEach(filter => {
+            if(filter.value !== 'all') { users = users.filter(user => {
+                return user[filter.name] === filter.value
+            })}
+        })
+        this.setState({users: users})
+    }
+    h_edit_user = user => {
+        console.log('editing...')
+        console.log(user)
+    }
+    h_remove_user = user => {
+        console.log('removing...')
+        console.log(user)
     }
     render = () => 
         <Wrapper className='users'>
             <Header stats={this.state.headerStats} />
+            {/* {console.log(this.state.users)} */}
             <div className='user-list'>
-                <ListOptions />
+                <ListOptions
+                    filter={this.h_filter_users}
+                />
                 {this.state.users.map((user,idx) =>
-                    <User user={user} key={idx} />
+                    <>
+                        {console.log(user)}
+                        <User
+                            edit={this.h_edit_user}
+                            remove={this.h_remove_user}
+                            user={user}
+                            key={idx}
+                        />
+                    </>
                 )}
             </div>
         </Wrapper>
