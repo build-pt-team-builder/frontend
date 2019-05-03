@@ -175,7 +175,7 @@ class ProjectDetails extends Component {
               />
            </CheckBoxGroup>
             {/* User sign up */}
-            {/* <SignUpBoard {...this.props} /> */}
+            <SignUpBoard {...this.props} />
           </div>
           {/* Update project details */}
           <ButtonMenu {...this.state} onClick={this.handleUpdate}>
