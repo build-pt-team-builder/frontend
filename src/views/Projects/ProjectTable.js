@@ -20,29 +20,25 @@ class ProjectTable extends Component {
       },
       {
         Header: "Roles",
-        id: "roles",
+        id: "roleAssignments",
         width: 300,
         accessor: d => {
           return (
             <ReactTable
               NoDataComponent={() => null}
               TheadComponent={() => null}
-              defaultPageSize={d.roles.length}
+              defaultPageSize={3}
               showPagination={false}
-              data={d.roles}
+              data={d.roleAssignments}
               columns={[
                 {
                   Header: "Role",
                   id: "role",
-                  accessor: d => d.role.name
+                  accessor: d => d.role
                 },
                 {
                   Header: "Assigned",
-                  id: "assignedTo",
-                  accessor: d => d.role.assignedTo.length > 1 ?
-                    d.role.assignedTo.map((user, index) => (
-                      index !== d.role.assignedTo.length - 1 ? `${user}, ` : user
-                    )) : d.role.assignedTo
+                  accessor: "assignedTo",
                 }
               ]}
             />

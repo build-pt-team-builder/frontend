@@ -18,20 +18,20 @@ class ProjectDetails extends Component {
       pitch: '',
       mvp: '',
       stretch: '',
-      roles: [],
+      roleAssignments: [],
       category: '',
       projectComplete: this.props.project.projectComplete,
       hidden: true
     }
 
   prePopulateForm = () => {
-    const { name, pitch, mvp, stretch, roles, category, projectComplete } = this.props.project
+    const { name, pitch, mvp, stretch, roleAssignments, category, projectComplete } = this.props.project
     this.setState({
       name,
       pitch,
       mvp,
       stretch, 
-      roles,
+      roleAssignments,
       category,
       projectComplete
     },
@@ -161,7 +161,7 @@ class ProjectDetails extends Component {
                 />
               )}
             <div className="stat-category">Roles:</div>
-            {/* List project roles */}
+            {/* List project roleAssignments */}
             <RoleForm {...this.props} />
             {/* Mark project complete */}
             <RoleList {...this.props}/> 
@@ -175,7 +175,7 @@ class ProjectDetails extends Component {
               />
            </CheckBoxGroup>
             {/* User sign up */}
-            <SignUpBoard {...this.props} />
+            {/* <SignUpBoard {...this.props} /> */}
           </div>
           {/* Update project details */}
           <ButtonMenu {...this.state} onClick={this.handleUpdate}>
