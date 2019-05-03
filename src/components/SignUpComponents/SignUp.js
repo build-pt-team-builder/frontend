@@ -12,7 +12,7 @@ class SignUp extends Component {
     signUpList: this.props.project ? 
       this.props.project.signUpList: [],
     roleInput: '',
-    nameInput: '',  
+    userInput: '',  
     hidden: true,
     edit: false
   }
@@ -21,7 +21,7 @@ class SignUp extends Component {
   //   console.log(`prePopulateForm this.props: `, this.props)
   //   this.setState({
   //     roleInput: '',
-  //     nameInput: ''
+  //     userInput: ''
   //   },
   //     () => console.log(`prePopulateForm state: `, this.state)
   //   )
@@ -49,28 +49,28 @@ class SignUp extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleUpdate = e => {
+  handleUpdate = (e, slotId) => {
+    console.log(`Run handleUpdate`)
     e.preventDefault()
     this.setState(prevState => {
-      if (prevState.signUpList.findIndex(slot => slot.role === this.state.roleInput) >= 0) {
-        console.log(`It matches!!`)
-        let index = prevState.signUpList.findIndex(slot => slot.role === this.state.roleInput)
-        console.log(`findIndex: `, index)
-        let updatedSignUps = [...this.state.signUpList]
-        updatedSignUps[index].name = [this.state.nameInput]
-        console.log(`updatedSignUps: `, updatedSignUps[index])
-        return {
-          signUpList: [...updatedSignUps]
-        }
-      } else {
-        console.log(`No matches found`)
-        return null
+      let updatedSlot = {
+        id: slotId,
+        role: this.state.roleInput,
+        user: this.state.userInput
       }
+      let updatedSignUpList = prevState.signUpList.map(slot => {
+        if (slot.id === slotId) {
+          return updatedSlot
+        } else {
+          return slot
+        }
+      })
+      return { signUpList: updatedSignUpList }
     },
       () => {
         this.setState({
           roleInput: '',
-          nameInput: ''
+          userInput: ''
         })
         // Update project record
         let updatedProject = {
@@ -78,23 +78,25 @@ class SignUp extends Component {
           signUpList: this.state.signUpList
         }
         this.props.updateData(updatedProject)
-        this.toggleEdit()
+        this.setState({ edit: false })
       }
     )
   }
   
-  handleDelete = (e, index) => {
+  handleDelete = (e, slotId) => {
+    console.log(`initiate handleDelete of slotId: `, slotId)
     e.preventDefault()
     this.setState(prevState => {
-      let splicedSignUpList = prevState.signUpList.splice(index, 1)
-      console.log(`updatedSignUpList: `, splicedSignUpList)
-      console.log(`post-splice-prevState: `, prevState.signUpList)
+      console.log(`pre-filter-prevState: `, prevState.signUpList)
+      let filteredList = prevState.signUpList.filter(slot => slot.id !== slotId)
+      console.log(`filteredList: `, filteredList)
+      console.log(`post-filter-prevState: `, prevState.signUpList)
       return {
-        signUpList: [...prevState.signUpList]
+        signUpList: [...filteredList]
       }
     },
       () => {
-        console.log(`SignUp handleDelete invoked state.signUpList: `, this.state.signUpList)
+        console.log(`Role handleDelete invoked state.signUpList: `, this.state.signUpList)
         // Update project record
         let updatedProject = {
           ...this.props.project,
@@ -105,6 +107,13 @@ class SignUp extends Component {
     )
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.project.signUpList !== this.props.project.signUpList) {
+      console.log(`prevProps doesn't match this.props invoke CDU methods`)
+      this.setState({ signUpList: this.props.project.signUpList })
+    }
+  }   
+
   render() {
     const { slot, index } = this.props
     console.log(`SignUp render state: `, this.state)
@@ -114,17 +123,10 @@ class SignUp extends Component {
         {!this.state.edit ?
           <>
             <div onClick={() => this.toggleEdit()}>{slot.role}:</div>
-            {slot.name.length > 1 ?
-              <SignUpNameList>
-                {slot.name.map((user, index) => (
-                  index !== slot.name.length - 1 ? `${user}, ` : user
-                ))} 
-              </SignUpNameList> :
-              <SignUpName onClick={() => this.toggleEdit()}>{slot.name}</SignUpName>
-            }
+            <SignUpName onClick={() => this.toggleEdit()}>{slot.user}</SignUpName>
             
           </> :
-          <FormContainer onSubmit={this.handleUpdate}>
+          <FormContainer onSubmit={(e) => this.handleUpdate(e, this.props.slot.id)}>
             <FormGroup>
               <input
                 list="roleInput"
@@ -135,15 +137,15 @@ class SignUp extends Component {
               />
               <datalist id="roleInput">
                 {roleList.map(role => (
-                  <option key={role.id} value={role.name} />
+                  <option key={role.id} value={role.user} />
                 ))}
               </datalist>
               <input
                 type="text"
                 onChange={this.handleInput}
                 placeholder="Sign Up"
-                value={this.state.nameInput}
-                name="nameInput"
+                value={this.state.userInput}
+                name="userInput"
               />
             </FormGroup>
           </FormContainer> 
@@ -158,7 +160,7 @@ class SignUp extends Component {
             this.state.hidden ? '' :
               <i className="fa fa-trash"
                 aria-hidden="true"
-                onClick={(e) => this.handleDelete(e, index)}
+                onClick={(e) => this.handleDelete(e, this.props.slot.id)}
               >
               </i>
           }
