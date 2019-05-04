@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+import Role from './role'
+
 class ProjectSummary extends Component {
     constructor() {
         super()
@@ -25,14 +27,17 @@ class ProjectSummary extends Component {
         this.setState(prevState => {
             prevState.roles.shift()
             value !== 'cancel' //if value isn't cancel, add it to project
-            && this.props.h_add_role(this.state.project_id, value)
+            && this.props.add_role(this.state.project_id, value)
             return {roles: prevState.roles}
-        })
-        
+        }) 
     }
-    h_null_click = e => e.stopPropagation() //prevents triggering parent event
+    h_toggle_add_user = e => {
+        e.stopPropagation()
+        e.target.classList.toggle('edit')
+    }
+    h_edit_user = (role_id, user) => this.props.edit_user(this.state.project_id, role_id, user)
     render = () =>
-    <div id={this.props.project.id} className='summary' onClick={this.props.h_open}>
+    <div id={this.props.project.id} className='summary' onClick={this.props.open}>
             <div className='identity'>
                 <pre className='name'>{this.props.project.name}</pre>
             </div>
@@ -40,30 +45,14 @@ class ProjectSummary extends Component {
                 <div className='position action'>
                     <button className='add' onClick={this.h_add_role_field}>Add Role</button>
                 </div>
-                {this.props.project.roles.map((position,idx) =>
-                    <div
-                        className={this.props.active_roles.filter(role => role.name === position.role).length !== 0 ? 'position active' : 'position'}
+                {this.props.project.roles.map((role,idx) =>
+                    <Role
+                        role={role} 
+                        active_roles={this.props.active_roles}
+                        edit_user={this.h_edit_user}
+                        add_role={this.h_add_role}
                         key={idx}
-                    >
-                        {position.role === 'none'
-                            ?   <select onClick={this.h_null_click} onChange={this.h_add_role} value='role'>
-                                    <option value='role' hidden>Role</option>
-                                    <option value='cancel'>Cancel</option>
-                                    <option value='uiux'>UI/UX</option>
-                                    <option value='webui'>WebUI</option>
-                                    <option value='frontend'>Frontend</option>
-                                    <option value='backend'>Backend</option>
-                                    <option value='android'>Android</option>
-                                    <option value='data science'>Data Science</option>
-                                    <option value='lead'>Lead</option>
-                                </select>
-                            :   <>
-                                    <pre className='role'>{position.role}</pre>
-                                    <pre className='member'>{position.member}</pre>
-                                </>
-                        }
-                        
-                    </div>
+                    />
                 )}
             </div>
         </div>

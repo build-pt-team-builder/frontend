@@ -4,6 +4,7 @@ class ProjectDetails extends Component {
     constructor() {
         super()
         this.state = {
+            id: '',
             editing: false,
             pitch: '',
             mvp: '',
@@ -38,11 +39,11 @@ class ProjectDetails extends Component {
         <div className={this.props.project.active ? 'description active' : 'description'}>
             {this.props.project.description.map((desc,idx) =>
                 <React.Fragment key={idx}>
-                <pre className='title' >{desc.title}: </pre>
-                {this.state.editing
-                    ?   <input type='text' name={desc.title.toLowerCase()} onChange={this.h_update_field} placeholder={desc.title} value={this.state[desc.title.toLowerCase()]}/>
-                    :   <p className='value'>{desc.value}</p>
-                }
+                    <pre className='title' >{desc.title}: </pre>
+                    {this.state.editing
+                        ?   <input type='text' name={desc.title.toLowerCase()} onChange={this.h_update_field} placeholder={desc.title} value={this.state[desc.title.toLowerCase()]}/>
+                        :   <p className='value'>{desc.value}</p>
+                    }
                 </React.Fragment>
             )}
             <pre className='title'>Status:</pre>
@@ -52,13 +53,18 @@ class ProjectDetails extends Component {
                     onClick={this.state.editing ? this.h_toggle_edit_mode : null}>
                     {this.state.editing ? 'Back' : 'Complete'}
                 </button>
+                <button>Delete</button>
                 <button
                     id={this.props.project.id}
                     onClick={this.h_toggle_edit_mode}
                     className={this.state.editing ? 'active' : null}>
                     Edit
                 </button>
-                <button>Delete</button>
+                <button
+                    id={this.props.project.id}
+                    onClick={this.props.h_close}>
+                    Close
+                </button>
             </div>
         </div>
 }

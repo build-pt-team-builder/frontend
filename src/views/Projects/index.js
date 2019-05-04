@@ -21,11 +21,11 @@ const projects = [
         active: false,
         status: 'Open',
         roles: [
-            {role: 'Lead', member: 'Joe MacMillan'},
-            {role: 'WebUI', member: 'Donna Emerson'},
-            {role: 'WebUI', member: 'John Bosworth'},
-            {role: 'Frontend', member: 'Cameron Howe'},
-            {role: 'Backend', member: 'Gordon Clark'},
+            {id: 0, role: 'Lead', member: 'Joe MacMillan'},
+            {id: 1, role: 'WebUI', member: 'Donna Emerson'},
+            {id: 2, role: 'WebUI', member: 'John Bosworth'},
+            {id: 3, role: 'Frontend', member: 'Cameron Howe'},
+            {id: 4, role: 'Backend', member: 'Gordon Clark'},
         ],
         description: [
             {title: 'Pitch', value: 'Index the web!'},
@@ -40,11 +40,11 @@ const projects = [
         active: false,
         status: 'Open',
         roles: [
-            {role: 'Lead', member: null},
-            {role: 'WebUI', member: 'Arki'},
-            {role: 'WebUI', member: null},
-            {role: 'Frontend', member: 'Tom Rendon'},
-            {role: 'Backend', member: 'Ryan Rey'},
+            {id: 0, role: 'Lead', member: null},
+            {id: 1, role: 'WebUI', member: 'Arki'},
+            {id: 2, role: 'WebUI', member: null},
+            {id: 3, role: 'Frontend', member: 'Tom Rendon'},
+            {id: 4, role: 'Backend', member: 'Ryan Rey'},
         ],
         description: [
             {title: 'Pitch', value: 'Fit a giant in a suitcase'},
@@ -59,12 +59,12 @@ const projects = [
         active: false,
         status: 'Open',
         roles: [
-            {role: 'Lead', member: 'Diane Gould'},
-            {role: 'WebUI', member: 'Katie Herman'},
-            {role: 'WebUI', member: 'Tanya Reese'},
-            {role: 'Frontend', member: null},
-            {role: 'Frontend', member: null},
-            {role: 'Backend', member: null},
+            {id: 0, role: 'Lead', member: 'Diane Gould'},
+            {id: 1, role: 'WebUI', member: 'Katie Herman'},
+            {id: 2, role: 'WebUI', member: 'Tanya Reese'},
+            {id: 3, role: 'Frontend', member: null},
+            {id: 4, role: 'Frontend', member: null},
+            {id: 5, role: 'Backend', member: null},
         ],
         description: [
             {title: 'Pitch', value: 'Crawl the web, index what you find, make it searchable.'},
@@ -154,13 +154,27 @@ class Projects extends Component {
             }
         })
     }
+    h_edit_user = (project_id, role_id, user) => {
+        //find role and change user
+        this.setState(prevState => {
+            prevState.projects = prevState.projects.map(project => {
+                if(project.id === project_id) {
+                    project = project.roles.map(role => {
+                        if(role.id === role_id) role.member = user
+                        return role
+                    })
+                }
+                return project
+            })
+        })
+    }
     h_add_project_role = (project_id, role) => {
         //capitalize first letter of each word in role
         role = role.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
         //add new role to project
         this.setState(prevState => {
-            prevState.projects = prevState.projects.map(project => {
-                project.id === project_id && project.roles.unshift({role: role, value: ''})
+            prevState.projects = prevState.projects.map(project => { //id is temporary
+                project.id === project_id && project.roles.unshift({id: 0, role: role, value: ''})
                 return project
             })
             return {projects: prevState.projects}
@@ -182,12 +196,14 @@ class Projects extends Component {
                         <ProjectSummary
                             project={project}
                             active_roles={this.state.settings.positions.filter(role => role.value)}
-                            h_open={this.h_toggle_project_open}
-                            h_add_role={this.h_add_project_role}
+                            open={this.h_toggle_project_open}
+                            add_role={this.h_add_project_role}
+                            edit_user={this.h_edit_user}
                             toggle_active={this.h_toggle_project_open}
                         />
                         <ProjectDetails
                             project={project}
+                            h_close={this.h_toggle_project_open}
                         />
                     </div>
                 )}
