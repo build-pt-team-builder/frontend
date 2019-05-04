@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 import Header from '../../../components/SharedComponents/Header/Private'
+
 import ListOptions from './options'
 import User from './user'
 // import Options from './options'
@@ -89,6 +90,7 @@ class UserList extends Component {
                     />
                 )}
             </div>
+            <Footer />
         </Wrapper>
 }
 

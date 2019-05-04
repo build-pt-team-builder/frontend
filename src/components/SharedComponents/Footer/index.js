@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Wrapper from './style'
 
 const Footer = () =>
-    <Wrapper>
+    <Wrapper className='footer'>
         <div className='links'>
             <Link to='/projects' className='link'>About</Link>
             <Link to='/projects' className='link'>Blog</Link>

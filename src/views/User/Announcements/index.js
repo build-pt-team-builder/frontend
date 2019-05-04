@@ -42,6 +42,7 @@ class Announcements extends Component {
                     <Announcement content={announcement} key={announcement.id}/>
                 )}
             </div>
+            <Footer />
         </Wrapper>
 }
 
