@@ -20,7 +20,7 @@ const projects = [
         name: `Comet`,
         active: false,
         status: 'Open',
-        positions: [
+        roles: [
             {role: 'Lead', member: 'Joe MacMillan'},
             {role: 'WebUI', member: 'Donna Emerson'},
             {role: 'WebUI', member: 'John Bosworth'},
@@ -39,7 +39,7 @@ const projects = [
         name: `The Giant`,
         active: false,
         status: 'Open',
-        positions: [
+        roles: [
             {role: 'Lead', member: null},
             {role: 'WebUI', member: 'Arki'},
             {role: 'WebUI', member: null},
@@ -58,7 +58,7 @@ const projects = [
         name: `Rover`,
         active: false,
         status: 'Open',
-        positions: [
+        roles: [
             {role: 'Lead', member: 'Diane Gould'},
             {role: 'WebUI', member: 'Katie Herman'},
             {role: 'WebUI', member: 'Tanya Reese'},
@@ -154,6 +154,18 @@ class Projects extends Component {
             }
         })
     }
+    h_add_project_role = (project_id, role) => {
+        //capitalize first letter of each word in role
+        role = role.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+        //add new role to project
+        this.setState(prevState => {
+            prevState.projects = prevState.projects.map(project => {
+                project.id === project_id && project.roles.unshift({role: role, value: ''})
+                return project
+            })
+            return {projects: prevState.projects}
+        })
+    }
     render = () => 
         <Style className='projects'>
             {this.state.settings.showStats && <Header stats={this.state.headerStats}/>}
@@ -171,6 +183,7 @@ class Projects extends Component {
                             project={project}
                             active_roles={this.state.settings.positions.filter(role => role.value)}
                             h_open={this.h_toggle_project_open}
+                            h_add_role={this.h_add_project_role}
                             toggle_active={this.h_toggle_project_open}
                         />
                         <ProjectDetails
