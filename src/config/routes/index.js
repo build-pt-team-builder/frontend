@@ -9,10 +9,12 @@ import { fetchProjectData } from '../../actions/projects'
 import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
+import LandingPage from '../../components/LandingPage'
 import Login from '../../views/Login'
-import Home from '../../views/Home'
+
 import Settings from '../../views/User/Settings'
 import UserList from '../../views/User/UserList'
+import Announcements from '../../views/User/Announcements'
 
 class Routes extends Component {
   componentDidMount() {
@@ -20,14 +22,15 @@ class Routes extends Component {
   }
 
   render() {
-    console.log(`Routes render this.props is: `)
     return (
       <div>
         {/* Assign routes */}
-        <Route path="/" exact component={ProjectList} />
+        <Route exact path="/" component={LandingPage} />
         <Route path="/login" exact component={Login} />
-        <Route path='/settings' component={() => <Home Content={Settings} />} />
-        <Route path='/users' component={() => <Home Content={UserList} />} />
+
+        <Route path='/settings' component={Settings} />
+        <Route path='/users' component={UserList} />
+        <Route path='/announcements' component={Announcements} />
         
         <Route path="/projects" exact component={ProjectList} />
         <Route 

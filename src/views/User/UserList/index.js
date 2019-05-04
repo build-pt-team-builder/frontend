@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 import Header from '../../../components/SharedComponents/Header/Private'
-import ListOptions from '../../../components/SharedComponents/ListOptions'
+import ListOptions from './options'
 import User from './user'
 // import Options from './options'
 
@@ -78,11 +78,8 @@ class UserList extends Component {
     render = () => 
         <Wrapper className='users'>
             <Header stats={this.state.headerStats} />
-            {/* {console.log(this.state.users)} */}
+            <ListOptions filter={this.h_filter_users} />
             <div className='user-list'>
-                <ListOptions
-                    filter={this.h_filter_users}
-                />
                 {this.state.users.map((user,idx) =>
                     <User
                         edit={this.h_edit_user}
