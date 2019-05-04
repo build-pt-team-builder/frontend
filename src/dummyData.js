@@ -99,7 +99,7 @@ export const projects = [
     roleAssignments: [],
     signUpList: [],    
     category: 'Social Media',
-    projectComplete: false
+    projectComplete: true
   }
 ]
 
@@ -124,4 +124,31 @@ export const roles = [
     id: 5,
     name: 'UX Designer'
   },
+]
+
+export const categories = [
+  {
+    id: 1,
+    name: 'Productivity'
+  },
+  {
+    id: 2,
+    name: 'Education'
+  },
+  {
+    id: 3,
+    name: 'Social Impact'
+  },
+  {
+    id: 4,
+    name: 'Personal Finance'
+  },
+  {
+    id: 5,
+    name: 'Leisure and Entertainment'
+  },
+  {
+    id: 6,
+    name: 'Social Media'
+  }
 ]
