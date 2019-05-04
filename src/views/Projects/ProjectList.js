@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import { TableContainer } from './ProjectStyleComponents'
-import { color } from '../../components/DesignComponents/theme'
+import { color, fontSizing } from '../../components/DesignComponents/theme'
 import { categories } from '../../dummyData'
 
 class ProjectList extends Component {
@@ -11,11 +11,22 @@ class ProjectList extends Component {
     const { projects } = this.props
     const columns = [
     { 
-      Header: 'Build Week Projects',
+      Header: () => (
+        <h1>Build Week Projects</h1>
+      ),
       columns: [{   
         Header: 'Name',
-        accessor: "name",
-        width: 150
+        id: "name",
+        accessor: d => (
+          <div
+           style={{
+             fontSize: `${fontSizing.s}`
+           }}
+           >
+            {d.name}
+           </div>
+        ),
+        width: 160
       },
       {
         Header: "Description",
@@ -133,12 +144,20 @@ class ProjectList extends Component {
     return (
       <TableContainer>
         <ReactTable
-          getTheadThProps={this.hideHeader} 
+          getTheadThProps={() => {
+            return {
+              style: {
+                margin: `4px 0`,
+                cursor: 'pointer',
+                background: `${color.bg00}`,
+                fontSize: `${fontSizing.s}`
+              } 
+            }
+          }} 
           columns={columns}
           data={projects}
           filterable
           defaultPageSize={5}
-          className="-striped -highlight"
           getTrProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e) => {
@@ -152,7 +171,9 @@ class ProjectList extends Component {
                 this.props.history.push(`/projects/${rowInfo.original.id}`)
               },
               style: {
-                cursor: 'pointer'
+                margin: `4px 0`,
+                cursor: 'pointer',
+                background: `${color.bg00}`
               }
             }
           }}

@@ -188,22 +188,22 @@ export const SpinnerContainer = styled.div`
 export const TableContainer = styled.div`
   width: 100%;
   ${flex('column', 'center', 'center')}
-  margin: 50px 0;
+  
   padding: 20px 10px;
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  background: ${color.lightText};
-  color: ${color.darkText};
+  background: transparent;
+  color: ${color.txt04};
   font-size: ${fontSizing.xs};
 
   h1 {
-    font-size: ${fontSizing.m};
-    letter-spacing: 0.5rem;
-    color: ${color.darkText};
+    font-size: ${fontSizing.ml};
+    letter-spacing: 0.35rem;
+    color: ${color.tx04};
   }
 
   a {
     text-decoration: none;
-    color: ${color.lightText};
+    color: ${color.tx04};
   }
 
   @media ${breakpoints[0]} {
