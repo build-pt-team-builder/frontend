@@ -144,13 +144,13 @@ class ProjectTable extends Component {
           getTrProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e) => {
-                console.log("Row - onClick: ", {
-                  state,
-                  rowInfo,
-                  column,
-                  instance,
-                  event: e
-                })
+                // console.log("Row - onClick: ", {
+                //   state,
+                //   rowInfo,
+                //   column,
+                //   instance,
+                //   event: e
+                // })
                 this.props.history.push(`/projects/${rowInfo.original.id}`)
               },
               style: {
@@ -166,7 +166,7 @@ class ProjectTable extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.projects)
+  // console.log(state.projects)
   return {
     projects: state.projects.projects,
     fetchingData: state.projects.fetchingData

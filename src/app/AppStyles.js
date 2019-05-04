@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { flex } from '../components/DesignComponents/theme'
 
 const AppContainer = styled.div`
   width: 100%;
   max-width: 1400px;
-  ${flex('column','center')};
-  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100%;
 `
 
 export default AppContainer

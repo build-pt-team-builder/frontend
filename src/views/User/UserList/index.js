@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 import Header from '../../../components/SharedComponents/Header/Private'
-import Footer from '../../../components/SharedComponents/Footer'
+
 import ListOptions from './options'
 import User from './user'
 // import Options from './options'

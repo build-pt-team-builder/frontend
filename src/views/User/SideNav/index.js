@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 import Content from './style'
@@ -13,24 +13,31 @@ const links = [
     {displayText: 'Log Out', to: '/', imgSrc: '/', altText: ''},
 ]
 
-const SideNav = props =>
-    <Content>
-        <div className='logo'>
-            <h3>Thursday</h3>
-        </div>
-        <Profile />
-        <nav className='links'>
-            {links.map(link =>
-                <Link
-                    to={link.to}
-                    key={link.displayText}
-                    className={window.location.pathname === link.to ? 'selected' : null} >
-                    <img src={link.imgSrc} alt={link.altText}/>
-                    <pre>{link.displayText}</pre>
-                </Link>
-            )}
-        </nav>
-    </Content>
-    
+class SideNav extends Component {
+    constructor() {
+        super()
+        this.state = {
+
+        }
+    }
+    render = () =>
+        <Content>
+            <div className='logo'>
+                <h3>Thursdaaay</h3>
+            </div>
+            <Profile />
+            <nav className='links'>
+                {links.map(link =>
+                    <Link
+                        to={link.to}
+                        key={link.displayText}
+                        className={this.props.location.pathname === link.to ? 'selected' : null} >
+                        <img src={link.imgSrc} alt={link.altText}/>
+                        <pre>{link.displayText}</pre>
+                    </Link>
+                )}
+            </nav>
+        </Content>
+}
 
 export default SideNav

@@ -3,7 +3,6 @@ import React, {Component} from 'react'
 import Wrapper from './style'
 
 import Announcement from './announcement'
-import Footer from '../../../components/SharedComponents/Footer'
 
 const announcements = [
     {
@@ -40,7 +39,7 @@ class Announcements extends Component {
         <Wrapper className='announcements'>
             <div className='announcement-list'>
                 {this.state.announcements.map(announcement =>
-                    <Announcement content={announcement} />
+                    <Announcement content={announcement} key={announcement.id}/>
                 )}
             </div>
             <Footer />
