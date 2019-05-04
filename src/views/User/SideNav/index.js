@@ -5,7 +5,7 @@ import Content from './style'
 import Profile from '../Profile'
 
 const links = [
-    {displayText: 'Announcements', to: '/home', imgSrc: '/', altText: ''},
+    {displayText: 'Announcements', to: '/announcements', imgSrc: '/', altText: ''},
     {displayText: 'Users', to: '/users', imgSrc: '/', altText: ''},
     // {displayText: 'Groups', to: '/home', imgSrc: '/', altText: ''},
     {displayText: 'Projects', to: '/projects', imgSrc: '/', altText: ''},
