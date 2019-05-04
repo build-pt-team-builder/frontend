@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+import {add_user, get_user, get_users, remove_user} from '../../../actions/users'
+
 import Wrapper from './style'
-
 import Header from '../../../components/SharedComponents/Header/Private'
-
 import ListOptions from './options'
 import User from './user'
-// import Options from './options'
 
 const headerStats = [
     {displayText: 'Total Users', value: 42},
@@ -15,6 +16,7 @@ const headerStats = [
 ]
 const users = [
     {
+        id: 0,
         firstName: 'Gordon',
         lastName: 'Clark',
         email: 'Glark@gmail.com',
@@ -25,6 +27,7 @@ const users = [
         project: 'none',
     },
     {
+        id: 1,
         firstName: 'Donna',
         lastName: 'Emmerson',
         email: 'oopsididitagain@yahoo.com',
@@ -35,6 +38,7 @@ const users = [
         project: 'none',
     },
     {
+        id: 2,
         firstName: 'Elliot',
         lastName: 'Alderson',
         email: 'mrrobot@geocities.com',
@@ -56,6 +60,9 @@ class UserList extends Component {
             edit: false,
         }
     }
+    componentDidMount = () => {
+        this.props.get_users()
+    }
     h_filter_users = filters => {
         let users = this.state.all_users
         //filter out all the 'all' values from filters array
@@ -73,8 +80,7 @@ class UserList extends Component {
         console.log(user)
     }
     h_remove_user = user => {
-        console.log('removing...')
-        console.log(user)
+        this.props.remove_user(user.id)
     }
     render = () => 
         <Wrapper className='users'>
@@ -90,8 +96,16 @@ class UserList extends Component {
                     />
                 )}
             </div>
-            <Footer />
         </Wrapper>
 }
 
-export default UserList
+const mapStateToProps = state => {
+    return {
+        users: state.users.users,
+        fetching: state.users.fetching,
+        error: state.users.error,
+    }
+}
+
+export default connect(
+    mapStateToProps,{add_user, get_user, get_users, remove_user})(UserList)
