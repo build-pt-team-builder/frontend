@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class User extends Component {
-    constructor({ user, edit, remove }) {
+    constructor({user, edit, remove}) {
         super()
         this.state = {
-            user: user,
-            edit: edit,
-            remove: remove,
             editing: false,
         }
     }
@@ -34,16 +31,16 @@ class User extends Component {
     render = () =>
         <>
             <div className='info avatar'>
-                <img src={`./img/${this.state.user.avatar}`} alt='nope' />
+                <img src={`./img/${this.props.user.avatar}`} alt='nope' />
             </div>
             <div className='info'>
                 {this.state.editing
                     ? <>
                         <div>
-                            <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.state.user.firstName} />
-                            <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.state.user.lastName} />
+                            <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.props.user.firstName} />
+                            <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.props.user.lastName} />
                         </div>
-                        <select className='value' onChange={this.h_select_change} name='cohort' value={this.state.user.cohort}>
+                        <select className='value' onChange={this.h_select_change} name='cohort' value={this.props.user.cohort}>
                             <option value='webpt03'>webpt03</option>
                             <option value='webpt04'>webpt04</option>
                             <option value='webpt05'>webpt05</option>

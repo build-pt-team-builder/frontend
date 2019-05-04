@@ -105,7 +105,8 @@ export default Styled.div`
                     border: 2px solid transparent;
                     color: ${color.txt05}
                     height: 40px;
-                    min-width: 50px;
+                    min-width: 75px;
+                    &.active {background-color: ${color.accent0}}
                     &:first-of-type {
                         border-radius: 5px 0 0 5px;
                         &:hover {border-left-color: ${color.accent0}}

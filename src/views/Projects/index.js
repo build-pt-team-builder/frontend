@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import Style from './style'
 
 import Header from '../../components/SharedComponents/Header/Private/index'
-import ProjectList from './projectList'
+import ProjectSummary from './projectSummary'
+import ProjectDetails from './projectDetails'
+
 import ListOptions from './listOptions'
 import CreateProject from './createProject'
 
@@ -107,9 +109,8 @@ class Projects extends Component {
     componentDidMount = () => {
         //grab data from state
     }
-    h_toggle_project = e => {
+    h_toggle_project_open = e => {
         e.stopPropagation()
-        // const target = e.currentTarget.querySelector('.description')
         const targetId = parseInt(e.currentTarget.id,10)
         this.setState(prevState => {
             const that = prevState.projects.map(project => {
@@ -163,11 +164,21 @@ class Projects extends Component {
                 toggle_create={this.h_toggle_create}
             />
             {this.state.createProject && <CreateProject />}
-            <ProjectList
-                projects={this.state.projects}
-                active_roles={this.state.settings.positions.filter(role => role.value)}
-                toggle_active={this.h_toggle_project}
-            />
+            <div className='project-list'>
+                {projects.map(project =>
+                    <div className='project' id={project.id} key={project.id}>
+                        <ProjectSummary
+                            project={project}
+                            active_roles={this.state.settings.positions.filter(role => role.value)}
+                            h_open={this.h_toggle_project_open}
+                            toggle_active={this.h_toggle_project_open}
+                        />
+                        <ProjectDetails
+                            project={project}
+                        />
+                    </div>
+                )}
+            </div>
         </Style>
 }
 
