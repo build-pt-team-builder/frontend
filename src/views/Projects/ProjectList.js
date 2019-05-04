@@ -6,7 +6,7 @@ import { TableContainer } from './ProjectStyleComponents'
 import { color } from '../../components/DesignComponents/theme'
 import { categories } from '../../dummyData'
 
-class ProjectTable extends Component {
+class ProjectList extends Component {
   render() {
     const { projects } = this.props
     const columns = [
@@ -120,9 +120,7 @@ class ProjectTable extends Component {
             <option value='all'>All</option>
             {
               categories.map(category => (
-                <>
-                  <option key={category.id} value={category.name}>{category.name}</option>
-                </>
+                <option key={category.id} value={category.name}>{category.name}</option>
               ))
             }
             <option value='end'>End</option>
@@ -173,4 +171,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{})(ProjectTable)
+export default connect(mapStateToProps,{})(ProjectList)
