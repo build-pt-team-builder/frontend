@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
-import { updateProject } from '../../actions/projects'
+import { updateProject, deleteProject } from '../../actions/projects'
 
 import { ProjectInfoContainer, StatGroup, ButtonMenu } from './ProjectStyleComponents'
 import { CheckBoxGroup } from './ProjectFormStyles'
@@ -53,6 +53,22 @@ class ProjectDetails extends Component {
     }))
   }
 
+  toggleProjectComplete = () => {
+
+    console.log(`toggleProjectComplete before change: `, this.state.projectComplete)
+    this.setState({ projectComplete: !this.state.projectComplete },
+      () => {
+        console.log(`toggleProjectComplete: `, this.state.projectComplete)
+        // Update project record
+        let updatedProject = {
+          ...this.props.project,
+          projectComplete: this.state.projectComplete
+        }
+        this.props.updateData(updatedProject)
+      }
+    )
+  }
+
   handleInput = e => {
     this.setState({ [e.target.name]: e.target.value })
   }
@@ -73,20 +89,11 @@ class ProjectDetails extends Component {
       category: ''
     })
   }
-  toggleProjectComplete = () => {
 
-    console.log(`toggleProjectComplete before change: `, this.state.projectComplete)
-    this.setState({ projectComplete: !this.state.projectComplete },
-      () => {
-        console.log(`toggleProjectComplete: `, this.state.projectComplete)
-        // Update project record
-        let updatedProject = {
-          ...this.props.project,
-          projectComplete: this.state.projectComplete
-        }
-        this.props.updateData(updatedProject)
-      }
-    )
+  handleDelete = id => {
+    console.log(`handleDelete submitted id: `, id)
+    this.props.deleteData(id)
+    this.props.history.push('/projects')
   }
 
   render() {
@@ -113,7 +120,7 @@ class ProjectDetails extends Component {
           )}
           <div className="icon-menu">
             <i className="far fa-edit" onClick={() => this.toggleEdit()} />
-            <i className="fa fa-trash" />
+            <i className="fa fa-trash" onClick={() => this.handleDelete(this.props.project.id)}/>
           </div>
         </header>
         <div className="project-info">
@@ -217,4 +224,7 @@ class ProjectDetails extends Component {
   }
 }
 
-export default connect(null, { updateData: updateProject })(ProjectDetails)
+export default connect(null, { 
+  updateData: updateProject,
+  deleteData: deleteProject 
+})(ProjectDetails)
