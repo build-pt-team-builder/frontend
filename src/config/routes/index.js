@@ -9,7 +9,12 @@ import { fetchProjectData } from '../../actions/projects'
 import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
+
 import LandingPage from '../../views/Landing'
+import AboutUs from '../../views/Landing/aboutUs'
+import Features from '../../views/Landing/features'
+import Resources from '../../views/Landing/resources'
+
 import Login from '../../views/Login'
 
 import Settings from '../../views/User/Settings'
@@ -26,6 +31,10 @@ class Routes extends Component {
       <div>
         {/* Assign routes */}
         <Route exact path="/" component={LandingPage} />
+        <Route exact path='/aboutus' component={AboutUs} />
+        <Route exact path='/features' component={Features} />
+        <Route exact path='/resources' component={Resources} />
+
         <Route path="/main/login" exact component={Login} />
 
         <Route path='/main/settings' component={Settings} />

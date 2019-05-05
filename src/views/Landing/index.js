@@ -46,7 +46,6 @@ const LandingPage = () =>
                 </a>
             </div>
             <div className="why-teambuilder">
-                <a href='#why' name="why">why</a>
                 <h2>Stop Using Spreadsheets to Track Your Product Ideas</h2>
                 <div className="content-block">
                     <div className="content-block-small">
@@ -85,8 +84,7 @@ const LandingPage = () =>
                         from
                         <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
                         is licensed by
-                        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY
-                        </a>
+                        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
                     </p>
                 </div>
             </div>
