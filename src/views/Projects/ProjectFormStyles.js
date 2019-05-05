@@ -53,11 +53,14 @@ export const FormContainer = styled.div`
     input {
       width: 100%;
       height: 40px;
-      padding: 2px 10px;
-      border-radius: 5px;
       color: ${color.darkText};
-      background: ${color.lightText};
-         
+      background: ${color.lightText};   
+    }
+
+    input, textarea {
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: ${fontSizing.s};
       line-height: 1.5rem;
     }
 
