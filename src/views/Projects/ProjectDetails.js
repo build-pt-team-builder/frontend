@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import classNames from 'classnames'
 import { updateProject } from '../../actions/projects'
 
 import { ProjectInfoContainer, StatGroup, ButtonMenu } from './ProjectStyleComponents'
@@ -92,6 +92,11 @@ class ProjectDetails extends Component {
   render() {
     console.log(`render() this.state is: `, this.state)
     const { name, pitch, mvp, stretch, category } = this.props.project
+    const statusClassGroup = classNames({
+      'stat-data': true,
+      status: true,
+      'status-close': this.state.projectComplete
+    })
     return (
       <ProjectInfoContainer>
         <header>
@@ -174,7 +179,7 @@ class ProjectDetails extends Component {
                 <div className="stat-category">
                   Status: 
                 </div>
-                <div className="stat-data status">
+                <div className={statusClassGroup}>
                   {this.state.projectComplete ? `Close` : `Open`}
                 </div>
               </StatGroup>

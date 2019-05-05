@@ -79,16 +79,21 @@ export const ProjectInfoContainer = styled.div`
       color: ${color.accent1};
     }
 
-    .icon-menu {
-    flex: 0 0 5%;
-    ${flex('row', 'center', 'space-between')};
-
-    i {
-        margin: 0 10px;
-        font-size: ${fontSizing.xs};
-        cursor: pointer;
+    input {
+      color: ${color.darkText};
+      background: ${color.lightText};
     }
-}
+
+    .icon-menu {
+      flex: 0 0 5%;
+      ${flex('row', 'center', 'space-between')};
+
+      i {
+          margin: 0 10px;
+          font-size: ${fontSizing.xs};
+          cursor: pointer;
+      }
+    }
     
     @media ${breakpoints[0]} {
       padding: 5px;
@@ -122,7 +127,11 @@ export const ProjectInfoContainer = styled.div`
       }
 
       .status {
-        color: ${props => props.status ? `${ color.accent0 }` : `${ color.accent1 }` }
+        color: ${color.accent1};
+      }
+
+      .status-close {
+        color: ${color.accent0};
       }
 
     }
@@ -164,6 +173,12 @@ export const StatGroup = styled.div`
 
   .stat-category {
     flex: 0 0 14%;
+  }
+
+  .stat-data, textarea, input {
+    flex: 0 0 80%;
+    border: 1px solid transparent;
+    border-radius: 5px;
   }
 `
 
