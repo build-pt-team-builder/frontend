@@ -3,16 +3,16 @@ import axios from 'axios'
 // Test Data
 import { projects } from '../dummyData.js'
 
-// const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
-//   '/'}.netlify/functions/server/api/projects/`
-const API_ENDPOINT = `https://teambuilderapp-api.netlify.com/.netlify/functions/server/api/projects/`
+const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
+  '/'}.netlify/functions/server/api/projects`
+// const API_ENDPOINT = `https://teambuilderapp-api.netlify.com/.netlify/functions/server/api/projects/`
 
 export const FETCH_DATA_START = 'FETCH_DATA_START'
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
 export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE'
 
 export const fetchProjectData = () => dispatch => {
-  console.log(`API_ENDPOINT: `, API_ENDPOINT)
+  console.log(`fetchProjectData API_ENDPOINT: `, API_ENDPOINT)
   dispatch({ type: FETCH_DATA_START })
 
   // Fetch dummy data
@@ -21,7 +21,7 @@ export const fetchProjectData = () => dispatch => {
   axios
     .get(API_ENDPOINT)
     .then(res => {
-      console.log(res.data)
+      console.log(`GET response: `, res)
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
     })
     .catch(err => {
@@ -42,7 +42,7 @@ export const addProject = project => dispatch => {
   // dispatch({ type: ADD_DATA_SUCCESS, payload: newPayload })
 
   axios
-    .post(API_ENDPOINT, project)
+    .post(`${API_ENDPOINT}/`, project)
     .then(res => {
       console.log(res.data)
       dispatch({ type: ADD_DATA_SUCCESS, payload: res.data })
@@ -60,11 +60,11 @@ export const UPDATE_DATA_FAILURE = 'UPDATE_DATA_FAILURE'
 export const updateProject = project => dispatch => {
   dispatch({ type: UPDATE_DATA_START })
 
-  let updatedPayload = projects.map(item => (
-    item.id === project.id ? project : item
-  ))
+  // let updatedPayload = projects.map(item => (
+  //   item.id === project.id ? project : item
+  // ))
 
-  console.log(`updateProject payload: `, updatedPayload)
+  console.log(`updateProject payload: `, project)
   // dispatch({ type: UPDATE_DATA_SUCCESS, payload: updatedPayload })
 
   axios
