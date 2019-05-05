@@ -90,7 +90,6 @@ class UserList extends Component {
                     />
                 )}
             </div>
-            <Footer />
         </Wrapper>
 }
 

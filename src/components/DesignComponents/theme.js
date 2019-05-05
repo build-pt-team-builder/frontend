@@ -29,7 +29,7 @@ const theme = {
     accent2: '#666',
     emphasis: '#fff',
     darkText: '#222',
-    lightText: '#ccc',
+    lightText: '#FFFFFF',
     lightTextEmphasis: '#fff',
     danger: 'red'
   },

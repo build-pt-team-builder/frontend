@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
+import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
 
 export const RoleFormContainer = styled.div`
   width: 100%;
@@ -17,6 +17,7 @@ export const RoleFormContainer = styled.div`
 export const FormContainer = styled.form`
   width: 90%;
   max-width: 600px;
+  margin-top: 10px;
   font-size: ${fontSizing.s};
 `
 
@@ -26,13 +27,28 @@ export const FormGroup = styled.div`
   
   input {
     width: 42%;
+    height: 40px;
     padding: 5px;
+    border-radius: 5px;
     font-size: ${fontSizing.s};
+    background: ${color.bg00};
+    color: ${color.txt04};
   }
 
   button {
     width: 10%;
+    height: 40px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: ${color.bg00};
+    color: ${color.txt04};
+    font-size: ${fontSizing.m};
   }
+
+  button:hover {
+    border: 1px solid ${color.accent0};
+  }
+
 `
 
 export const RoleListContainer = styled.div`
@@ -54,6 +70,7 @@ export const RoleContainer = styled.div`
     padding-left: 10px;
     border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
+    background: ${color.bg00};
 
     div {
       flex: 0 0 43%;

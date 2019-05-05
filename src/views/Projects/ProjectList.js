@@ -3,19 +3,21 @@ import { connect } from 'react-redux'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import { TableContainer } from './ProjectStyleComponents'
-import { color } from '../../components/DesignComponents/theme'
+import { color, fontSizing } from '../../components/DesignComponents/theme'
 import { categories } from '../../dummyData'
 
-class ProjectTable extends Component {
+class ProjectList extends Component {
   render() {
     const { projects } = this.props
     const columns = [
     { 
-      Header: 'Build Week Projects',
+      Header: () => (
+        <h1>Build Week Projects</h1>
+      ),
       columns: [{   
         Header: 'Name',
         accessor: "name",
-        width: 150
+        width: 160
       },
       {
         Header: "Description",
@@ -61,10 +63,8 @@ class ProjectTable extends Component {
           <div
             style={{
               textAlign: 'center',
-              color: row.value === 'Complete' ? `${color.danger}` : `dodgerblue`,
-              fontWeight: 'bold'
+              color: row.value === 'Complete' ? `${color.accent0}` : `${color.accent1}`
             }}
-
           >
           {row.value}
           </div>
@@ -84,9 +84,9 @@ class ProjectTable extends Component {
             onChange={e => onChange(e.target.value)}
             value={filter ? filter.value : 'all'}
           >
-            <option value='all'>All</option>
-            <option value='Open'>Open</option>
-            <option value='Complete'>Complete</option>
+            <option value='all' label='All' />
+            <option value='Open' label='Open' />
+            <option value='Complete' label='Complete'/>
           </select>
       },
       {
@@ -117,15 +117,17 @@ class ProjectTable extends Component {
             onChange={e => onChange(e.target.value)}
             value={filter ? filter.value : 'all'}
           >
-            <option value='all'>All</option>
+            <option value='all' label='All'/>
             {
               categories.map(category => (
-                <>
-                  <option key={category.id} value={category.name}>{category.name}</option>
-                </>
+                <option 
+                  key={category.id} 
+                  value={category.name} 
+                  label={category.name} 
+                />
               ))
             }
-            <option value='end'>End</option>
+
           </select>
       }
     ]
@@ -135,12 +137,10 @@ class ProjectTable extends Component {
     return (
       <TableContainer>
         <ReactTable
-          getTheadThProps={this.hideHeader} 
           columns={columns}
           data={projects}
           filterable
           defaultPageSize={5}
-          className="-striped -highlight"
           getTrProps={(state, rowInfo, column, instance) => {
             return {
               onClick: (e) => {
@@ -154,7 +154,9 @@ class ProjectTable extends Component {
                 this.props.history.push(`/projects/${rowInfo.original.id}`)
               },
               style: {
-                cursor: 'pointer'
+                margin: `4px 0`,
+                cursor: 'pointer',
+                background: `${color.bg00}`
               }
             }
           }}
@@ -173,4 +175,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{})(ProjectTable)
+export default connect(mapStateToProps,{})(ProjectList)
