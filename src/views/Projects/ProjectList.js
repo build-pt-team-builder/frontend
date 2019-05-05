@@ -95,9 +95,9 @@ class ProjectList extends Component {
             onChange={e => onChange(e.target.value)}
             value={filter ? filter.value : 'all'}
           >
-            <option value='all'>All</option>
-            <option value='Open'>Open</option>
-            <option value='Complete'>Complete</option>
+            <option value='all' label='All' />
+            <option value='Open' label='Open' />
+            <option value='Complete' label='Complete'/>
           </select>
       },
       {
@@ -128,13 +128,17 @@ class ProjectList extends Component {
             onChange={e => onChange(e.target.value)}
             value={filter ? filter.value : 'all'}
           >
-            <option value='all'>All</option>
+            <option value='all' label='All'/>
             {
               categories.map(category => (
-                <option key={category.id} value={category.name}>{category.name}</option>
+                <option 
+                  key={category.id} 
+                  value={category.name} 
+                  label={category.name} 
+                />
               ))
             }
-            <option value='end'>End</option>
+
           </select>
       }
     ]

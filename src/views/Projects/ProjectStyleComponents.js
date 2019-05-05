@@ -195,6 +195,14 @@ export const TableContainer = styled.div`
   color: ${color.txt04};
   font-size: ${fontSizing.xs};
 
+ .ReactTable {
+    & * {
+      input, select {
+        background: ${color.bg00} !important;
+      }
+    }
+  }
+
   h1 {
     font-size: ${fontSizing.ml};
     letter-spacing: 0.35rem;
