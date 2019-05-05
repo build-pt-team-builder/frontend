@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ReactTable from 'react-table'
 import 'react-table/react-table.css'
 import { TableContainer } from './ProjectStyleComponents'
-import { color, fontSizing } from '../../components/DesignComponents/theme'
+import { color } from '../../components/DesignComponents/theme'
 import { categories } from '../../dummyData'
 
 class ProjectList extends Component {
