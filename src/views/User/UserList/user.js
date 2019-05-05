@@ -34,7 +34,7 @@ class User extends Component {
     render = () =>
         <>
             <div className='info avatar'>
-                <img src={`./img/${this.state.user.avatar}`} alt='nope' />
+                <img src={`/img/${this.state.user.avatar}`} alt='nope' />
             </div>
             <div className='info'>
                 {this.state.editing

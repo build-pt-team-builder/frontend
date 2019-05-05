@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import Style from './style'
 
 import Header from '../../components/SharedComponents/Header/Private/index'
-import ProjectList from './projectList'
+import ProjectSummary from './projectSummary'
+import ProjectDetails from './projectDetails'
+
 import ListOptions from './listOptions'
 import CreateProject from './createProject'
 
@@ -18,12 +20,12 @@ const projects = [
         name: `Comet`,
         active: false,
         status: 'Open',
-        positions: [
-            {role: 'Lead', member: 'Joe MacMillan'},
-            {role: 'WebUI', member: 'Donna Emerson'},
-            {role: 'WebUI', member: 'John Bosworth'},
-            {role: 'Frontend', member: 'Cameron Howe'},
-            {role: 'Backend', member: 'Gordon Clark'},
+        roles: [
+            {id: 0, role: 'Lead', member: 'Joe MacMillan'},
+            {id: 1, role: 'WebUI', member: 'Donna Emerson'},
+            {id: 2, role: 'WebUI', member: 'John Bosworth'},
+            {id: 3, role: 'Frontend', member: 'Cameron Howe'},
+            {id: 4, role: 'Backend', member: 'Gordon Clark'},
         ],
         description: [
             {title: 'Pitch', value: 'Index the web!'},
@@ -37,12 +39,12 @@ const projects = [
         name: `The Giant`,
         active: false,
         status: 'Open',
-        positions: [
-            {role: 'Lead', member: null},
-            {role: 'WebUI', member: 'Arki'},
-            {role: 'WebUI', member: null},
-            {role: 'Frontend', member: 'Tom Rendon'},
-            {role: 'Backend', member: 'Ryan Rey'},
+        roles: [
+            {id: 0, role: 'Lead', member: null},
+            {id: 1, role: 'WebUI', member: 'Arki'},
+            {id: 2, role: 'WebUI', member: null},
+            {id: 3, role: 'Frontend', member: 'Tom Rendon'},
+            {id: 4, role: 'Backend', member: 'Ryan Rey'},
         ],
         description: [
             {title: 'Pitch', value: 'Fit a giant in a suitcase'},
@@ -56,13 +58,13 @@ const projects = [
         name: `Rover`,
         active: false,
         status: 'Open',
-        positions: [
-            {role: 'Lead', member: 'Diane Gould'},
-            {role: 'WebUI', member: 'Katie Herman'},
-            {role: 'WebUI', member: 'Tanya Reese'},
-            {role: 'Frontend', member: null},
-            {role: 'Frontend', member: null},
-            {role: 'Backend', member: null},
+        roles: [
+            {id: 0, role: 'Lead', member: 'Diane Gould'},
+            {id: 1, role: 'WebUI', member: 'Katie Herman'},
+            {id: 2, role: 'WebUI', member: 'Tanya Reese'},
+            {id: 3, role: 'Frontend', member: null},
+            {id: 4, role: 'Frontend', member: null},
+            {id: 5, role: 'Android', member: null},
         ],
         description: [
             {title: 'Pitch', value: 'Crawl the web, index what you find, make it searchable.'},
@@ -100,6 +102,8 @@ class Projects extends Component {
         this.state = {
             createProject: false,
             headerStats: headerStats,
+            all_projects: projects,
+            active_roles: [],
             projects: projects,
             settings: settings,
         }
@@ -107,9 +111,8 @@ class Projects extends Component {
     componentDidMount = () => {
         //grab data from state
     }
-    h_toggle_project = e => {
+    h_toggle_project_open = e => {
         e.stopPropagation()
-        // const target = e.currentTarget.querySelector('.description')
         const targetId = parseInt(e.currentTarget.id,10)
         this.setState(prevState => {
             const that = prevState.projects.map(project => {
@@ -131,19 +134,35 @@ class Projects extends Component {
             return {settings: prevState.settings}
         })
     }
-    h_toggle_position = e => {
-        const name = e.target.name
+    h_toggle_position = roles => {
         this.setState(prevState => {
-            prevState.settings.positions = prevState.settings.positions.map(setting => {
-                if(name === 'None') {
-                    if(setting.name === name) return {name: name, value: true}
-                    return {name: setting.name, value: false}
-                }
-                if(setting.name === name) return {name: setting.name, value: !setting.value}
-                if(setting.name === 'None') return {name: setting.name, value: false}
-                return setting
-            })
-            return {settings: prevState.settings}
+            /*
+                all projects is needed to ensure we're filtering through all projects
+                and not just the sorted ones
+            */
+            let projects = prevState.all_projects
+            /*
+                the 'none' filter is first to simplify the filtering process
+                the two filters can and should be combined with a simple && comparrison
+                but this works for now
+            */
+            if(roles.includes('none'))
+                projects = projects.filter(project =>
+                    project.roles.filter(role => role.member === null).length !== 0)
+            /*
+                this comparrison is more complicated than it needs to be
+                again, these filters should be combined into a more elegant solution
+            */
+            if(roles.length > roles.includes('none') ? 1 : 0)
+                projects = projects.filter(project =>
+                    project.roles.filter(role => roles.includes(role.role.toLowerCase())).length !== 0)
+            /*
+                active_roles is need to highlight the filtered roles on the project component
+            */
+            return {
+                projects: projects,
+                active_roles: roles,
+            }
         })
     }
     h_toggle_create = () => {
@@ -151,6 +170,37 @@ class Projects extends Component {
             return {
                 createProject: !prevState.createProject,
             }
+        })
+    }
+    h_edit_user = (project_id, role_id, user) => {
+        this.setState(prevState => {
+            prevState.projects = prevState.projects.map(project => {
+                if(project.id === project_id) {
+                    project.roles = project.roles.map(role => {
+                        if(role.id === role_id) role.member = user
+                        return role
+                    })
+                }
+                return project
+            })
+        })
+    }
+    h_add_project_role = (project_id, role) => {
+        //capitalize first letter of each word in role
+        role = role.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
+        //add new role to project
+        this.setState(prevState => {
+            prevState.projects = prevState.projects.map(project => {
+                if(project.id === project_id) {
+                    const id = project.roles.length
+                    const newRole = {id: id, role: role, member: ''}
+                    project.roles[0].role === 'none'
+                    ?   project.roles[0] = newRole
+                    :   project.roles.unshift(newRole)
+                }
+                return project
+            })
+            return {projects: prevState.projects}
         })
     }
     render = () => 
@@ -163,11 +213,24 @@ class Projects extends Component {
                 toggle_create={this.h_toggle_create}
             />
             {this.state.createProject && <CreateProject />}
-            <ProjectList
-                projects={this.state.projects}
-                active_roles={this.state.settings.positions.filter(role => role.value)}
-                toggle_active={this.h_toggle_project}
-            />
+            <div className='project-list'>
+                {this.state.projects.map(project =>
+                    <div className='project' id={project.id} key={project.id}>
+                        <ProjectSummary
+                            project={project}
+                            open={this.h_toggle_project_open}
+                            active_roles={this.state.active_roles}
+                            add_role={this.h_add_project_role}
+                            edit_user={this.h_edit_user}
+                            toggle_active={this.h_toggle_project_open}
+                        />
+                        <ProjectDetails
+                            project={project}
+                            h_close={this.h_toggle_project_open}
+                        />
+                    </div>
+                )}
+            </div>
         </Style>
 }
 

@@ -8,7 +8,7 @@ import Footer from '../components/SharedComponents/Footer'
 const App = () =>
   <AppContainer className='App'>
     <Router>
-      <Route path='/' render={(props) => <SideNav {...props} />}/>
+      <Route path='/main' render={(props) => <SideNav {...props} />}/>
       <Routes />
       <Footer />
     </Router>

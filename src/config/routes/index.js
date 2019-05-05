@@ -9,7 +9,12 @@ import { fetchProjectData } from '../../actions/projects'
 import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
-import LandingPage from '../../components/LandingPage'
+
+import LandingPage from '../../views/Landing'
+import AboutUs from '../../views/Landing/aboutUs'
+import Features from '../../views/Landing/features'
+import Resources from '../../views/Landing/resources'
+
 import Login from '../../views/Login'
 
 import Settings from '../../views/User/Settings'
@@ -26,21 +31,25 @@ class Routes extends Component {
       <div>
         {/* Assign routes */}
         <Route exact path="/" component={LandingPage} />
-        <Route path="/login" exact component={Login} />
+        <Route exact path='/aboutus' component={AboutUs} />
+        <Route exact path='/features' component={Features} />
+        <Route exact path='/resources' component={Resources} />
 
-        <Route path='/settings' component={Settings} />
-        <Route path='/users' component={UserList} />
-        <Route path='/announcements' component={Announcements} />
+        <Route path="/main/login" exact component={Login} />
+
+        <Route path='/main/settings' component={Settings} />
+        <Route path='/main/users' component={UserList} />
+        <Route path='/main/announcements' component={Announcements} />
         
-        <Route path="/projects" exact component={ProjectList} />
+        <Route path="/main/projects" exact component={ProjectList} />
         <Route 
-          path="/projects/add" exact 
+          path="/main/projects/add" exact 
           render={props => <ProjectForm {...props} add/>}
         />
         {this.props.projects.map((project) => (
           <Route
             key={project.id}
-            path={`/projects/${project.id}`}
+            path={`/main/projects/${project.id}`}
             render={props => (
               <ProjectDetails {...props} project={project} />
             )}
@@ -49,7 +58,7 @@ class Routes extends Component {
         {this.props.projects.map((project) => (
           <Route
             key={project.id}
-            path={`/projects/update/${project.id}`}
+            path={`/main/projects/update/${project.id}`}
             render={props => <ProjectForm {...props} project={project} update />}
           />
         ))}

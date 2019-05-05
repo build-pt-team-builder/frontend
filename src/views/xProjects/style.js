@@ -79,45 +79,7 @@ export default Styled.div`
         overflow: hidden;
         padding: 0 1rem;
         width: 100%;
-        .description {
-            display: grid;
-            font-size: 1.6rem;
-            grid-column-gap: 1rem;
-            grid-row-gap: 1rem;
-            grid-template-columns: repeat(2, auto);
-            height: fit-content;
-            max-height: 0px;
-            overflow: none;
-            transition: all 1s ease-in-out;
-            &.active {
-                max-height: 300px;
-                padding-bottom: 1rem;
-            }
-            .title {color: ${color.txt03}}
-            .options {
-                grid-column: 1 / span 2;
-                display: grid;
-                grid-column-gap: 1px;
-                grid-auto-flow: column;
-                justify-self: end;
-                button {
-                    background-color: ${color.bg01};
-                    border: 2px solid transparent;
-                    color: ${color.txt05}
-                    height: 40px;
-                    min-width: 50px;
-                    &:first-of-type {
-                        border-radius: 5px 0 0 5px;
-                        &:hover {border-left-color: ${color.accent0}}
-                    }
-                    &:last-of-type {
-                        border-radius: 0 5px 5px 0;
-                        &:hover {border-right-color: ${color.accent0}}
-                    }
-                    &:hover {border-color: ${color.accent0} transparent}
-                }
-            }
-        }
+        
         .summary {
             ${flex('row', 'center', 'space-between')};
             font-size: 1.6rem;
@@ -128,6 +90,7 @@ export default Styled.div`
                 .name {
                     color: ${color.accent1};
                     font-size: 2rem;
+                    margin-right: 1rem;
                 }
             }
             .positions {
@@ -141,8 +104,15 @@ export default Styled.div`
                     cursor: grab;
                     ${flex('column','normal','space-around')};
                     min-width: 100px;
+                    width: fit-content;
                     padding: 0 1rem;
                     text-align: center;
+                    input {
+                        border-radius: 5px;
+                        border: 0;
+                        background-color: ${color.bg00};
+                        height: 20px;
+                    }
                     &.active {
                         background-color: ${color.accent1};
                         .role, .member {color: ${color.txt00}}
@@ -177,5 +147,53 @@ export default Styled.div`
             }
         }
         &:hover {border-color: transparent ${color.accent1}}
+        .description {
+            display: grid;
+            font-size: 1.6rem;
+            grid-column-gap: 1rem;
+            grid-row-gap: 1rem;
+            grid-template-columns: 75px 1fr;
+            height: fit-content;
+            max-height: 0px;
+            overflow: none;
+            transition: all 1s ease-in-out;
+            textarea, input {
+                background-color: ${color.bg01};
+                border: 0;
+                color: ${color.txt05};
+                font-size: ${size.s05};
+                height: fit-content;
+                border-radius: 5px;
+            }
+            &.active {
+                max-height: 500px;
+                padding-bottom: 1rem;
+            }
+            .title {color: ${color.txt03}}
+            .options {
+                grid-column: 1 / span 2;
+                display: grid;
+                grid-column-gap: 1px;
+                grid-auto-flow: column;
+                justify-self: end;
+                button {
+                    background-color: ${color.bg01};
+                    border: 2px solid transparent;
+                    color: ${color.txt05}
+                    height: 40px;
+                    min-width: 75px;
+                    &.active {background-color: ${color.accent0}}
+                    &:first-of-type {
+                        border-radius: 5px 0 0 5px;
+                        &:hover {border-left-color: ${color.accent0}}
+                    }
+                    &:last-of-type {
+                        border-radius: 0 5px 5px 0;
+                        &:hover {border-right-color: ${color.accent0}}
+                    }
+                    &:hover {border-color: ${color.accent0} transparent}
+                }
+            }
+        }
     }
 `
