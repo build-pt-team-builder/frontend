@@ -72,10 +72,8 @@ class ProjectList extends Component {
           <div
             style={{
               textAlign: 'center',
-              color: row.value === 'Complete' ? `${color.danger}` : `dodgerblue`,
-              fontWeight: 'bold'
+              color: row.value === 'Complete' ? `${color.accent0}` : `${color.accent1}`
             }}
-
           >
           {row.value}
           </div>
@@ -148,16 +146,6 @@ class ProjectList extends Component {
     return (
       <TableContainer>
         <ReactTable
-          getTheadThProps={() => {
-            return {
-              style: {
-                margin: `4px 0`,
-                cursor: 'pointer',
-                background: `${color.bg00}`,
-                fontSize: `${fontSizing.s}`
-              } 
-            }
-          }} 
           columns={columns}
           data={projects}
           filterable

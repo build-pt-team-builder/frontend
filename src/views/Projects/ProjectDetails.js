@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { updateProject } from '../../actions/projects'
 
-import { ProjectInfoContainer, ButtonMenu } from './ProjectStyleComponents'
+import { ProjectInfoContainer, StatGroup, ButtonMenu } from './ProjectStyleComponents'
 import { CheckBoxGroup } from './ProjectFormStyles'
 import RoleForm from '../../components/RoleComponents/RoleForm'
 import RoleList from '../../components/RoleComponents/RoleList'
@@ -73,7 +73,6 @@ class ProjectDetails extends Component {
       category: ''
     })
   }
-
   toggleProjectComplete = () => {
 
     console.log(`toggleProjectComplete before change: `, this.state.projectComplete)
@@ -96,12 +95,8 @@ class ProjectDetails extends Component {
     return (
       <ProjectInfoContainer>
         <header>
-          <i className="far fa-edit" onClick={() => this.toggleEdit()} />
-          <i className="fa fa-trash" />
-        </header>
-        <div className="project-info">
           {!this.state.edit ? (
-            <h3 className="stat-data">{name}</h3>
+            <h1 className="stat-data">{name}</h1>
           ) : (
               <input
                 name="name"
@@ -110,9 +105,16 @@ class ProjectDetails extends Component {
                 onChange={this.handleInput}
                 value={this.state.name}
               />
-            )}
-          <h4>Description</h4>
+          )}
+          <div className="icon-menu">
+            <i className="far fa-edit" onClick={() => this.toggleEdit()} />
+            <i className="fa fa-trash" />
+          </div>
+        </header>
+        <div className="project-info">
+          
           <div className="project-stats">
+            <StatGroup>
             <div className="stat-category">Pitch:</div>
             {!this.state.edit ? (
               <div className="stat-data">{pitch}</div>
@@ -125,6 +127,8 @@ class ProjectDetails extends Component {
                   value={this.state.pitch}
                 />
               )}
+            </StatGroup>
+            <StatGroup>
             <div className="stat-category">MVP:</div>
             {!this.state.edit ? (
               <div className="stat-data">{mvp}</div>
@@ -137,6 +141,8 @@ class ProjectDetails extends Component {
                   value={this.state.mvp}
                 />
               )}
+            </StatGroup>  
+            <StatGroup>
             <div className="stat-category">Stretch:</div>
             {!this.state.edit ? (
               <div className="stat-data">{stretch}</div>
@@ -149,6 +155,8 @@ class ProjectDetails extends Component {
                   value={this.state.stretch}
                 />
               )}
+            </StatGroup>
+            <StatGroup> 
             <div className="stat-category">Category:</div>
             {!this.state.edit ? (
               <div className="stat-data">{category}</div>
@@ -160,20 +168,36 @@ class ProjectDetails extends Component {
                   name="category"
                 />
               )}
+            </StatGroup>
+            {!this.state.edit ? (
+              <StatGroup>
+                <div className="stat-category">
+                  Status: 
+                </div>
+                <div className="stat-data status">
+                  {this.state.projectComplete ? `Close` : `Open`}
+                </div>
+              </StatGroup>
+            ) : 
+            (
+              <CheckBoxGroup>
+                <label htmlFor="">Complete:</label>
+                <input
+                  type="checkbox"
+                  defaultChecked={this.state.projectComplete}
+                  onChange={this.toggleProjectComplete}
+                />
+              </CheckBoxGroup>
+              )}   
             <div className="stat-category">Roles:</div>
             {/* List project roleAssignments */}
             <RoleForm {...this.props} />
             {/* Mark project complete */}
             <RoleList {...this.props}/> 
             {/* Add project Roles */}
-           <CheckBoxGroup>
-              <label htmlFor="">Complete:</label>
-              <input
-                type="checkbox"
-                defaultChecked={this.state.projectComplete}
-                onChange={this.toggleProjectComplete}
-              />
-           </CheckBoxGroup>
+           
+
+           
             {/* User sign up */}
             <SignUpBoard {...this.props} />
           </div>

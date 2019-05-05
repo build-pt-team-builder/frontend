@@ -57,11 +57,10 @@ export const Preview = styled.div`
 export const ProjectInfoContainer = styled.div`
   ${flex('column')};
   width: 600px;
-  margin: 70px 0;
   border-radius: 5px;
   box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
-  background: white;
-  color: ${color.darkText};
+  background: transparent;
+  color: ${color.txt04};
 
   @media ${breakpoints[0]} {
     width: 100%;
@@ -69,38 +68,38 @@ export const ProjectInfoContainer = styled.div`
 
   header {
     width: 100%;
-    ${flex('row', 'center', 'flex-end')};
+    ${flex('row', 'center', 'space-between')};
     margin: 0;
-    padding: 10px;
-    border-radius: 5px 5px 0 0;
-    background: linear-gradient(to top, #cccccc 0%, #d6d6d6 1px, #ebebeb 100%); 
-    
-    @media ${breakpoints[0]} {
-      padding: 5px;
+    padding: 20px;
+    padding-bottom: 5px;
+
+    h1 {
+      font-size: ${fontSizing.m};
+      letter-spacing: 0.10rem;
+      color: ${color.accent1};
     }
+
+    .icon-menu {
+    flex: 0 0 5%;
+    ${flex('row', 'center', 'space-between')};
 
     i {
         margin: 0 10px;
         font-size: ${fontSizing.xs};
         cursor: pointer;
     }
+}
+    
+    @media ${breakpoints[0]} {
+      padding: 5px;
+    }
+
   }
 
   .project-info {
-   
     padding: 20px;
+    padding-top: 5px;  
 
-    h3 {
-      margin: 10px 0;
-      font-size: ${fontSizing.ml};
-      letter-spacing: 0.30rem;
-      color: ${colorScheme.headingColor};
-    }
-
-    h4 {
-      font-size: ${fontSizing.m};
-    }
-    
     .project-stats {
       ${flex('column')}
       
@@ -111,10 +110,8 @@ export const ProjectInfoContainer = styled.div`
       }
 
       .stat-category {
-        margin-top: 20px;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: ${color.darkText};
+        margin: 5px 0;
+        color: ${color.txt03};
         font-size: ${fontSizing.s};
       }
 
@@ -122,8 +119,10 @@ export const ProjectInfoContainer = styled.div`
         width: 90%;
         font-size: ${fontSizing.s};
         font-weight: initial;
+      }
 
-
+      .status {
+        color: ${props => props.status ? `${ color.accent0 }` : `${ color.accent1 }` }
       }
 
     }
@@ -155,6 +154,16 @@ export const ProjectInfoContainer = styled.div`
       border: 1 solid coral;
     }
 
+  }
+`
+
+export const StatGroup = styled.div`
+  width: 100%;
+  margin: 5px 0;
+  ${flex('row', 'baseline', 'space-between')}
+
+  .stat-category {
+    flex: 0 0 14%;
   }
 `
 
