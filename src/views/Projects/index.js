@@ -64,7 +64,7 @@ const projects = [
             {id: 2, role: 'WebUI', member: 'Tanya Reese'},
             {id: 3, role: 'Frontend', member: null},
             {id: 4, role: 'Frontend', member: null},
-            {id: 5, role: 'Backend', member: null},
+            {id: 5, role: 'Android', member: null},
         ],
         description: [
             {title: 'Pitch', value: 'Crawl the web, index what you find, make it searchable.'},
@@ -102,6 +102,8 @@ class Projects extends Component {
         this.state = {
             createProject: false,
             headerStats: headerStats,
+            all_projects: projects,
+            active_roles: [],
             projects: projects,
             settings: settings,
         }
@@ -132,19 +134,35 @@ class Projects extends Component {
             return {settings: prevState.settings}
         })
     }
-    h_toggle_position = e => {
-        const name = e.target.name
+    h_toggle_position = roles => {
         this.setState(prevState => {
-            prevState.settings.positions = prevState.settings.positions.map(setting => {
-                if(name === 'None') {
-                    if(setting.name === name) return {name: name, value: true}
-                    return {name: setting.name, value: false}
-                }
-                if(setting.name === name) return {name: setting.name, value: !setting.value}
-                if(setting.name === 'None') return {name: setting.name, value: false}
-                return setting
-            })
-            return {settings: prevState.settings}
+            /*
+                all projects is needed to ensure we're filtering through all projects
+                and not just the sorted ones
+            */
+            let projects = prevState.all_projects
+            /*
+                the 'none' filter is first to simplify the filtering process
+                the two filters can and should be combined with a simple && comparrison
+                but this works for now
+            */
+            if(roles.includes('none'))
+                projects = projects.filter(project =>
+                    project.roles.filter(role => role.member === null).length !== 0)
+            /*
+                this comparrison is more complicated than it needs to be
+                again, these filters should be combined into a more elegant solution
+            */
+            if(roles.length > roles.includes('none') ? 1 : 0)
+                projects = projects.filter(project =>
+                    project.roles.filter(role => roles.includes(role.role.toLowerCase())).length !== 0)
+            /*
+                active_roles is need to highlight the filtered roles on the project component
+            */
+            return {
+                projects: projects,
+                active_roles: roles,
+            }
         })
     }
     h_toggle_create = () => {
@@ -196,13 +214,14 @@ class Projects extends Component {
             />
             {this.state.createProject && <CreateProject />}
             <div className='project-list'>
-                {projects.map(project =>
+                {this.state.projects.map(project =>
                     <div className='project' id={project.id} key={project.id}>
                         <ProjectSummary
                             project={project}
                             active_roles={this.state.settings.positions.filter(role => role.value)}
                             open={this.h_toggle_project_open}
-                            add_role={this.h_add_project_role}
+                            active_roles={this.state.active_roles}
+                            add_roles={this.h_add_project_role}
                             edit_user={this.h_edit_user}
                             toggle_active={this.h_toggle_project_open}
                         />

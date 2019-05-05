@@ -90,6 +90,7 @@ export default Styled.div`
                 .name {
                     color: ${color.accent1};
                     font-size: 2rem;
+                    margin-right: 1rem;
                 }
             }
             .positions {
@@ -103,8 +104,15 @@ export default Styled.div`
                     cursor: grab;
                     ${flex('column','normal','space-around')};
                     min-width: 100px;
+                    width: fit-content;
                     padding: 0 1rem;
                     text-align: center;
+                    input {
+                        border-radius: 5px;
+                        border: 0;
+                        background-color: ${color.bg00};
+                        height: 20px;
+                    }
                     &.active {
                         background-color: ${color.accent1};
                         .role, .member {color: ${color.txt00}}

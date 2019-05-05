@@ -41,12 +41,17 @@ class Role extends Component {
     }
     render = () =>
         <div
-            className={this.props.active_roles.filter(role => role.name === this.props.role.role).length === 0 ? 'position' : 'position active'}
+            className={this.props.active_roles.includes(this.props.role.role.toLowerCase())
+            ?   'position active'
+            :   this.props.active_roles.includes('none') && this.props.role.member === null
+                ? 'position active'
+                : 'position'
+            }
             onClick={this.h_toggle_add_user}
             onKeyUp={this.h_keyup}
             onBlur={this.h_update}
         >
-        {/* {console.log(this.state)} */}
+        {console.log(this.props)}
             {this.props.role.role === 'none'
                 ?   <select onClick={this.h_null_click} onChange={this.props.add_role} value='role'>
                         <option value='role' hidden>Role</option>
