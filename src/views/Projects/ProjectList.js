@@ -16,16 +16,7 @@ class ProjectList extends Component {
       ),
       columns: [{   
         Header: 'Name',
-        id: "name",
-        accessor: d => (
-          <div
-           style={{
-             fontSize: `${fontSizing.s}`
-           }}
-           >
-            {d.name}
-           </div>
-        ),
+        accessor: "name",
         width: 160
       },
       {
