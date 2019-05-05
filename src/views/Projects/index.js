@@ -218,10 +218,9 @@ class Projects extends Component {
                     <div className='project' id={project.id} key={project.id}>
                         <ProjectSummary
                             project={project}
-                            active_roles={this.state.settings.positions.filter(role => role.value)}
                             open={this.h_toggle_project_open}
                             active_roles={this.state.active_roles}
-                            add_roles={this.h_add_project_role}
+                            add_role={this.h_add_project_role}
                             edit_user={this.h_edit_user}
                             toggle_active={this.h_toggle_project_open}
                         />
