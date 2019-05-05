@@ -9,7 +9,7 @@ import { fetchProjectData } from '../../actions/projects'
 import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
-import LandingPage from '../../components/LandingPage'
+import LandingPage from '../../views/Landing'
 import Login from '../../views/Login'
 
 import Settings from '../../views/User/Settings'
