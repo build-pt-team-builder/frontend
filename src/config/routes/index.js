@@ -26,21 +26,21 @@ class Routes extends Component {
       <div>
         {/* Assign routes */}
         <Route exact path="/" component={LandingPage} />
-        <Route path="/login" exact component={Login} />
+        <Route path="/main/login" exact component={Login} />
 
-        <Route path='/settings' component={Settings} />
-        <Route path='/users' component={UserList} />
-        <Route path='/announcements' component={Announcements} />
+        <Route path='/main/settings' component={Settings} />
+        <Route path='/main/users' component={UserList} />
+        <Route path='/main/announcements' component={Announcements} />
         
-        <Route path="/projects" exact component={ProjectList} />
+        <Route path="/main/projects" exact component={ProjectList} />
         <Route 
-          path="/projects/add" exact 
+          path="/main/projects/add" exact 
           render={props => <ProjectForm {...props} add/>}
         />
         {this.props.projects.map((project) => (
           <Route
             key={project.id}
-            path={`/projects/${project.id}`}
+            path={`/main/projects/${project.id}`}
             render={props => (
               <ProjectDetails {...props} project={project} />
             )}
@@ -49,7 +49,7 @@ class Routes extends Component {
         {this.props.projects.map((project) => (
           <Route
             key={project.id}
-            path={`/projects/update/${project.id}`}
+            path={`/main/projects/update/${project.id}`}
             render={props => <ProjectForm {...props} project={project} update />}
           />
         ))}

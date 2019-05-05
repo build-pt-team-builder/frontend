@@ -5,11 +5,11 @@ import Content from './style'
 import Profile from '../Profile'
 
 const links = [
-    {displayText: 'Announcements', to: '/announcements', imgSrc: '/', altText: ''},
-    {displayText: 'Users', to: '/users', imgSrc: '/', altText: ''},
+    {displayText: 'Announcements', to: '/main/announcements', imgSrc: '/', altText: ''},
+    {displayText: 'Users', to: '/main/users', imgSrc: '/', altText: ''},
     // {displayText: 'Groups', to: '/home', imgSrc: '/', altText: ''},
-    {displayText: 'Projects', to: '/projects', imgSrc: '/', altText: ''},
-    {displayText: 'Settings', to: '/settings', imgSrc: '/', altText: ''},
+    {displayText: 'Projects', to: '/main/projects', imgSrc: '/', altText: ''},
+    {displayText: 'Settings', to: '/main/settings', imgSrc: '/', altText: ''},
     {displayText: 'Log Out', to: '/', imgSrc: '/', altText: ''},
 ]
 

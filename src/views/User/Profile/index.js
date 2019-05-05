@@ -19,7 +19,7 @@ class Profile extends Component {
         }
     }
     componentDidMount = () => {
-        //get user from db
+
     }
     h_update_field = e => {
         this.setState({
@@ -36,7 +36,7 @@ class Profile extends Component {
             {this.state.edit
             ?   <>
                     <div className='avatar'>
-                        <img src={`img/${this.state.user.avatarSrc}`} alt='you'/>
+                        <img src={`/img/${this.state.user.avatarSrc}`} alt='you'/>
                         <pre>Change</pre>
                     </div><div>
                         <pre className='title'>First Name:</pre>
@@ -84,7 +84,7 @@ class Profile extends Component {
                 </>
             :   <>
                     <div className='avatar'>
-                        <img src={`img/${this.state.user.avatarSrc}`} alt='you'/>
+                        <img src={`/img/${this.state.user.avatarSrc}`} alt='you'/>
                         <pre onClick={this.h_edit}>Edit</pre>
                     </div>
                     <pre className='name'>{this.state.user.firstName} {this.state.user.lastName}</pre>
