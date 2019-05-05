@@ -54,6 +54,8 @@ export const FormGroup = styled.div`
     border: 1px solid transparent;
     border-radius: 5px;
     background: ${color.bg00};
+    color: ${color.txt04};
+    font-size: ${fontSizing.m};
   }
 
   button:hover {
