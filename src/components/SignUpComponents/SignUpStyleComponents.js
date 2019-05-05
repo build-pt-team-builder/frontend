@@ -4,14 +4,13 @@ import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComp
 export const SignUpBoardContainer = styled.div`
   margin-top: 20px;
   padding: 10px;
-  border: 1px solid ${colorScheme.defaultBorderColor};
+  border: 1px solid ${color.tx03};
   border-radius: 5px;
 
   h2 {
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-weight: bold;
-      color: ${color.darkText};
+      margin: 20px 0;
+      text-align: center;
+      color: ${color.txt03};
       font-size: ${fontSizing.s};
   }
 `
@@ -42,12 +41,23 @@ export const FormGroup = styled.div`
   
   input {
     width: 42%;
+    height: 40px
     padding: 5px;
     font-size: ${fontSizing.xs};
+    background: ${color.bg00};
+    color: ${color.txt04};
   }
 
   button {
     width: 10%;
+    height: 40px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background: ${color.bg00};
+  }
+
+  button:hover {
+    border: 1px solid ${color.accent0};
   }
 `
 
@@ -70,6 +80,7 @@ export const SignUpContainer = styled.div`
     padding-left: 10px;
     border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
+      background: ${color.bg00};
 
     div {
       flex: 0 0 43%;
