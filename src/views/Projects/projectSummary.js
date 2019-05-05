@@ -34,7 +34,6 @@ class ProjectSummary extends Component {
     h_edit_user = (role_id, user) => this.props.edit_user(this.state.project_id, role_id, user)
     render = () =>
         <div id={this.props.project.id} className='summary' onClick={this.props.open}>
-            {console.log(this.state.roles)}
             <div className='identity'>
                 <pre className='name'>{this.props.project.name}</pre>
             </div>
