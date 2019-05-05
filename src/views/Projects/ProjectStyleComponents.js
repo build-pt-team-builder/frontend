@@ -8,7 +8,6 @@ import {
 } from '../../components/DesignComponents/theme'
 
 export const ProjectListContainer = styled.div`
-  width: 600px;
   ${flex('column', 'center', 'center')}
   margin: 50px 0;
   padding: 20px 10px;
@@ -56,9 +55,10 @@ export const Preview = styled.div`
 
 export const ProjectInfoContainer = styled.div`
   ${flex('column')};
-  width: 600px;
+  width: 100%;
+  max-width: 900px;
   border-radius: 5px;
-  box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
+  // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: transparent;
   color: ${color.txt04};
 
@@ -172,13 +172,39 @@ export const StatGroup = styled.div`
   ${flex('row', 'baseline', 'space-between')}
 
   .stat-category {
-    flex: 0 0 14%;
+
+
+    @media ${breakpoints[1]} {
+      flex: 0 0 5%;
+    }
+
+    @media ${breakpoints[2]} {
+      flex: 0 0 15%;
+    }
+
+    @media (min-width: 950px) {
+      flex: 0 0 5%;
+    }
+
+
   }
 
   .stat-data, textarea, input {
-    flex: 0 0 80%;
+    
     border: 1px solid transparent;
     border-radius: 5px;
+
+    @media ${breakpoints[1]} {
+      flex: 0 0 85%;
+    }
+
+    @media ${breakpoints[2]} {
+      flex: 0 0 90%;
+    }
+  }
+
+  @media ${breakpoints[0]} {
+    ${flex('column')}
   }
 `
 
@@ -214,7 +240,7 @@ export const TableContainer = styled.div`
   ${flex('column', 'center', 'center')}
   
   padding: 20px 10px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  // box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   background: transparent;
   color: ${color.txt04};
   font-size: ${fontSizing.xs};

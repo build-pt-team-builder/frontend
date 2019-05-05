@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
 
 export const SignUpBoardContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+  ${flex('column','center')};
   margin-top: 20px;
   padding: 10px;
   border: 1px solid ${color.tx03};
