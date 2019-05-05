@@ -85,14 +85,20 @@ export const DELETE_DATA_FAILURE = 'DELETE_DATA_FAILURE'
 
 export const deleteProject = id => dispatch => {
   dispatch({ type: DELETE_DATA_START })
-  axios
-    .delete(`${API_ENDPOINT}/${id}`)
-    .then(res => {
-      console.log(res.data)
-      dispatch({ type: DELETE_DATA_SUCCESS, payload: res.data })
-    })
-    .catch(err => {
-      console.log(err.response)
-      dispatch({ type: DELETE_DATA_FAILURE, payload: err.response })
-    })
+
+  let updatedPayload = projects.filter(item => item.id !== id)
+
+  console.log(`deleteProject payload: `, updatedPayload)
+  dispatch({ type: DELETE_DATA_SUCCESS, payload: updatedPayload })
+
+  // axios
+  //   .delete(`${API_ENDPOINT}/${id}`)
+  //   .then(res => {
+  //     console.log(res.data)
+  //     dispatch({ type: DELETE_DATA_SUCCESS, payload: res.data })
+  //   })
+  //   .catch(err => {
+  //     console.log(err.response)
+  //     dispatch({ type: DELETE_DATA_FAILURE, payload: err.response })
+  //   })
 }
