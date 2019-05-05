@@ -1,0 +1,58 @@
+.container.resources {
+  .hero {
+    padding-top: 0;
+  }
+  .resource-categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .resource-tab {
+      display: inline;
+      color: white;
+      background-color: @primary-color;
+      margin: 0 5px;
+      padding: 2px 10px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .active-tab {
+      background-color: white;
+      color: @primary-color;
+      border: 2px solid @primary-color;
+    }
+  }
+
+  .resource-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+
+    .resource-card {
+      display: inline;
+      width: 30%;
+      height: 250px;
+      margin-bottom: 20px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: @tertiary-color;
+      flex-direction: column;
+
+      h2 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+      }
+    }
+  }
+}
