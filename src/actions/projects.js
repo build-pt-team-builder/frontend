@@ -3,9 +3,9 @@ import axios from 'axios'
 // Test Data
 import { projects } from '../dummyData.js'
 
-// const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
-//   '/'}.netlify/functions/server/api/projects`
-const API_ENDPOINT = 'http://localhost:3333/projects'
+const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
+  '/'}.netlify/functions/server/api/projects/`
+// const API_ENDPOINT = 'http://localhost:3333/projects'
 
 export const FETCH_DATA_START = 'FETCH_DATA_START'
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
@@ -16,18 +16,18 @@ export const fetchProjectData = () => dispatch => {
   dispatch({ type: FETCH_DATA_START })
 
   // Fetch dummy data
-  dispatch({ type: FETCH_DATA_SUCCESS, payload: projects })
+  // dispatch({ type: FETCH_DATA_SUCCESS, payload: projects })
 
-  // axios
-  //   .get(API_ENDPOINT)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
-  //   })
-  //   .catch(err => {
-  //     console.log(err.response)
-  //     dispatch({ type: FETCH_DATA_FAILURE, payload: err.response })
-  //   })
+  axios
+    .get(API_ENDPOINT)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      console.log(err.response)
+      dispatch({ type: FETCH_DATA_FAILURE, payload: err.response })
+    })
 }
 
 export const ADD_DATA_START = 'ADD_DATA_START'
@@ -38,19 +38,19 @@ export const addProject = project => dispatch => {
   dispatch({ type: ADD_DATA_START })
 
   // Add data test
-  let newPayload = [...projects, project]
-  dispatch({ type: ADD_DATA_SUCCESS, payload: newPayload })
+  // let newPayload = [...projects, project]
+  // dispatch({ type: ADD_DATA_SUCCESS, payload: newPayload })
 
-  // axios
-  //   .post(API_ENDPOINT, project)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     dispatch({ type: ADD_DATA_SUCCESS, payload: res.data })
-  //   })
-  //   .catch(err => {
-  //     console.log(err.response)
-  //     dispatch({ type: ADD_DATA_FAILURE, payload: err.response })
-  //   })
+  axios
+    .post(API_ENDPOINT, project)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: ADD_DATA_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      console.log(err.response)
+      dispatch({ type: ADD_DATA_FAILURE, payload: err.response })
+    })
 }
 
 export const UPDATE_DATA_START = 'UPDATE_DATA_START'
@@ -65,18 +65,18 @@ export const updateProject = project => dispatch => {
   ))
 
   console.log(`updateProject payload: `, updatedPayload)
-  dispatch({ type: UPDATE_DATA_SUCCESS, payload: updatedPayload })
+  // dispatch({ type: UPDATE_DATA_SUCCESS, payload: updatedPayload })
 
-  // axios
-  //   .put(`${API_ENDPOINT}/${project.id}`, project)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     dispatch({ type: UPDATE_DATA_SUCCESS, payload: res.data })
-  //   })
-  //   .catch(err => {
-  //     console.log(err.response)
-  //     dispatch({ type: UPDATE_DATA_FAILURE, payload: err.response })
-  //   })
+  axios
+    .put(`${API_ENDPOINT}/${project.id}`, project)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: UPDATE_DATA_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      console.log(err.response)
+      dispatch({ type: UPDATE_DATA_FAILURE, payload: err.response })
+    })
 }
 
 export const DELETE_DATA_START = 'DELETE_DATA_START'
@@ -89,16 +89,16 @@ export const deleteProject = id => dispatch => {
   let updatedPayload = projects.filter(item => item.id !== id)
 
   console.log(`deleteProject payload: `, updatedPayload)
-  dispatch({ type: DELETE_DATA_SUCCESS, payload: updatedPayload })
+  // dispatch({ type: DELETE_DATA_SUCCESS, payload: updatedPayload })
 
-  // axios
-  //   .delete(`${API_ENDPOINT}/${id}`)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     dispatch({ type: DELETE_DATA_SUCCESS, payload: res.data })
-  //   })
-  //   .catch(err => {
-  //     console.log(err.response)
-  //     dispatch({ type: DELETE_DATA_FAILURE, payload: err.response })
-  //   })
+  axios
+    .delete(`${API_ENDPOINT}/${id}`)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: DELETE_DATA_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      console.log(err.response)
+      dispatch({ type: DELETE_DATA_FAILURE, payload: err.response })
+    })
 }
