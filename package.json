@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "dev": "REACT_APP_API_ENDPOINT='http://192.168.254.5:9000/' yarn start",
+    "dev": "REACT_APP_API_ENDPOINT='http://localhost:9000/' yarn start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
