@@ -13,31 +13,28 @@ class ProjectSummary extends Component {
     componentDidMount = () => {
         this.setState({project_id: this.props.project.id, roles: this.props.project.roles})
     }
+    componentWillReceiveProps(nextProps) {
+        nextProps !== this.props && this.setState({roles: nextProps.project.roles})
+    }
     h_add_role_field = e => {
         e.stopPropagation()
-        //add empty role
         this.setState(prevState => {
-            prevState.roles.unshift({role: 'none', value: ''})
+            const id = prevState.roles.length
+            const newRole = {id: id, role: 'none', member: ''}
+            prevState.roles.unshift(newRole)
+            console.log(newRole)
             return {roles: prevState.roles}
         })
     }
-    h_add_role = e => {
-        e.stopPropagation()
-        const value = e.target.value
-        this.setState(prevState => {
-            prevState.roles.shift()
-            value !== 'cancel' //if value isn't cancel, add it to project
-            && this.props.add_role(this.state.project_id, value)
-            return {roles: prevState.roles}
-        }) 
-    }
+    h_add_role = e => e.target.value !== 'cancel' && this.props.add_role(this.state.project_id, e.target.value) //add user to project
     h_toggle_add_user = e => {
         e.stopPropagation()
         e.target.classList.toggle('edit')
     }
     h_edit_user = (role_id, user) => this.props.edit_user(this.state.project_id, role_id, user)
     render = () =>
-    <div id={this.props.project.id} className='summary' onClick={this.props.open}>
+        <div id={this.props.project.id} className='summary' onClick={this.props.open}>
+            {console.log(this.state.roles)}
             <div className='identity'>
                 <pre className='name'>{this.props.project.name}</pre>
             </div>
@@ -45,9 +42,9 @@ class ProjectSummary extends Component {
                 <div className='position action'>
                     <button className='add' onClick={this.h_add_role_field}>Add Role</button>
                 </div>
-                {this.props.project.roles.map((role,idx) =>
+                {this.state.roles.map((role,idx) =>
                     <Role
-                        role={role} 
+                        role={role}
                         active_roles={this.props.active_roles}
                         edit_user={this.h_edit_user}
                         add_role={this.h_add_role}

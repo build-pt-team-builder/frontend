@@ -17,6 +17,15 @@ class Role extends Component {
             member: this.props.role.member,
         })
     }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps !== this.props) {
+            this.setState({
+                id: nextProps.role.id,
+                role: nextProps.role.role,
+                member: nextProps.role.member,
+            })
+        }
+    }
     h_toggle_add_user = e => {
         e.stopPropagation()
         if(!this.state.add_user) {
@@ -37,6 +46,7 @@ class Role extends Component {
             onKeyUp={this.h_keyup}
             onBlur={this.h_update}
         >
+        {/* {console.log(this.state)} */}
             {this.props.role.role === 'none'
                 ?   <select onClick={this.h_null_click} onChange={this.props.add_role} value='role'>
                         <option value='role' hidden>Role</option>
@@ -56,7 +66,7 @@ class Role extends Component {
                         </>
                     :   <>
                             <pre className='role'>{this.props.role.role}</pre>
-                            <pre className='member'>{this.props.role.member}</pre>
+                            <pre className='member'>{this.state.member}</pre>
                         </>
             }
         </div>

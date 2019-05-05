@@ -155,11 +155,10 @@ class Projects extends Component {
         })
     }
     h_edit_user = (project_id, role_id, user) => {
-        //find role and change user
         this.setState(prevState => {
             prevState.projects = prevState.projects.map(project => {
                 if(project.id === project_id) {
-                    project = project.roles.map(role => {
+                    project.roles = project.roles.map(role => {
                         if(role.id === role_id) role.member = user
                         return role
                     })
@@ -173,8 +172,14 @@ class Projects extends Component {
         role = role.toLowerCase().split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ');
         //add new role to project
         this.setState(prevState => {
-            prevState.projects = prevState.projects.map(project => { //id is temporary
-                project.id === project_id && project.roles.unshift({id: 0, role: role, value: ''})
+            prevState.projects = prevState.projects.map(project => {
+                if(project.id === project_id) {
+                    const id = project.roles.length
+                    const newRole = {id: id, role: role, member: ''}
+                    project.roles[0].role === 'none'
+                    ?   project.roles[0] = newRole
+                    :   project.roles.unshift(newRole)
+                }
                 return project
             })
             return {projects: prevState.projects}
