@@ -1,14 +1,13 @@
 import styled from 'styled-components'
-import { color, colorScheme, fontSizing, flex, breakpoints } from '../../components/DesignComponents/theme'
+import { color, fontSizing, flex, breakpoints } from '../../components/DesignComponents/theme'
 
 export const FormContainer = styled.div`
-  width: 600px;
+  width: 100%;
+  max-width: 950px;
   ${flex('column', 'center', 'center')};
-  margin: 70px 0;
   border-radius: 5px;
-  box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
-  color: ${color.darkText};
-  background: white;
+  color: ${color.txt04};
+  background: ${color.bg00};
   font-size: ${fontSizing.sm};
 
   @media ${breakpoints[0]} {
@@ -26,13 +25,18 @@ export const FormContainer = styled.div`
     @media ${breakpoints[0]} {
       padding: 5px;
     }
-  }  
+  }
+  
+  h1 {
+    font-size: ${fontSizing.ml};
+    letter-spacing: 0.25rem;
+    color: ${color.tx04};
+  }
 
   form {
     width: 90%;
     ${flex('column', 'center')};
     padding: 20px;
-
 
     @media ${breakpoints[0]} {
       width: 100%;
@@ -43,19 +47,23 @@ export const FormContainer = styled.div`
     }
 
     label {
-      font-weight: bold;
+      color: ${color.txt03};
     }
 
     input {
       width: 100%;
+      height: 40px;
       padding: 2px 10px;
-      border: 1px solid ${colorScheme.defaultBorderColor};
+      border-radius: 5px;
+      color: ${color.darkText};
+      background: ${color.lightText};
          
       line-height: 1.5rem;
     }
 
     button {
       width: 150px;
+      border-radius: 5px;
     }
   }
 `

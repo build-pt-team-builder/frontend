@@ -136,9 +136,8 @@ class Form extends Component {
   render() {
     return (
       <FormContainer {...this.props}>
-        <div className="windowFrame"></div>
         <form onSubmit={this.submitHandler}>
-          <h2>
+          <h1>
             {`
               Project 
               ${this.props.add ? 'Entry' : ''} 
@@ -146,7 +145,7 @@ class Form extends Component {
               ${this.props.delete ? 'Delete' : ''}   
               Form
             `}
-          </h2>
+          </h1>
           {(this.props.update || this.props.delete) &&
             <FormGroup>
               <label htmlFor="id">ID</label>
