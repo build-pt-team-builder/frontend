@@ -46,14 +46,19 @@ class Form extends Component {
 
     // gather form data
     let newRecord = {
-      ...this.state,
-      id: this.props.projects.length + 1 // FOR TESTING PURPOSES ONLY
+      name: this.state.name,
+      pitch: this.state.pitch,
+      mvp: this.state.mvp,
+      stretch: this.state.stretch,
+      roles: this.state.roles,
+      category: this.state.category,
+      projectComplete: false
     }
 
     // send new record to api
     this.props.addData(newRecord)
         console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
-    this.props.history.push('/')
+    this.props.history.push('/projects')
 
     // reset form fields
     this.setState({
