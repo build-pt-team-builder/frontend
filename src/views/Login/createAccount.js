@@ -32,8 +32,7 @@ class CreateAccount extends Component {
             cohort: this.state.cohort,
             password: this.state.password,
         }
-        const farts = this.props.add_user(user)
-        console.log(farts.then())
+        this.props.add_user(user)
     }
     render = () =>
     <Wrapper className='main'>
@@ -57,7 +56,7 @@ class CreateAccount extends Component {
                 <div className='links'>
                     <Link to='/login'>I Want To Log In!</Link>
                     <pre>-</pre>
-                    <Link to='/lostandfound'>Forgot Password?</Link>
+                    <Link to='/forgetful'>Forgot Password?</Link>
                 </div>
             </div>
         </div>

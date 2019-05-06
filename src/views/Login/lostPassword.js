@@ -7,7 +7,7 @@ import {add_user} from '../../actions/users'
 import Header from './header'
 import Wrapper from './style'
 
-class Login extends Component {
+class LostPassword extends Component {
     constructor() {
         super()
         this.state = {
@@ -20,10 +20,7 @@ class Login extends Component {
         e.target.classList.remove('placeholder')
     }
     h_add_user = () => {
-        const user = {
-            email: this.state.email,
-            password: this.state.password,
-        }
+        const user = {email: this.state.email}
         this.props.add_user(user)
     }
     render = () =>
@@ -35,12 +32,11 @@ class Login extends Component {
             </div>
             <div className='form'>
                 <input onChange={this.h_update_field} type='text' name='email' placeholder='Email'  value={this.state.email}/>
-                <input onChange={this.h_update_field} type='password' name='password' placeholder='Password' value={this.state.password}/>
-                <button onClick={this.h_add_user}>Let Me In!</button>
+                <button onClick={this.h_add_user}>Refresh My Memory</button>
                 <div className='links'>
-                    <Link to='/signup'>Sign Me Up</Link>
+                    <Link to='/login'>Log Me In!</Link>
                     <pre>-</pre>
-                    <Link to='/forgetful'>Forgot Password?</Link>
+                    <Link to='/signup'>Sign Me Uo!</Link>
                 </div>
             </div>
         </div>
@@ -52,4 +48,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(
-    mapStateToProps,{add_user})(Login)
+    mapStateToProps,{add_user})(LostPassword)
