@@ -1,23 +1,27 @@
 import React from 'react'
-
-import './index'
+import {Link} from 'react-router-dom'
 
 const AboutUs = () =>
     <div className='about-us'>
         <header>
-          <div className="header-bar">
-            <span className="logo">T</span><span className="logo logo-grey">hursday</span>
-            <nav>
-              <a href="index.html">Home</a>
-              <a href="features.html">Features</a>
-              <a href="about-us.html">About Us</a>
-              <a href="resources.html">Resources</a>
-            </nav>
-            <div className="header-buttons">
-              <a href="https://teambuilderapp.netlify.com/signup"><div className="get-started-btn">Get Started</div></a>
-              <a href="https://teambuilderapp.netlify.com/"><div className="log-in-btn">Log In</div></a>
+            <div className="header-bar">
+                <span className="logo">T</span>
+                <span className="logo logo-grey">hursday</span>
+                <nav>
+                    <Link to='/'>Home</Link>
+                    <Link to='/features'>Features</Link>
+                    <Link to='/aboutus'>About Us</Link>
+                    <Link to='/resources'>Resources</Link>
+                </nav>
+                <div className="header-buttons">
+                    <Link to='/signup'>
+                        <div className='get-started-btn'>Get Started</div>
+                    </Link>
+                    <Link to='/login'>
+                        <div className='log-in-btn'>Log In</div>
+                    </Link>
+                </div>
             </div>
-          </div>
         </header>
         <div className="container about-us">
             <div className="hero">
