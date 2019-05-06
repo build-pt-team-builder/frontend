@@ -39,3 +39,10 @@ export const edit_user = user => dispatch => {
         .then(res => dispatch({type: USER_SUCCESS, payload: res.data}))
         .catch(err => dispatch({type: USER_FAIL, payload: err}))
 }
+export const add_user = user => dispatch => {
+    dispatch({type: ADD_USER})
+    return axios
+        .post(api, user)
+        .then(res => dispatch({type: USER_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({type: USER_FAIL, payload: err}))
+}

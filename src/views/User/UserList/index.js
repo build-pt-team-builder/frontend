@@ -33,7 +33,10 @@ class UserList extends Component {
     //RUD
     h_update_filters = filters => this.setState({filters: filters})
     h_edit_user = user => this.props.edit_user(user)
-    h_remove_user = user => this.props.remove_user(user.id)
+    h_remove_user = user => {
+        console.log(user)
+        this.props.remove_user(user.id)
+    }
 
     filtered_users = filters => {
         let users = this.props.users

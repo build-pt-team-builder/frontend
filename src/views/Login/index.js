@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
-//ACTIONS
-import {login, forgotPassword, addUser} from '../../actions'
-//COMPONENTS
+
 import Header from '../../components/SharedComponents/Header/Public'
 import Login from './login'
 import ForgotPassword from './forgotPassword'
@@ -22,18 +19,9 @@ class LoginPage extends Component {
         }
     }
     //actions
-    h_login = () => {
-        const credentials = {username: this.state.username, password: this.state.password}
-        this.props.login(credentials)
-    }
-    h_forgotPassword = () => {
-        this.props.forgotPassword(this.state.email)
-    }
-    h_createUser = () => {
-        const user = {username: this.state.username, password: this.state.password, email: this.state.email}
-        this.props.createUser(user)
-    }
-    //update the state with field inputs
+    h_login = () => {}
+    h_forgotPassword = () => {}
+    h_createUser = () => {}
     h_input = e => this.setState({[e.target.name]: e.target.value})
     render = () => 
         <Wrapper>
@@ -44,18 +32,9 @@ class LoginPage extends Component {
                 </div>
                 {this.props.match.url === '/login' && <Login input={this.h_input}/>}
                 {this.props.match.url === '/lostandfound' && <ForgotPassword input={this.h_input}/>}
-                {this.props.match.url === '/createaccount' && <CreateAccount input={this.h_input}/>}
+                {this.props.match.url === '/signup' && <CreateAccount input={this.h_input}/>}
             </div>
         </Wrapper>
 }
 
-const mapStateToProps = state => {
-    return {
-        error: state.user.error,
-        message: state.user.message,
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    {login, forgotPassword, addUser})(LoginPage)
+export default LoginPage

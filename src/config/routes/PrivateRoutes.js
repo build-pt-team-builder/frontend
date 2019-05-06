@@ -10,18 +10,11 @@ import ProjectList from '../../views/Projects/ProjectList'
 import ProjectDetails from '../../views/Projects/ProjectDetails'
 import ProjectForm from '../../views/Projects/ProjectForm'
 
-import LandingPage from '../../views/Landing'
-import AboutUs from '../../views/Landing/aboutUs'
-import Features from '../../views/Landing/features'
-import Resources from '../../views/Landing/resources'
-
-import Login from '../../views/Login'
-
 import Settings from '../../views/User/Settings'
 import UserList from '../../views/User/UserList'
 import Announcements from '../../views/User/Announcements'
 
-class Routes extends Component {
+class PrivateRoutes extends Component {
   componentDidMount() {
     this.props.fetchData()
   }
@@ -29,14 +22,6 @@ class Routes extends Component {
   render() {
     return (
       <div>
-        {/* Assign routes */}
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path='/aboutus' component={AboutUs} />
-        <Route exact path='/features' component={Features} />
-        <Route exact path='/resources' component={Resources} />
-
-        <Route path="/main/login" exact component={Login} />
-
         <Route path='/main/settings' component={Settings} />
         <Route path='/main/users' component={UserList} />
         <Route path='/main/announcements' component={Announcements} />
@@ -74,5 +59,5 @@ const mapStateToProps = state => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { fetchData: fetchProjectData })(Routes)
+  connect(mapStateToProps, { fetchData: fetchProjectData })(PrivateRoutes)
 )
