@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class User extends Component {
     constructor({ user, edit, remove }) {
@@ -28,7 +28,7 @@ class User extends Component {
         const value = e.target.value
         this.setState(prevState => {
             prevState.user[name] = value
-            return { user: prevState.user }
+            return {user: prevState.user}
         })
     }
     render = () =>
@@ -38,43 +38,53 @@ class User extends Component {
             </div>
             <div className='info'>
                 {this.state.editing
-                    ? <>
-                        <div>
-                            <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.state.user.firstName} />
-                            <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.state.user.lastName} />
-                        </div>
-                        <select className='value' onChange={this.h_select_change} name='cohort' value={this.state.user.cohort}>
-                            <option value='webpt03'>webpt03</option>
-                            <option value='webpt04'>webpt04</option>
-                            <option value='webpt05'>webpt05</option>
-                        </select>
-                    </>
-                    : <>
-                        <pre className='name'>{this.props.user.firstName} {this.props.user.lastName}</pre>
-                        <pre className='role'>{this.props.user.cohort}</pre>
-                    </>
+                    ?   <>
+                            <div>
+                                <input type='text' name='firstName' placeholder='First Name' onChange={this.h_update_user} value={this.state.user.firstName} />
+                                <input type='text' name='lastName' placeholder='Last Name' onChange={this.h_update_user} value={this.state.user.lastName} />
+                            </div>
+                            <select className='value' onChange={this.h_select_change} name='cohort' value={this.state.user.cohort}>
+                                {this.props.cohorts.map(cohort =>
+                                    <option
+                                        value={cohort.name} 
+                                        disabled={cohort.disabled}
+                                        key={cohort.id}>
+                                        {cohort.name}
+                                    </option>
+                                )}
+                            </select>
+                        </>
+                    :   <>
+                            <pre className='name'>{this.props.user.firstName} {this.props.user.lastName}</pre>
+                            <pre className='role'>{this.props.user.cohort}</pre>
+                        </>
                 }
             </div>
             <div className='info'>
                 <pre className='title'>Preferred Role</pre>
                 {this.state.editing
-                    ? <select className='value' onChange={this.h_select_change} name='role' value={this.props.user.role}>
-                        <option value='webui'>Webui</option>
-                        <option value='frontend'>Frontend</option>
-                        <option value='backend'>Backend</option>
-                    </select>
-                    : <pre className='value'>{this.props.user.role}</pre>
+                    ?   <select className='value' onChange={this.h_select_change} name='role' value={this.state.user.role}>
+                            {this.props.roles.map(role =>
+                                <option value={role.name} key={role.id}>{role.name}</option>
+                            )}
+                        </select>
+                    :   <pre className='value'>{this.props.user.role}</pre>
                 }
             </div>
             <div className='info'>
                 <pre className='title'>Project Manager</pre>
                 {this.state.editing
-                    ? <select className='value' onChange={this.h_select_change} name='project_manager' value={this.props.user.project_manager}>
-                        <option value='Carlos'>Carlos</option>
-                        <option value='Lola'>Lola</option>
-                        <option value='Jack Daniels'>Jack Daniels</option>
-                    </select>
-                    : <pre className='value'>{this.props.user.project_manager}</pre>
+                    ?   <select className='value' onChange={this.h_select_change} name='project_manager' value={this.state.user.project_manager}>
+                            <option value='nona'>None</option>
+                            {this.props.project_managers.map(project_manager =>
+                                <option
+                                    value={`${project_manager.firstName} ${project_manager.lastName}`}
+                                    key={project_manager.id}>
+                                    {project_manager.firstName} {project_manager.lastName}
+                                </option>
+                            )}
+                        </select>
+                    :   <pre className='value'>{this.props.user.project_manager}</pre>
                 }
             </div>
             <div className='info'>
