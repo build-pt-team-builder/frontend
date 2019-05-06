@@ -2,8 +2,10 @@ import Styled from 'styled-components'
 import {color, size, flex} from '../../../components/DesignComponents/theme'
 
 export default Styled.div`
-    background-color: ${color.bg00};
-    border: 1px solid ${color.bg03};
+    // background-color: ${color.bg00};
+    background-color: #181F22;
+    // border: 1px solid ${color.bg03};
+    border: 1px solid #666;
     border-width: 0 2px;
     height: 100%;
     font-size: ${size.s06};
@@ -13,6 +15,8 @@ export default Styled.div`
         ${flex('row','center','center')};
         height: 50px;
         h3 {
+            // color: ${color.txt02};
+            color: #ccc;
             font-size: ${size.s08};
             &::first-letter {
                 color: ${color.accent0};
@@ -23,6 +27,8 @@ export default Styled.div`
         ${flex('column','flex-start','center')};
         width: 100%;
         a {
+            // color: ${color.txt02};
+            color: #ccc;
             ${flex('row','center','flex-start')};
             height: 4rem;
             border: 2px solid transparent;

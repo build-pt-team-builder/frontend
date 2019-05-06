@@ -23,7 +23,7 @@ class SideNav extends Component {
     render = () =>
         <Content>
             <div className='logo'>
-                <h3>Thursdaaay</h3>
+                <h3>Thursday</h3>
             </div>
             <Profile />
             <nav className='links'>

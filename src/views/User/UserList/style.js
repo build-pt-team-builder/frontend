@@ -10,6 +10,7 @@ export default Styled.div`
     position: relative;
     width: fit-content;
     & > * { margin-bottom: 1rem}
+    select {cursor: pointer}
     .options {
         border-radius: 5px;
         ${flex('row','normal','normal')};
@@ -28,7 +29,7 @@ export default Styled.div`
                 background-color: ${color.bg01};
                 border: 2px solid transparent;
                 border-radius: 5px;
-                color: #ccc;
+                color: ${color.txt04};
                 font-size: 1.6rem;
                 height: 100%;
                 outline: none;
@@ -74,13 +75,13 @@ export default Styled.div`
             }
         }
         .info {
-            input {
+            input, select {
                 font-size: 1.8rem;
                 max-width: 100px;
                 padding: 0;
                 width: 100%;
             }
-            select {width: 100%}
+            // select {width: 100%}
         }
         .actions {
             border-radius: 0 5px 5px 0;
@@ -88,7 +89,8 @@ export default Styled.div`
             grid-auto-flow: column;
             grid-column-gap: 1px;
             button {
-                background-color: ${color.bg01}
+                background-color: ${color.bg01};
+                cursor: pointer;
                 height: 40px;
                 width: 100%;
                 min-width: 85px;
