@@ -12,7 +12,8 @@ export default Styled.div`
     grid-template-columns: auto 1fr;
     width: fit-content;
     .title {
-        color: ${color.txt02};
+        // color: ${color.txt02};
+        color: #222;
         font-size: ${size.s07};
         grid-column: 1 / -1;
         height: fit-content;

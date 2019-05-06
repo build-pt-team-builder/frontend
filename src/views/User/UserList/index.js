@@ -55,7 +55,12 @@ class UserList extends Component {
     }
     render = () => 
         <Wrapper className='users'>
-            <Header stats={this.state.headerStats} />
+            <Header
+                stats={this.state.headerStats}
+                users={this.props.users}
+                project_managers={this.props.project_managers}
+                cohorts={this.props.cohorts}
+            />
             <ListOptions
                 filter={this.h_update_filters}
                 cohorts={this.props.cohorts}
