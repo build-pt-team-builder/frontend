@@ -79,14 +79,7 @@ class User extends Component {
             </div>
             <div className='info'>
                 <pre className='title'>Project</pre>
-                {this.state.editing
-                    ? <select className='value' onChange={this.h_select_change} name='project' value={this.props.user.project}>
-                        <option value='Rover'>Rover</option>
-                        <option value='The Giant'>The Giant</option>
-                        <option value='Mutiny'>Mutiny</option>
-                    </select>
-                    : <pre className='value'>{this.props.user.project || 'None'}</pre>
-                }
+                <pre className='value'>{this.props.user.project || 'None'}</pre>
             </div>
             <div className='actions'>
                 <button onClick={this.h_toggle_edit} className={this.state.editing ? 'active' : null}>{this.state.editing ? 'Editing' : 'Edit'}</button>

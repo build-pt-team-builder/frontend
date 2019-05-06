@@ -13,7 +13,7 @@ export const LOST_PASSWORD_SUCCESS = 'LOST_PASSWORD_SUCCESS'
 export const LOST_PASSWORD_FAIL = 'LOST_PASSWORD_FAIL'
 export const ADD_USER_SUCCESS = 'ADD_USER_SUCCESS'
 export const ADD_USER_FAIL = 'ADD_USER_FAIL'
-const url = '' //UPDATE THIS LATER
+const url = 'https://teambuilderapp-api.netlify.com/users'
 
 export const login = user => dispatch => {
     dispatch({type: USER_CALL})

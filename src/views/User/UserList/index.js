@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
 import Wrapper from './style'
 
-import Header from '../../../components/SharedComponents/Header/Private'
+import {get_users, edit_user, remove_user} from '../../../actions/users'
 
+import Header from '../../../components/SharedComponents/Header/Private'
 import ListOptions from './options'
 import User from './user'
 // import Options from './options'
@@ -13,84 +15,55 @@ const headerStats = [
     {displayText: 'Total PM Groups', value: 27},
     {displayText: 'Largest Cohort', value: 'WebPT5: 196'},
 ]
-const users = [
-    {
-        firstName: 'Gordon',
-        lastName: 'Clark',
-        email: 'Glark@gmail.com',
-        avatar: 'avatar.png',
-        cohort: 'webpt04',
-        project_manager: 'Carlos',
-        role: 'backend',
-        project: 'none',
-    },
-    {
-        firstName: 'Donna',
-        lastName: 'Emmerson',
-        email: 'oopsididitagain@yahoo.com',
-        avatar: 'avatar.png',
-        cohort: 'webpt04',
-        role: 'frontend',
-        project_manager: 'Carlos',
-        project: 'none',
-    },
-    {
-        firstName: 'Elliot',
-        lastName: 'Alderson',
-        email: 'mrrobot@geocities.com',
-        avatar: 'elliot.jpg',
-        cohort: 'webpt03',
-        project_manager: 'Lola',
-        role: 'data science',
-        project: 'none',
-    }
-]
 
 class UserList extends Component {
     constructor() {
         super()
         this.state = {
             headerStats: headerStats,
-            all_users: users,
-            users: users,
+            users: [],
+            filters: [],
             edit: false,
         }
     }
-    h_filter_users = filters => {
-        let users = this.state.all_users
-        //filter out all the 'all' values from filters array
-        //filter all users who don't have the corresponding name value relationion
-        //update state with new list
+
+    // componentWillReceiveProps = () => this.setState({users: this.props.users})
+    componentDidMount = () => this.props.get_users()
+    
+    //RUD
+    h_update_filters = filters => this.setState({filters: filters})
+    h_edit_user = user => this.props.edit_user(user)
+    h_remove_user = user => this.props.remove_user(user.id)
+
+    filtered_users = filters => {
+        let users = this.props.users
         filters.forEach(filter =>
             filter.value !== 'all'
             ?   users = users.filter(user => user[filter.name] === filter.value)
             :   null
         )
-        this.setState({users: users})
-    }
-    h_edit_user = user => {
-        console.log('editing...')
-        console.log(user)
-    }
-    h_remove_user = user => {
-        console.log('removing...')
-        console.log(user)
+        return users
     }
     render = () => 
         <Wrapper className='users'>
             <Header stats={this.state.headerStats} />
-            <ListOptions filter={this.h_filter_users} />
+            <ListOptions filter={this.h_update_filters} />
             <div className='user-list'>
-                {this.state.users.map((user,idx) =>
+                {this.filtered_users(this.state.filters).map(user => 
                     <User
                         edit={this.h_edit_user}
                         remove={this.h_remove_user}
                         user={user}
-                        key={idx}
+                        key={user.id}
                     />
                 )}
             </div>
         </Wrapper>
 }
 
-export default UserList
+const mapStateToProps = state => {
+    return {users: state.users.users}
+}
+
+export default connect(
+    mapStateToProps,{get_users, edit_user, remove_user})(UserList)
