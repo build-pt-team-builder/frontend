@@ -85,6 +85,7 @@ class UserList extends Component {
 }
 
 const mapStateToProps = state => {
+    console.log(state.users.users)
     return {
         users: state.users.users,
         projects: state.projects.projects,
