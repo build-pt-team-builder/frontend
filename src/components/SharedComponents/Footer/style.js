@@ -3,8 +3,9 @@ import {color, flex, size} from '../../DesignComponents/theme'
 
 export default Styled.footer`
     ${flex('row','center','center')}
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
+    align-self: end;
     height: 50px;
     width: 100%;
     .links {

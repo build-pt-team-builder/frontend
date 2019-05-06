@@ -1,16 +1,25 @@
 import React from 'react'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
-import AppContainer from './AppStyles'
-import Routes from '../config/routes'
+
+import PublicRoutes from '../config/routes/PublicRoutes'
+import PrivateRoutes from '../config/routes/PrivateRoutes'
+
 import SideNav from '../views/User/SideNav'
 import Footer from '../components/SharedComponents/Footer'
+
+import {AppContainer, Public, Private} from './AppStyles'
 
 const App = () =>
   <AppContainer className='App'>
     <Router>
-      <Route path='/main' render={(props) => <SideNav {...props} />}/>
-      <Routes />
-      <Footer />
+      <Public className='public'>
+        <PublicRoutes/>
+      </Public>
+      <Private className='private'>
+        <Route path='/main' render={(props) => <SideNav {...props} />}/>
+        <PrivateRoutes />
+        <Route path='/main' render={(props) => <Footer {...props} />} />
+      </Private>
     </Router>
   </AppContainer>
 

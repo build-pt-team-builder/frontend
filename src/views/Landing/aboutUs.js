@@ -1,23 +1,29 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-import './index'
+import Wrapper from './style'
 
 const AboutUs = () =>
-    <div className='about-us'>
+    <Wrapper className='about-us'>
         <header>
-          <div className="header-bar">
-            <span className="logo">T</span><span className="logo logo-grey">hursday</span>
-            <nav>
-              <a href="index.html">Home</a>
-              <a href="features.html">Features</a>
-              <a href="about-us.html">About Us</a>
-              <a href="resources.html">Resources</a>
-            </nav>
-            <div className="header-buttons">
-              <a href="https://teambuilderapp.netlify.com/signup"><div className="get-started-btn">Get Started</div></a>
-              <a href="https://teambuilderapp.netlify.com/"><div className="log-in-btn">Log In</div></a>
+            <div className="header-bar">
+                <span className="logo">T</span>
+                <span className="logo logo-grey">hursday</span>
+                <nav>
+                    <Link to='/'>Home</Link>
+                    <Link to='/features'>Features</Link>
+                    <Link to='/aboutus'>About Us</Link>
+                    <Link to='/resources'>Resources</Link>
+                </nav>
+                <div className="header-buttons">
+                    <Link to='/signup'>
+                        <div className='get-started-btn'>Get Started</div>
+                    </Link>
+                    <Link to='/login'>
+                        <div className='log-in-btn'>Log In</div>
+                    </Link>
+                </div>
             </div>
-          </div>
         </header>
         <div className="container about-us">
             <div className="hero">
@@ -87,6 +93,6 @@ const AboutUs = () =>
                         <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
             </div>
         </footer>
-    </div>
+    </Wrapper>
 
 export default AboutUs
