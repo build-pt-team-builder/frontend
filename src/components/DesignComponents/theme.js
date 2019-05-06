@@ -19,6 +19,17 @@ const theme = {
     txt04: '#ccc',
     txt05: '#fff',
 
+    //LIGHT
+    accent1: '#bb1333',
+    bg00: '#aaa',
+    bg01: '#fff',
+    txt01: '#fff',
+    txt02: '#ccc',
+    txt03: '#666',
+    txt04: '#222',
+    txt05: '#181F22',
+    txt06: '#55596D',
+
     //legacy
     primaryColor: '#bb1333',
     primaryDark: '#bb1333',
