@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+import Wrapper from './style'
+
 const Resources = () =>
-    <div className='resources'>
+    <Wrapper className='resources'>
         <header>
             <div className="header-bar">
                 <span className="logo">T</span>
@@ -62,6 +64,6 @@ const Resources = () =>
                 <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
             </div>
         </footer>
-    </div>
+    </Wrapper>
 
 export default Resources

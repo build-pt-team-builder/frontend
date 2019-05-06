@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-import './index.css'
+import Wrapper from './style'
 
 const LandingPage = () =>
-    <div className='landing-page'>
+    <Wrapper className='landing-page'>
         <header>
             <div className="header-bar">
                 <span className="logo">T</span>
@@ -83,6 +83,6 @@ const LandingPage = () =>
                 </div>
             </div>
         </footer>
-    </div>
+    </Wrapper>
 
 export default LandingPage
