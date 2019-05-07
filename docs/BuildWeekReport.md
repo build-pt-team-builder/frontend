@@ -1,8 +1,9 @@
 # Build Week Report: TeamBuilder App (Thursday)
 by Wilfred Morgan
 
-[Thursday App](https://teambuilderapp.netlify.com/main/projects)
-[Project Repository](https://github.com/build-pt-team-builder/frontend/tree/wilfred-morgan)
+- [Thursday App](https://teambuilderapp.netlify.com/main/projects)
+
+- [Project Repository](https://github.com/build-pt-team-builder/frontend/tree/wilfred-morgan)
 
 ## Summary
 The project objective was to build an app that would allow for better management of Build Week projects.
