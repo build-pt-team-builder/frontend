@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 // Test Data
-import { projects } from '../dummyData.js'
+// import { projects } from '../dummyData.js'
 
-const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
-  '/'}.netlify/functions/server/api/projects`
-// const API_ENDPOINT = `https://teambuilderapp-api.netlify.com/.netlify/functions/server/api/projects/`
+// const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
+//   '/'}.netlify/functions/server/api/projects`
+const API_ENDPOINT = `https://teambuilderapp-api.netlify.com/.netlify/functions/server/api/projects`
 
 export const FETCH_DATA_START = 'FETCH_DATA_START'
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
@@ -70,7 +70,7 @@ export const updateProject = project => dispatch => {
   axios
     .put(`${API_ENDPOINT}/${project.id}`, project)
     .then(res => {
-      console.log(res.data)
+      console.log(`Data update:`, res.data)
       dispatch({ type: UPDATE_DATA_SUCCESS, payload: res.data })
     })
     .catch(err => {
@@ -86,9 +86,9 @@ export const DELETE_DATA_FAILURE = 'DELETE_DATA_FAILURE'
 export const deleteProject = id => dispatch => {
   dispatch({ type: DELETE_DATA_START })
 
-  let updatedPayload = projects.filter(item => item.id !== id)
+  // let updatedPayload = projects.filter(item => item.id !== id)
 
-  console.log(`deleteProject payload: `, updatedPayload)
+  // console.log(`deleteProject payload: `, updatedPayload)
   // dispatch({ type: DELETE_DATA_SUCCESS, payload: updatedPayload })
 
   axios
