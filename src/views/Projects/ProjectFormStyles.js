@@ -5,9 +5,10 @@ export const FormContainer = styled.div`
   width: 100%;
   max-width: 950px;
   ${flex('column', 'center', 'center')};
+  border: 1px solid ${color.secondaryBgShading};
   border-radius: 5px;
   color: ${color.txt04};
-  background: ${color.bg00};
+  background: ${color.txt01};
   font-size: ${fontSizing.sm};
 
   @media ${breakpoints[0]} {
@@ -34,7 +35,6 @@ export const FormContainer = styled.div`
   }
 
   form {
-    width: 90%;
     ${flex('column', 'center')};
     padding: 20px;
 
