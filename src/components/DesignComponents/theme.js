@@ -1,10 +1,10 @@
 const theme = {
   color: {
     accent0: '#bb1333',
-    accent1: '#08addd',
+    // accent1: '#08addd',
 
-    bg00: '#181F22',
-    bg01: '#22292C',
+    // bg00: '#181F22',
+    // bg01: '#22292C',
     bg02: '#252C2F',
     bg03: '#666',
     bg04: '#888',
@@ -12,12 +12,12 @@ const theme = {
     bg06: '#EFEFF3',
     bg07: '#FFFFFF',
 
-    txt00: '#000',
-    txt01: '#222',
-    txt02: '#666',
-    txt03: '#888',
-    txt04: '#ccc',
-    txt05: '#fff',
+    // txt00: '#000',
+    // txt01: '#222',
+    // txt02: '#666',
+    // txt03: '#888',
+    // txt04: '#ccc',
+    // txt05: '#fff',
 
     //LIGHT
     accent1: '#bb1333',

@@ -205,7 +205,7 @@ class Projects extends Component {
     }
     render = () => 
         <Style className='projects'>
-            {this.state.settings.showStats && <Header stats={this.state.headerStats}/>}
+            {/* {this.state.settings.showStats && <Header stats={this.state.headerStats}/>} */}
             <ListOptions
                 options={this.state.settings}
                 toggle_status={this.h_toggle_status}
