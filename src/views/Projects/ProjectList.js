@@ -38,6 +38,23 @@ class ProjectList extends Component {
               TheadComponent={() => null}
               defaultPageSize={3}
               showPagination={false}
+              getTrProps={(state, rowInfo, column, instance) => {
+                return {
+                  onClick: (e) => {
+                    // console.log("Row - onClick: ", {
+                    //   state,
+                    //   rowInfo,
+                    //   column,
+                    //   instance,
+                    //   event: e
+                  },
+                  style: {
+                    margin: `5px`,
+                    border: `1px solid ${color.secondaryBgShading}`,
+                    borderRadius: `5px`
+                  }
+                }
+              }}  
               data={d.roleAssignments}
               columns={[
                 {
