@@ -6,6 +6,8 @@ import { projects } from '../dummyData.js'
 // const API_ENDPOINT = `${process.env.REACT_APP_API_ENDPOINT ||
 //   '/'}.netlify/functions/server/api/projects/`
 const API_ENDPOINT = `https://teambuilderapp-api.netlify.com/.netlify/functions/server/api/projects/`
+// const API_ENDPOINT = `http://localhost:9000/.netlify/functions/server/api/projects/`
+
 
 export const FETCH_DATA_START = 'FETCH_DATA_START'
 export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
