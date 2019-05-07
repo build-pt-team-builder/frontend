@@ -9,6 +9,7 @@ const links = [
     {displayText: 'Users', to: '/main/users', imgSrc: '/', altText: ''},
     // {displayText: 'Groups', to: '/home', imgSrc: '/', altText: ''},
     {displayText: 'Projects', to: '/main/projects', imgSrc: '/', altText: ''},
+    {displayText: 'Add Project', to: '/main/projects/add', imgSrc: '/', altText: ''},
     {displayText: 'Settings', to: '/main/settings', imgSrc: '/', altText: ''},
     {displayText: 'Log Out', to: '/', imgSrc: '/', altText: ''},
 ]
