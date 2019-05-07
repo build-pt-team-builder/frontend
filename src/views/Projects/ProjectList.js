@@ -63,7 +63,7 @@ class ProjectList extends Component {
           <div
             style={{
               textAlign: 'center',
-              color: row.value === 'Complete' ? `${color.accent0}` : `${color.accent1}`
+              color: row.value === 'Complete' ? `${color.accent0}` : `${color.primary}`
             }}
           >
           {row.value}
@@ -156,7 +156,9 @@ class ProjectList extends Component {
               style: {
                 margin: `4px 0`,
                 cursor: 'pointer',
-                background: `${color.bg00}`
+                background: `${color.bg01}`,
+                border: `1px solid ${color.secondaryBgShading}`,
+                borderRadius: `5px`
               }
             }
           }}

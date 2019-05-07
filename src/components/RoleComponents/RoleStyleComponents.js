@@ -29,18 +29,19 @@ export const FormGroup = styled.div`
     width: 42%;
     height: 40px;
     padding: 5px;
+    border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
     font-size: ${fontSizing.s};
-    background: ${color.bg00};
+    background: ${color.txt01};
     color: ${color.txt04};
   }
 
   button {
     width: 10%;
     height: 40px;
-    border: 1px solid transparent;
+    border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
-    background: ${color.bg00};
+    background: ${color.txt01};
     color: ${color.txt04};
     font-size: ${fontSizing.m};
   }
@@ -70,7 +71,7 @@ export const RoleContainer = styled.div`
     padding-left: 10px;
     border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
-    background: ${color.bg00};
+    background: ${color.txt01};
 
     div {
       flex: 0 0 43%;

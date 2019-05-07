@@ -13,7 +13,7 @@ export const SignUpBoardContainer = styled.div`
   h2 {
       margin: 20px 0;
       text-align: center;
-      color: ${color.txt03};
+      color: ${color.secondaryBgShading};
       font-size: ${fontSizing.s};
   }
 `
@@ -46,17 +46,18 @@ export const FormGroup = styled.div`
     width: 42%;
     height: 40px
     padding: 5px;
+    border: 1px solid ${colorScheme.defaultBorderColor};
     font-size: ${fontSizing.xs};
-    background: ${color.bg00};
+    background: ${color.txt01};
     color: ${color.txt04};
   }
 
   button {
     width: 10%;
     height: 40px;
-    border: 1px solid transparent;
+    border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
-    background: ${color.bg00};
+    background: ${color.txt01};
     color: ${color.txt04};
     font-size: ${fontSizing.m};
   }
@@ -85,7 +86,7 @@ export const SignUpContainer = styled.div`
     padding-left: 10px;
     border: 1px solid ${colorScheme.defaultBorderColor};
     border-radius: 5px;
-      background: ${color.bg00};
+      background: ${color.txt01};
 
     div {
       flex: 0 0 43%;

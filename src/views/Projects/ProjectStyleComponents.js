@@ -116,7 +116,7 @@ export const ProjectInfoContainer = styled.div`
 
       .stat-category {
         margin: 5px 0;
-        color: ${color.txt03};
+        color: ${color.secondaryBgShading};
         font-size: ${fontSizing.s};
       }
 
@@ -127,7 +127,7 @@ export const ProjectInfoContainer = styled.div`
       }
 
       .status {
-        color: ${color.accent1};
+        color: ${color.primary};
       }
 
       .status-close {
@@ -246,9 +246,11 @@ export const TableContainer = styled.div`
   font-size: ${fontSizing.xs};
 
  .ReactTable {
+   border-radius: 5px;
+
     & * {
       input, select {
-        background: ${color.bg00} !important;
+        background: ${color.bg01} !important;
       }
     }
   }

@@ -15,7 +15,8 @@ export default Styled.div`
         grid-row-gap: ${size.s02};
         width: fit-content;
         .announcement {
-            background-color: ${color.bg00};
+            background-color: ${color.txt01};
+            border: 1px solid ${color.secondaryBgColor};
             border-radius: 5px;
             ${flex('column', 'normal', 'normal')};
             max-width: 1200px;

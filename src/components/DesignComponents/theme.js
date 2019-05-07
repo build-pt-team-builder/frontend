@@ -42,6 +42,7 @@ const theme = {
     darkText: '#222',
     lightText: '#FFFFFF',
     lightTextEmphasis: '#fff',
+    primary: '#3ab5e5',
     danger: 'red'
   },
   
