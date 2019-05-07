@@ -151,7 +151,7 @@ class ProjectList extends Component {
                 //   instance,
                 //   event: e
                 // })
-                this.props.history.push(`/projects/${rowInfo.original.id}`)
+                this.props.history.push(`/main/projects/${rowInfo.original.id}`)
               },
               style: {
                 margin: `4px 0`,
