@@ -10,6 +10,11 @@ The frontend is built in React. Additional libraries used:
 - Styled Components - Layout and Styling
 - React-Table - Tabular display of project lists
 
+### APIs (Stand-in)
+A demo API microservice was staged to enable development and testing of the application's features.
+
+[TeamBuilder API](https://github.com/wmemorgan/teambuilder-backend/blob/master/README.md) 
+
 ---
 ### Features
 - Create, edit, and delete a project
