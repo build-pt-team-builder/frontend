@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import {add_user} from '../../actions/users'
+import {get_cohorts} from '../../actions/cohorts'
 
 import Header from './header'
 import Wrapper from './style'
@@ -19,6 +20,7 @@ class CreateAccount extends Component {
             password: '',
         }
     }
+    componentDidMount = () => this.props.get_cohorts()
     h_update_field = e => {
         this.setState({[e.target.name]: e.target.value})
         e.target.classList.remove('placeholder')
@@ -47,9 +49,9 @@ class CreateAccount extends Component {
                 <input onChange={this.h_update_field} type='text' name='email' placeholder='Email'  value={this.state.email}/>
                 <select name='cohort' placeholder='Cohort' className='placeholder' onChange={this.h_update_field} value={this.state.cohort}>
                     <option value='none' disabled>Cohort</option>
-                    <option value='webpt03'>Webpt03</option>
-                    <option value='webpt04'>Webpt04</option>
-                    <option value='webpt05'>Webpt05</option>
+                    {this.props.cohorts.map(cohort =>
+                        <option value={cohort.name} key={cohort.id}>{cohort.name}</option>
+                    )}
                 </select>
                 <input onChange={this.h_update_field} type='password' name='password' placeholder='Password' value={this.state.password}/>
                 <button onClick={this.h_add_user}>Sign Me Up, Scotty!</button>
@@ -64,8 +66,11 @@ class CreateAccount extends Component {
 }
 
 const mapStateToProps = state => {
-    return {users: state.users.users}
+    return {
+        users: state.users.users,
+        cohorts: state.cohorts.cohorts,
+    }
 }
 
 export default connect(
-    mapStateToProps,{add_user})(CreateAccount)
+    mapStateToProps,{add_user, get_cohorts})(CreateAccount)

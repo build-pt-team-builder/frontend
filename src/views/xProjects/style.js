@@ -135,7 +135,7 @@ export default Styled.div`
                     }
                     .add {font-size: 1.4rem}
                     .role {
-                        color: ${color.txt02};
+                        color: ${color.txt03};
                         font-size: 1.4rem;
                         height: 18px;
                     }
