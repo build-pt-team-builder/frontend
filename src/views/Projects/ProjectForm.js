@@ -58,7 +58,7 @@ class Form extends Component {
     // send new record to api
     this.props.addData(newRecord)
         console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
-    this.props.history.push('/projects')
+    this.props.history.push('/main/projects')
 
     // reset form fields
     this.setState({
@@ -78,7 +78,7 @@ class Form extends Component {
     e.preventDefault()
     // send updated record to api
     this.props.updateData(this.state)
-    this.props.history.push(`/projects/${this.state.id}`)
+    this.props.history.push(`/main/projects/${this.state.id}`)
 
     console.log(`Form submitted data sent: ${JSON.stringify(this.state)}`)
 
@@ -100,7 +100,7 @@ class Form extends Component {
     e.preventDefault()
     // invoke the deleteProject method and pass id
     this.props.deleteData(this.state.id)
-    this.props.history.push('/')
+    this.props.history.push('/main/projects')
     // reset form field
     this.setState({ id: '' })
   }
