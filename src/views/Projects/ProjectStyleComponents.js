@@ -56,9 +56,9 @@ export const Preview = styled.div`
 export const ProjectInfoContainer = styled.div`
   ${flex('column')};
   width: 100%;
-  max-width: 900px;
+  max-width: 600px;
   border-radius: 5px;
-  // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
+  //box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: transparent;
   color: ${color.txt04};
 
@@ -83,7 +83,7 @@ export const ProjectInfoContainer = styled.div`
       padding: 5px;
       border: 1px solid ${color.secondaryBgShading};
       border-radius: 5px;
-      font-size: ${fontSizing.xs};
+      font-size: ${fontSizing.sm};
       color: ${color.darkText};
       background: ${color.lightText};
     }
@@ -136,6 +136,11 @@ export const ProjectInfoContainer = styled.div`
 
       .status-close {
         color: ${color.accent0};
+      }
+
+      input, textarea {
+        border: 1px solid ${color.secondaryBgShading};
+        font-size: ${fontSizing.xs};
       }
 
     }
@@ -194,12 +199,19 @@ export const StatGroup = styled.div`
   }
 
   .stat-data, textarea, input {
-    
-    border: 1px solid transparent;
     border-radius: 5px;
 
     @media ${breakpoints[1]} {
       flex: 0 0 85%;
+    }
+
+   textarea, input {
+      padding: 5px;
+      border: 1px solid ${color.secondaryBgShading};
+      border-radius: 5px;
+      font-size: ${fontSizing.sm};
+      color: ${color.darkText};
+      background: ${color.lightText};      
     }
 
     @media ${breakpoints[2]} {
