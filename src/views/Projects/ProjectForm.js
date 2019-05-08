@@ -58,7 +58,7 @@ class Form extends Component {
     // send new record to api
     this.props.addData(newRecord)
         console.log(`Form submitted data sent: ${JSON.stringify(newRecord)}`)
-    this.props.history.push('/projects')
+    this.props.history.push('/main/projects')
 
     // reset form fields
     this.setState({

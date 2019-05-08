@@ -93,7 +93,7 @@ class ProjectDetails extends Component {
   handleDelete = id => {
     console.log(`handleDelete submitted id: `, id)
     this.props.deleteData(id)
-    this.props.history.push('/projects')
+    this.props.history.push('/main/projects')
   }
 
   render() {
