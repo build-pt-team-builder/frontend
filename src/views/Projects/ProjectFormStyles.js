@@ -53,6 +53,7 @@ export const FormContainer = styled.div`
     input {
       width: 100%;
       height: 40px;
+      border: 1px solid ${color.secondaryBgShading};
       color: ${color.darkText};
       background: ${color.lightText};   
     }

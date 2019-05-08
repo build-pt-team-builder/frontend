@@ -80,6 +80,10 @@ export const ProjectInfoContainer = styled.div`
     }
 
     input {
+      padding: 5px;
+      border: 1px solid ${color.secondaryBgShading};
+      border-radius: 5px;
+      font-size: ${fontSizing.xs};
       color: ${color.darkText};
       background: ${color.lightText};
     }
